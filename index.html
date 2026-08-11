@@ -119,10 +119,23 @@
       const indice = Math.floor(Math.random() * todasLasFrases.length);
       const seleccionada = todasLasFrases[indice];
 
-      // Aplicar plantilla de fondo correspondiente al bloque de la frase
+      // Obtener nombre de la plantilla
       const tarjeta = document.getElementById('tarjeta');
       const imagenFondo = plantillasPorBloque[seleccionada.bloque] || 'plantilla1.png';
-      tarjeta.style.backgroundImage = `url('${imagenFondo}')`;
+
+      // Precargar la imagen para asegurar que existe antes de aplicarla
+      const img = new Image();
+      img.src = imagenFondo;
+      
+      img.onload = function() {
+        tarjeta.style.backgroundImage = `url('${imagenFondo}')`;
+      };
+
+      // Si falla por tema de mayúsculas/minúsculas en el servidor, intenta con .PNG
+      img.onerror = function() {
+        const fallback = imagenFondo.replace('.png', '.PNG');
+        tarjeta.style.backgroundImage = `url('${fallback}')`;
+      };
 
       // Mostrar texto y número de huella
       document.getElementById('textoFrase').innerText = `"${seleccionada.texto}"`;
