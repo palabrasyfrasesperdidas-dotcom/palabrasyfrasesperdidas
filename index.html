@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palabras y frases perdidas</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .tarjeta-container {
+      position: relative;
+      width: 90%;
+      max-width: 420px;
+      aspect-ratio: 2 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Área central donde va superpuesta la frase sobre la plantilla */
+    .contenido-frase {
+      position: absolute;
+      top: 32%;
+      left: 10%;
+      right: 10%;
+      bottom: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .texto-huella {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: #f5f5f5;
+      font-style: italic;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+    }
+
+    .numero-huella {
+      margin-top: 15px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: #a3a3a3;
+      text-transform: uppercase;
+    }
+
+    .boton-accion {
+      margin-top: 25px;
+      padding: 12px 28px;
+      background-color: transparent;
+      color: #d4af37;
+      border: 1px solid #d4af37;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+    }
+
+    .boton-accion:hover {
+      background-color: #d4af37;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tarjeta-container" id="tarjeta">
+    <div class="contenido-frase">
+      <div class="texto-huella" id="textoFrase">Cargando huella...</div>
+      <div class="numero-huella" id="numeroHuella"></div>
+    </div>
+  </div>
+
+  <button class="boton-accion" onclick="mostrarFraseAleatoria()">Descubrir otra huella</button>
+
+  <script>
+    let todasLasFrases = [];
+
+    // Mapeo de plantillas por bloque
+    const plantillasPorBloque = {
+      1: 'plantilla1.png'
+    };
+
+    // Cargar frases desde el archivo JSON
+    fetch('frases.json')
+      .then(response => response.json())
+      .then(data => {
+        todasLasFrases = data;
+        mostrarFraseAleatoria();
+      })
+      .catch(error => console.error('Error al cargar las frases:', error));
+
+    function mostrarFraseAleatoria() {
+      if (todasLasFrases.length === 0) return;
+
+      // Selección aleatoria
+      const indice = Math.floor(Math.random() * todasLasFrases.length);
+      const seleccionada = todasLasFrases[indice];
+
+      // Aplicar plantilla de fondo según el bloque
+      const tarjeta = document.getElementById('tarjeta');
+      const imagenFondo = plantillasPorBloque[seleccionada.bloque] || 'plantilla1.png';
+      tarjeta.style.backgroundImage = `url('${imagenFondo}')`;
+
+      // Mostrar texto y número de huella
+      document.getElementById('textoFrase').innerText = `"${seleccionada.texto}"`;
+      document.getElementById('numeroHuella').innerText = `Huella ${seleccionada.id.toString().padStart(2, '0')}`;
+    }
+  </script>
+</body>
+</html>
