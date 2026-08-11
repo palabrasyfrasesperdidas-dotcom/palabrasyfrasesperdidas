@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -30,7 +31,7 @@
       background-position: center;
     }
 
-    /* ¡rea central donde va superpuesta la frase sobre la plantilla */
+    /* √Årea central donde va superpuesta la frase sobre la plantilla */
     .contenido-frase {
       position: absolute;
       top: 32%;
@@ -111,16 +112,16 @@
     function mostrarFraseAleatoria() {
       if (todasLasFrases.length === 0) return;
 
-      // SelecciÛn aleatoria
+      // Selecci√≥n aleatoria
       const indice = Math.floor(Math.random() * todasLasFrases.length);
       const seleccionada = todasLasFrases[indice];
 
-      // Aplicar plantilla de fondo seg˙n el bloque
+      // Aplicar plantilla de fondo seg√∫n el bloque
       const tarjeta = document.getElementById('tarjeta');
       const imagenFondo = plantillasPorBloque[seleccionada.bloque] || 'plantilla1.png';
       tarjeta.style.backgroundImage = `url('${imagenFondo}')`;
 
-      // Mostrar texto y n˙mero de huella
+      // Mostrar texto y n√∫mero de huella
       document.getElementById('textoFrase').innerText = `"${seleccionada.texto}"`;
       document.getElementById('numeroHuella').innerText = `Huella ${seleccionada.id.toString().padStart(2, '0')}`;
     }
