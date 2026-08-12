@@ -235,7 +235,10 @@
   {"id": 234, "bloque": 3, "texto": "Vivir en soledad y sentir penas, es como caminar mirando sólo las piedras."},
   {"id": 235, "bloque": 3, "texto": "Mejor que perdernos dándole vueltas a nuestros pensamientos, es encontrarnos disfrutando de nuestros sentimientos."},
   {"id": 236, "bloque": 3, "texto": "Los problemas que tenemos pueden ser enormes, grandes o pequeños, según la importancia que les damos."}
-  { "id": 237, "bloque": 4,
+[
+  {
+    "id": 237,
+    "bloque": 4,
     "texto": "Puede que no siempre nos atrevamos a vivir nuestros sueños, porque aunque no lo reconozcamos, tenemos miedo a vivirlos."
   },
   {
@@ -267,11 +270,6 @@
     "id": 243,
     "bloque": 4,
     "texto": "A quien espera verte apurado, demuéstrale que aprendiste a nadar porque sabes que es mejor vivir nadando que acabar ahogado."
-  },
-  {
-    "id": 243,
-    "bloque": 4,
-    "texto": "No hay peso que no puedas levantar, ni caída que no puedas superar."
   },
   {
     "id": 244,
@@ -623,4 +621,5 @@
     "bloque": 4,
     "texto": "Cuida siempre tus palabras, porque unas veces se convierten en afilados cuchillos y otras en la munición con la que provocas heridas."
   }
-]]
+]
+]
