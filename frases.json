@@ -235,4 +235,392 @@
   {"id": 234, "bloque": 3, "texto": "Vivir en soledad y sentir penas, es como caminar mirando sólo las piedras."},
   {"id": 235, "bloque": 3, "texto": "Mejor que perdernos dándole vueltas a nuestros pensamientos, es encontrarnos disfrutando de nuestros sentimientos."},
   {"id": 236, "bloque": 3, "texto": "Los problemas que tenemos pueden ser enormes, grandes o pequeños, según la importancia que les damos."}
-]
+  { "id": 237, "bloque": 4,
+    "texto": "Puede que no siempre nos atrevamos a vivir nuestros sueños, porque aunque no lo reconozcamos, tenemos miedo a vivirlos."
+  },
+  {
+    "id": 238,
+    "bloque": 4,
+    "texto": "Si te dejas llevar por tus miedos, jamás sabrás lo que se siente cuando consigues alcanzar tus sueños."
+  },
+  {
+    "id": 239,
+    "bloque": 4,
+    "texto": "No hay caídas eternas. Sólo existen personas que olvidan que en el suelo te quedas cuando no te levantas."
+  },
+  {
+    "id": 240,
+    "bloque": 4,
+    "texto": "Sólo es valiente el que nunca se rinde, porque no se deja vencer por el miedo que paraliza al cobarde."
+  },
+  {
+    "id": 241,
+    "bloque": 4,
+    "texto": "Alcanzar tus sueños no depende de la fuerza que tengas, sino de que pese al cansancio que sientas, jamás te rindas."
+  },
+  {
+    "id": 242,
+    "bloque": 4,
+    "texto": "Nunca pienses en la caída cuando saltes. Piensa en que al final cumplirás tus sueños cuando vueles."
+  },
+  {
+    "id": 243,
+    "bloque": 4,
+    "texto": "A quien espera verte apurado, demuéstrale que aprendiste a nadar porque sabes que es mejor vivir nadando que acabar ahogado."
+  },
+  {
+    "id": 243,
+    "bloque": 4,
+    "texto": "No hay peso que no puedas levantar, ni caída que no puedas superar."
+  },
+  {
+    "id": 244,
+    "bloque": 4,
+    "texto": "Si la tristeza llama a tu puerta, no abrirle es la mejor respuesta."
+  },
+  {
+    "id": 245,
+    "bloque": 4,
+    "texto": "Sólo quien cayó y se levantó aprendió que la vida es una lección para quien nunca se rindió."
+  },
+  {
+    "id": 246,
+    "bloque": 4,
+    "texto": "Cada día es una oportunidad para que demostremos todo el valor que tenemos."
+  },
+  {
+    "id": 247,
+    "bloque": 4,
+    "texto": "Todos tenemos derecho a tener miedos, pero todos tenemos la obligación de vencerlos."
+  },
+  {
+    "id": 248,
+    "bloque": 4,
+    "texto": "Los miedos son las excusas que nos ponemos porque pensamos que jamás podremos cumplir nuestros sueños."
+  },
+  {
+    "id": 249,
+    "bloque": 4,
+    "texto": "Todos sentimos dolor cuando nos caemos, pero unos nos lamentamos, y otros nos levantamos."
+  },
+  {
+    "id": 250,
+    "bloque": 4,
+    "texto": "Es preferible vivir equivocándonos a pasar la vida sin movernos por miedo a caernos."
+  },
+  {
+    "id": 251,
+    "bloque": 4,
+    "texto": "Los valientes prefieren morir luchando mientras que los cobardes eligen vivir callando."
+  },
+  {
+    "id": 252,
+    "bloque": 4,
+    "texto": "Lo importante no es el dolor que sintamos. Lo importante es que jamás nos rindamos."
+  },
+  {
+    "id": 253,
+    "bloque": 4,
+    "texto": "Las personas somos heridas. Siempre se curan aunque siempre se noten las cicatrices en nuestras almas."
+  },
+  {
+    "id": 254,
+    "bloque": 4,
+    "texto": "Perdimos el día que nos rendimos."
+  },
+  {
+    "id": 255,
+    "bloque": 4,
+    "texto": "Si cuando caemos nos quedamos lamentándonos en el suelo, más tiempo tardaremos en alcanzar el cielo."
+  },
+  {
+    "id": 256,
+    "bloque": 4,
+    "texto": "Ni libre, ni preso, ni muerto. Jamás dejaré de luchar por lo que siento."
+  },
+  {
+    "id": 257,
+    "bloque": 4,
+    "texto": "Sólo quien se ha caído, sabe realmente lo que ha sufrido."
+  },
+  {
+    "id": 258,
+    "bloque": 4,
+    "texto": "De cobardes es abandonar. De valientes es luchar. Y de héroes es caerse y levantarse para continuar."
+  },
+  {
+    "id": 259,
+    "bloque": 4,
+    "texto": "Si nos cansamos, siempre podemos descansar, pero si nos rendimos, ningún éxito podremos alcanzar."
+  },
+  {
+    "id": 260,
+    "bloque": 4,
+    "texto": "Te dirán muchas veces que no puedes, para que nunca lo intentes y no pienses en el gran valor que tú tienes."
+  },
+  {
+    "id": 261,
+    "bloque": 4,
+    "texto": "Hay personas que por el amor que nos dieron merecen ser recordadas, y otras, que por el daño que nos hicieron, es oportuno que sean olvidadas."
+  },
+  {
+    "id": 262,
+    "bloque": 4,
+    "texto": "Aunque jamás consiguieras alcanzar tus sueños, nadie podrá decir que fracasaste, porque sólo fracasa quien jamás avanza porque dejó su destino en las manos de sus miedos."
+  },
+  {
+    "id": 263,
+    "bloque": 4,
+    "texto": "No confíes en quien te anime a saltar, porque hay quien está deseando aplaudir cuando te vea fracasar."
+  },
+  {
+    "id": 264,
+    "bloque": 4,
+    "texto": "Cuando hayas caído, de poco te servirá lamentarte por no haber sido más precavido."
+  },
+  {
+    "id": 265,
+    "bloque": 4,
+    "texto": "El mayor problema que podemos tener, no es tener miedo a morir, sino que tengamos miedo a vivir."
+  },
+  {
+    "id": 266,
+    "bloque": 4,
+    "texto": "Si alguien trata de hundirte, demuéstrale que sabes nadar y que siempre saldrás a flote."
+  },
+  {
+    "id": 267,
+    "bloque": 4,
+    "texto": "Bastantes caídas sufrimos por nuestros propios errores, como para que vengan otros a darnos empujones."
+  },
+  {
+    "id": 268,
+    "bloque": 4,
+    "texto": "No pienses cada vez que caes en que fallaste. Piensa en que aprendiste y te levantaste."
+  },
+  {
+    "id": 269,
+    "bloque": 4,
+    "texto": "Jamás mires a nadie sin suerte con desprecio, porque en cualquier momento la vida puede tirarte al suelo y entonces sabrás lo que es sentir frío."
+  },
+  {
+    "id": 270,
+    "bloque": 4,
+    "texto": "Jamás volveremos a ser los que fuimos. Jamás volveremos a vivir lo que vivimos. Así que nunca dejes que decidan por ti tus miedos."
+  },
+  {
+    "id": 271,
+    "bloque": 4,
+    "texto": "Quienes sólo saben lamentarse de sus heridas y cicatrices, jamás serán capaces de ser felices."
+  },
+  {
+    "id": 272,
+    "bloque": 4,
+    "texto": "No es que a veces nos falten las fuerzas. Es simplemente que las desperdiciamos prestando atención a los idiotas."
+  },
+  {
+    "id": 273,
+    "bloque": 4,
+    "texto": "Nosotros mismos nos convertimos en nuestros peores enemigos, porque dejamos que decidan nuestros miedos en vez de dejar libres a nuestros pensamientos."
+  },
+  {
+    "id": 274,
+    "bloque": 4,
+    "texto": "El cobarde va a la batalla a ganar sin luchar, el valiente va a luchar sin saber si va a ganar."
+  },
+  {
+    "id": 275,
+    "bloque": 4,
+    "texto": "Sólo puede soñar quien entendió que tenía alas y quiso aprender a volar."
+  },
+  {
+    "id": 276,
+    "bloque": 4,
+    "texto": "Si te conviertes en el dueño de tus sueños jamás serás esclavo de tus miedos."
+  },
+  {
+    "id": 277,
+    "bloque": 4,
+    "texto": "Mala vida lleva quien tiene miedo a vivir y acaba teniendo miedo a morir."
+  },
+  {
+    "id": 278,
+    "bloque": 4,
+    "texto": "No escuches a quien te diga que no puedes. Presta atención a quien te diga que si quieres, puedes."
+  },
+  {
+    "id": 279,
+    "bloque": 4,
+    "texto": "Puede que nos duela cuando nos caemos. pero aprendemos una valiosa lección cuando nos levantamos."
+  },
+  {
+    "id": 280,
+    "bloque": 4,
+    "texto": "Quien quiere apagar tu luz con sus mentiras sólo desea que llegue el día en que vivas a oscuras."
+  },
+  {
+    "id": 281,
+    "bloque": 4,
+    "texto": "Merece toda nuestra admiración la persona que siente cómo en sus ojos llueven lágrimas y las seca convirtiéndolas en brillantes sonrisas."
+  },
+  {
+    "id": 282,
+    "bloque": 4,
+    "texto": "Siempre habrá quien nos diga que no lograremos cumplir nuestros sueños, pero sólo es para desanimarnos y para que no los persigamos."
+  },
+  {
+    "id": 283,
+    "bloque": 4,
+    "texto": "Quien sabe escuchar, aprende más que quien no deja hablar."
+  },
+  {
+    "id": 284,
+    "bloque": 4,
+    "texto": "Desde la tierra disfrutamos del brillo de las estrellas, y si estuviéramos en el cielo, comprobaríamos cómo brillan en la tierra los idiotas."
+  },
+  {
+    "id": 285,
+    "bloque": 4,
+    "texto": "Tu sonrisa es un arma que no mata pero que todo necio detesta."
+  },
+  {
+    "id": 286,
+    "bloque": 4,
+    "texto": "No te hace bella la ropa con la que te vistes. Te ves bella siempre que sonríes."
+  },
+  {
+    "id": 287,
+    "bloque": 4,
+    "texto": "Quien se viste con sonrisas escribe con alegría todos sus días."
+  },
+  {
+    "id": 288,
+    "bloque": 4,
+    "texto": "No te vistas jamás con tristezas, que no te sientan bien esos colores. Recuerda que te ves más bella cuando sonrisas te pones."
+  },
+  {
+    "id": 289,
+    "bloque": 4,
+    "texto": "La sonrisa es lo que diferencia la sabiduría de la ignorancia."
+  },
+  {
+    "id": 290,
+    "bloque": 4,
+    "texto": "Cuando veas a alguien que te regala sonrisas recuerda que aprendió a sonreír después de tragar muchas lágrimas."
+  },
+  {
+    "id": 291,
+    "bloque": 4,
+    "texto": "La sonrisa no solo está para que la mostremos. También está para que la regalemos."
+  },
+  {
+    "id": 292,
+    "bloque": 4,
+    "texto": "Un libro es un cielo en el que brillan las palabras como si fueran estrellas en tus miradas."
+  },
+  {
+    "id": 293,
+    "bloque": 4,
+    "texto": "Si de día lees palabras, de noche contarás en sueños estrellas."
+  },
+  {
+    "id": 294,
+    "bloque": 4,
+    "texto": "Las palabras son las estrellas que guían a los viajeros cuando navegan en el océano de los libros."
+  },
+  {
+    "id": 295,
+    "bloque": 4,
+    "texto": "Hay miradas en las que se pueden leer las almas y otras que son tristes páginas vacías."
+  },
+  {
+    "id": 296,
+    "bloque": 4,
+    "texto": "El miedo y la tristeza son las nubes que a veces nublan nuestra cabeza."
+  },
+  {
+    "id": 297,
+    "bloque": 4,
+    "texto": "Nunca dejes que te apaguen tus pensamientos. Deja que te iluminen tus sentimientos."
+  },
+  {
+    "id": 298,
+    "bloque": 4,
+    "texto": "La vida es una caja de lápices de colores, y nosotros pintamos los días según deciden nuestras emociones."
+  },
+  {
+    "id": 299,
+    "bloque": 4,
+    "texto": "La vida no pone los colores. Tú acabas pintando tu vida con los colores que eliges."
+  },
+  {
+    "id": 300,
+    "bloque": 4,
+    "texto": "La piel que recorran tus lágrimas acabará convirtiéndose en arrugas."
+  },
+  {
+    "id": 301,
+    "bloque": 4,
+    "texto": "Cuando veas nubes en tus pensamientos cuenta que acabará lloviendo en tus sentimientos."
+  },
+  {
+    "id": 302,
+    "bloque": 4,
+    "texto": "El mar tuvo hijas, que de niñas jugaban en las olas, y cuando crecieron se convirtieron en sal. Viajaron hasta nuestros ojos las hijas del mar, y siempre se intentan escapar, porque quieren volver con su padre para jugar."
+  },
+  {
+    "id": 303,
+    "bloque": 4,
+    "texto": "Las lágrimas son las carreteras por las que circulan las penas."
+  },
+  {
+    "id": 304,
+    "bloque": 4,
+    "texto": "Jamás deberíamos dejar de ser niños para disfrutar jugando, vivir soñando, y con sonrisas escribir los días que la vida nos está regalando."
+  },
+  {
+    "id": 305,
+    "bloque": 4,
+    "texto": "No existe oscuridad en mis sueños si dormido veo tus sonrisas, ni existe día gris cuando tengo la luz de tus miradas."
+  },
+  {
+    "id": 306,
+    "bloque": 4,
+    "texto": "No importa la sombra que hagas por lo grande que te creas, sino la luz que proyectas por el amor con el que a los demás tratas."
+  },
+  {
+    "id": 307,
+    "bloque": 4,
+    "texto": "El miedo jamás te dejará que sigas ningún camino, y por eso si le haces caso, no llegarás a ningún destino."
+  },
+  {
+    "id": 308,
+    "bloque": 4,
+    "texto": "Si lloras porque pierdes, te faltarán fuerzas para conseguir lo que no tienes."
+  },
+  {
+    "id": 309,
+    "bloque": 4,
+    "texto": "En un mundo de mentiras, las verdades duelen como si fueran heridas."
+  },
+  {
+    "id": 310,
+    "bloque": 4,
+    "texto": "Si cada día tomamos cientos de decisiones, tenemos que asumir que podamos cometer algunos errores."
+  },
+  {
+    "id": 311,
+    "bloque": 4,
+    "texto": "El valiente mira hacia adelante y el cobarde hacia otra parte."
+  },
+  {
+    "id": 312,
+    "bloque": 4,
+    "texto": "No pienses que siempre tienes mala suerte. Es probable que convivas con mala gente."
+  },
+  {
+    "id": 313,
+    "bloque": 4,
+    "texto": "Cuida siempre tus palabras, porque unas veces se convierten en afilados cuchillos y otras en la munición con la que provocas heridas."
+  }
+]]
