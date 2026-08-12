@@ -32,7 +32,7 @@
       transition: background-image 0.4s ease-in-out;
     }
 
-    /* Área central donde va superpuesta la frase sobre la plantilla */
+    /* Área central superpuesta para el texto de las frases */
     .contenido-frase {
       position: absolute;
       top: 32%;
@@ -96,11 +96,12 @@
   <script>
     let todasLasFrases = [];
 
-    // Mapeo dinámico de plantillas por bloque
+    // Mapeo dinámico de plantillas por bloque (incluido el Bloque 4)
     const plantillasPorBloque = {
       1: 'plantilla1.png',
       2: 'plantilla2.png',
-      3: 'plantilla3.png'
+      3: 'plantilla3.png',
+      4: 'plantilla4.png'
     };
 
     // Cargar frases desde el archivo JSON
@@ -115,29 +116,29 @@
     function mostrarFraseAleatoria() {
       if (todasLasFrases.length === 0) return;
 
-      // Selección aleatoria
+      // Selección aleatoria de una frase
       const indice = Math.floor(Math.random() * todasLasFrases.length);
       const seleccionada = todasLasFrases[indice];
 
-      // Obtener nombre de la plantilla
+      // Obtener la plantilla correspondiente según el bloque
       const tarjeta = document.getElementById('tarjeta');
       const imagenFondo = plantillasPorBloque[seleccionada.bloque] || 'plantilla1.png';
 
-      // Precargar la imagen para asegurar que existe antes de aplicarla
+      // Precargar la imagen antes de mostrarla en pantalla
       const img = new Image();
       img.src = imagenFondo;
-      
+
       img.onload = function() {
         tarjeta.style.backgroundImage = `url('${imagenFondo}')`;
       };
 
-      // Si falla por tema de mayúsculas/minúsculas en el servidor, intenta con .PNG
+      // Control de respaldo en caso de discrepancia mayúsculas/minúsculas (.PNG)
       img.onerror = function() {
         const fallback = imagenFondo.replace('.png', '.PNG');
         tarjeta.style.backgroundImage = `url('${fallback}')`;
       };
 
-      // Mostrar texto y número de huella
+      // Mostrar texto de la frase y el número de huella
       document.getElementById('textoFrase').innerText = `"${seleccionada.texto}"`;
       document.getElementById('numeroHuella').innerText = `Huella ${seleccionada.id}`;
     }
