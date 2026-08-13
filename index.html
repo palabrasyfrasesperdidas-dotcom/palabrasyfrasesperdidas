@@ -63,14 +63,28 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       color: #a3e635;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
-    .block-tag {
-      font-size: 0.75rem;
-      color: #9ca3af;
+    .filter-container {
       margin-bottom: 15px;
+    }
+    select {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(163, 230, 53, 0.5);
+      color: #a3e635;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+      outline: none;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+    select:hover {
+      border-color: #a3e635;
+      background: rgba(0, 0, 0, 0.8);
     }
     .phrase-text {
       font-size: 1.2rem;
@@ -114,8 +128,16 @@
     
     <div class="content-overlay">
       <div id="phrase-id" class="phrase-number">Cargando...</div>
-      <div id="block-id" class="block-tag">---</div>
-      <div id="phrase-text" class="phrase-text">Mezclando bloques...</div>
+      
+      <!-- Selector de Bloque -->
+      <div class="filter-container">
+        <select id="block-select">
+          <option value="todos">Todos los bloques</option>
+          <!-- Los bloques disponibles se añadirán dinámicamente -->
+        </select>
+      </div>
+
+      <div id="phrase-text" class="phrase-text">Cargando huellas...</div>
       
       <div class="controls">
         <button id="prev-btn">Anterior</button>
@@ -126,18 +148,19 @@
   </div>
 
   <script>
-    let listaMezclada = [];
+    let todasLasFrases = [];
+    let listaActual = [];
     let currentIndex = 0;
 
     const idElement = document.getElementById('phrase-id');
-    const blockElement = document.getElementById('block-id');
     const textElement = document.getElementById('phrase-text');
     const bgImage = document.getElementById('bg-image');
+    const blockSelect = document.getElementById('block-select');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     const randomBtn = document.getElementById('random-btn');
 
-    // Función de mezcla proporcional (Fisher-Yates Shuffle)
+    // Mezcla proporcional (Fisher-Yates)
     function mezclarProporcional(array) {
       let copia = [...array];
       for (let i = copia.length - 1; i > 0; i--) {
@@ -151,9 +174,13 @@
       .then(response => response.json())
       .then(data => {
         if (data && data.length > 0) {
-          // Barajamos todas las frases globalmente de forma proporcional
-          listaMezclada = mezclarProporcional(data);
-          showPhrase(0);
+          todasLasFrases = data;
+          
+          // Detectar bloques únicos presentes en el JSON y poblar el desplegable
+          poblarSelectorBloques();
+
+          // Por defecto arranca con la mezcla proporcional de todos los bloques
+          aplicarFiltro("todos");
         } else {
           idElement.textContent = "Sin datos";
           textElement.textContent = "El archivo frases.json está vacío.";
@@ -165,13 +192,36 @@
         textElement.textContent = "Hubo un problema al cargar el archivo JSON.";
       });
 
+    function poblarSelectorBloques() {
+      // Extrae los números de bloque sin duplicados y ordenados
+      const bloquesUnicos = [...new Set(todasLasFrases.map(f => f.bloque))].sort((a, b) => a - b);
+      
+      bloquesUnicos.forEach(b => {
+        if (b) {
+          const option = document.createElement('option');
+          option.value = b;
+          option.textContent = `Bloque ${b}`;
+          blockSelect.appendChild(option);
+        }
+      });
+    }
+
+    function aplicarFiltro(bloque) {
+      if (bloque === "todos") {
+        listaActual = mezclarProporcional(todasLasFrases);
+      } else {
+        // Filtra únicamente las frases del bloque seleccionado (sin desordenar para mantener el orden de huella)
+        listaActual = todasLasFrases.filter(f => f.bloque == bloque);
+      }
+      showPhrase(0);
+    }
+
     function showPhrase(index) {
-      if (index >= 0 && index < listaMezclada.length) {
+      if (index >= 0 && index < listaActual.length) {
         currentIndex = index;
-        const item = listaMezclada[currentIndex];
+        const item = listaActual[currentIndex];
 
         idElement.textContent = `Huella #${item.id}`;
-        blockElement.textContent = `Bloque ${item.bloque}`;
         textElement.textContent = `"${item.texto}"`;
 
         // Asignar dinámicamente la plantilla asociada a cada bloque
@@ -181,16 +231,21 @@
       }
     }
 
+    // Eventos
+    blockSelect.addEventListener('change', (e) => {
+      aplicarFiltro(e.target.value);
+    });
+
     prevBtn.addEventListener('click', () => {
       if (currentIndex > 0) showPhrase(currentIndex - 1);
     });
 
     nextBtn.addEventListener('click', () => {
-      if (currentIndex < listaMezclada.length - 1) showPhrase(currentIndex + 1);
+      if (currentIndex < listaActual.length - 1) showPhrase(currentIndex + 1);
     });
 
     randomBtn.addEventListener('click', () => {
-      const randomIndex = Math.floor(Math.random() * listaMezclada.length);
+      const randomIndex = Math.floor(Math.random() * listaActual.length);
       showPhrase(randomIndex);
     });
   </script>
