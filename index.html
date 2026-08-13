@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -7,141 +6,75 @@
   <title>Palabras y frases perdidas</title>
   <style>
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
       margin: 0;
-      padding: 0;
-      background-color: #0d0d0d;
-      color: #ffffff;
-      font-family: 'Georgia', serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      padding: 20px;
     }
-
-    .tarjeta-container {
-      position: relative;
-      width: 90%;
-      max-width: 420px;
-      aspect-ratio: 2 / 3;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-      background-size: cover;
-      background-position: center;
-      transition: background-image 0.4s ease-in-out;
-    }
-
-    /* Área central superpuesta para el texto de las frases */
-    .contenido-frase {
-      position: absolute;
-      top: 32%;
-      left: 10%;
-      right: 10%;
-      bottom: 25%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    header {
       text-align: center;
-      padding: 10px;
+      padding: 20px 0;
+      border-bottom: 2px solid #ddd;
     }
-
-    .texto-huella {
-      font-size: 1.2rem;
+    h1 {
+      margin: 0;
+      color: #2c3e50;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+    }
+    .phrase-card {
+      background: #ffffff;
+      border-left: 4px solid #3498db;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .phrase-id {
+      font-size: 0.85em;
+      color: #7f8c8d;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .phrase-text {
+      font-size: 1.1em;
       line-height: 1.5;
-      color: #f5f5f5;
-      font-style: italic;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-    }
-
-    .numero-huella {
-      margin-top: 15px;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      color: #a3a3a3;
-      text-transform: uppercase;
-    }
-
-    .boton-accion {
-      margin-top: 25px;
-      padding: 12px 28px;
-      background-color: transparent;
-      color: #d4af37;
-      border: 1px solid #d4af37;
-      border-radius: 25px;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      letter-spacing: 1px;
-    }
-
-    .boton-accion:hover {
-      background-color: #d4af37;
-      color: #000;
     }
   </style>
 </head>
 <body>
 
-  <div class="tarjeta-container" id="tarjeta">
-    <div class="contenido-frase">
-      <div class="texto-huella" id="textoFrase">Cargando huella...</div>
-      <div class="numero-huella" id="numeroHuella"></div>
-    </div>
+  <header>
+    <h1>Palabras y frases perdidas</h1>
+  </header>
+
+  <div class="container" id="phrases-container">
+    <!-- Aquí se cargarán las frases dinámicamente -->
   </div>
 
-  <button class="boton-accion" onclick="mostrarFraseAleatoria()">Descubrir otra huella</button>
-
   <script>
-    let todasLasFrases = [];
-
-    // Mapeo dinámico de plantillas por bloque (incluido el Bloque 4)
-    const plantillasPorBloque = {
-      1: 'plantilla1.png',
-      2: 'plantilla2.png',
-      3: 'plantilla3.png',
-      4: 'plantilla4.png'
-    };
-
-    // Cargar frases desde el archivo JSON
-    fetch('frases.json')
+    // Asumiendo que guardas tus frases en un archivo llamado 'bloque5.json'
+    fetch('bloque5.json')
       .then(response => response.json())
       .then(data => {
-        todasLasFrases = data;
-        mostrarFraseAleatoria();
+        const container = document.getElementById('phrases-container');
+        data.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'phrase-card';
+          
+          card.innerHTML = `
+            <div class="phrase-id">Huella #${item.id}</div>
+            <div class="phrase-text">${item.texto}</div>
+          `;
+          
+          container.appendChild(card);
+        });
       })
-      .catch(error => console.error('Error al cargar las frases:', error));
-
-    function mostrarFraseAleatoria() {
-      if (todasLasFrases.length === 0) return;
-
-      // Selección aleatoria de una frase
-      const indice = Math.floor(Math.random() * todasLasFrases.length);
-      const seleccionada = todasLasFrases[indice];
-
-      // Obtener la plantilla correspondiente según el bloque
-      const tarjeta = document.getElementById('tarjeta');
-      const imagenFondo = plantillasPorBloque[seleccionada.bloque] || 'plantilla1.png';
-
-      // Precargar la imagen antes de mostrarla en pantalla
-      const img = new Image();
-      img.src = imagenFondo;
-
-      img.onload = function() {
-        tarjeta.style.backgroundImage = `url('${imagenFondo}')`;
-      };
-
-      // Control de respaldo en caso de discrepancia mayúsculas/minúsculas (.PNG)
-      img.onerror = function() {
-        const fallback = imagenFondo.replace('.png', '.PNG');
-        tarjeta.style.backgroundImage = `url('${fallback}')`;
-      };
-
-      // Mostrar texto de la frase y el número de huella
-      document.getElementById('textoFrase').innerText = `"${seleccionada.texto}"`;
-      document.getElementById('numeroHuella').innerText = `Huella ${seleccionada.id}`;
-    }
+      .catch(error => console.error('Error al cargar el JSON:', error));
   </script>
+
 </body>
 </html>
