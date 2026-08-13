@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Palabras y frases perdidas - Bloque 5</title>
+  <title>Palabras y frases perdidas</title>
   <style>
     * {
       box-sizing: border-box;
@@ -42,6 +42,7 @@
       width: 100%;
       height: auto;
       display: block;
+      transition: opacity 0.4s ease;
     }
     .content-overlay {
       position: absolute;
@@ -55,41 +56,47 @@
       align-items: center;
       padding: 40px 30px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(0, 0, 0, 0.4);
     }
     .phrase-number {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       color: #a3e635;
+      margin-bottom: 5px;
+    }
+    .block-tag {
+      font-size: 0.75rem;
+      color: #9ca3af;
       margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .phrase-text {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       line-height: 1.6;
       font-weight: 300;
       color: #ffffff;
       text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
     .controls {
       display: flex;
-      gap: 15px;
-      margin-top: 20px;
+      gap: 12px;
     }
     button {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.3);
       color: #fff;
-      padding: 10px 20px;
+      padding: 8px 18px;
       border-radius: 20px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: all 0.3s ease;
       backdrop-filter: blur(5px);
     }
     button:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.3);
       border-color: #a3e635;
       color: #a3e635;
     }
@@ -102,40 +109,54 @@
   </header>
 
   <div class="main-container">
-    <!-- Imagen de la Plantilla 5 -->
-    <img src="plantilla5.png" alt="La Mirada del Mundo" class="template-img">
+    <!-- Imagen dinámica según el bloque de la frase -->
+    <img id="bg-image" src="plantilla1.png" alt="Plantilla" class="template-img">
     
     <div class="content-overlay">
       <div id="phrase-id" class="phrase-number">Cargando...</div>
-      <div id="phrase-text" class="phrase-text">Buscando huella...</div>
+      <div id="block-id" class="block-tag">---</div>
+      <div id="phrase-text" class="phrase-text">Mezclando bloques...</div>
       
       <div class="controls">
         <button id="prev-btn">Anterior</button>
+        <button id="random-btn">Aleatoria</button>
         <button id="next-btn">Siguiente</button>
       </div>
     </div>
   </div>
 
   <script>
-    let frasesBloque = [];
+    let listaMezclada = [];
     let currentIndex = 0;
 
     const idElement = document.getElementById('phrase-id');
+    const blockElement = document.getElementById('block-id');
     const textElement = document.getElementById('phrase-text');
+    const bgImage = document.getElementById('bg-image');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const randomBtn = document.getElementById('random-btn');
+
+    // Función de mezcla proporcional (Fisher-Yates Shuffle)
+    function mezclarProporcional(array) {
+      let copia = [...array];
+      for (let i = copia.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copia[i], copia[j]] = [copia[j], copia[i]];
+      }
+      return copia;
+    }
 
     fetch('frases.json')
       .then(response => response.json())
       .then(data => {
-        // Filtrar únicamente las frases del bloque 5
-        frasesBloque = data.filter(item => item.bloque === 5);
-
-        if (frasesBloque.length > 0) {
+        if (data && data.length > 0) {
+          // Barajamos todas las frases globalmente de forma proporcional
+          listaMezclada = mezclarProporcional(data);
           showPhrase(0);
         } else {
           idElement.textContent = "Sin datos";
-          textElement.textContent = "No se encontraron frases para el bloque 5 en frases.json";
+          textElement.textContent = "El archivo frases.json está vacío.";
         }
       })
       .catch(error => {
@@ -145,23 +166,32 @@
       });
 
     function showPhrase(index) {
-      if (index >= 0 && index < frasesBloque.length) {
+      if (index >= 0 && index < listaMezclada.length) {
         currentIndex = index;
-        idElement.textContent = `Huella #${frasesBloque[currentIndex].id}`;
-        textElement.textContent = `"${frasesBloque[currentIndex].texto}"`;
+        const item = listaMezclada[currentIndex];
+
+        idElement.textContent = `Huella #${item.id}`;
+        blockElement.textContent = `Bloque ${item.bloque}`;
+        textElement.textContent = `"${item.texto}"`;
+
+        // Asignar dinámicamente la plantilla asociada a cada bloque
+        if (item.bloque) {
+          bgImage.src = `plantilla${item.bloque}.png`;
+        }
       }
     }
 
     prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        showPhrase(currentIndex - 1);
-      }
+      if (currentIndex > 0) showPhrase(currentIndex - 1);
     });
 
     nextBtn.addEventListener('click', () => {
-      if (currentIndex < frasesBloque.length - 1) {
-        showPhrase(currentIndex + 1);
-      }
+      if (currentIndex < listaMezclada.length - 1) showPhrase(currentIndex + 1);
+    });
+
+    randomBtn.addEventListener('click', () => {
+      const randomIndex = Math.floor(Math.random() * listaMezclada.length);
+      showPhrase(randomIndex);
     });
   </script>
 
