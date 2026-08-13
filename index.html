@@ -1,254 +1,360 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Palabras y frases perdidas</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d0d0d;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    header {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-      color: #e0e0e0;
-    }
-    .main-container {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-      background-color: #000;
-    }
-    .template-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: opacity 0.4s ease;
-    }
-    .content-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 30px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.4);
-    }
-    .phrase-number {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #a3e635;
-      margin-bottom: 8px;
-    }
-    .filter-container {
-      margin-bottom: 15px;
-    }
-    select {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(163, 230, 53, 0.5);
-      color: #a3e635;
-      padding: 4px 12px;
-      border-radius: 15px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      outline: none;
-      cursor: pointer;
-      backdrop-filter: blur(5px);
-      transition: all 0.3s ease;
-    }
-    select:hover {
-      border-color: #a3e635;
-      background: rgba(0, 0, 0, 0.8);
-    }
-    .phrase-text {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      font-weight: 300;
-      color: #ffffff;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-      margin-bottom: 25px;
-    }
-    .controls {
-      display: flex;
-      gap: 12px;
-    }
-    button {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: #fff;
-      padding: 8px 18px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-    }
-    button:hover {
-      background: rgba(255, 255, 255, 0.3);
-      border-color: #a3e635;
-      color: #a3e635;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palabras y frases perdidas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0f12;
+            --card-bg: #161a22;
+            --accent-gold: #c5a059;
+            --accent-gold-hover: #e0b868;
+            --text-main: #f0f3f8;
+            --text-muted: #8b949e;
+            --border-color: #2e3643;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 600px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        select, button {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select:hover, button:hover {
+            border-color: var(--accent-gold);
+        }
+
+        select {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        button {
+            background-color: var(--border-color);
+            font-weight: 500;
+        }
+
+        button:hover {
+            background-color: var(--accent-gold);
+            color: #000;
+        }
+
+        .viewer-container {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            position: relative;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+            pointer-events: none;
+            padding: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 700px;
+            margin-top: 5px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .counter {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            align-self: center;
+        }
+
+        .loading {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+            .text-overlay {
+                font-size: 0.95rem;
+                width: 88%;
+            }
+            .controls {
+                flex-direction: column;
+            }
+            select {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Palabras y frases perdidas</h1>
-  </header>
+    <header>
+        <h1>Palabras y frases perdidas</h1>
+        <p class="subtitle">Colección de huellas y reflexiones</p>
+    </header>
 
-  <div class="main-container">
-    <!-- Imagen dinámica según el bloque de la frase -->
-    <img id="bg-image" src="plantilla1.png" alt="Plantilla" class="template-img">
-    
-    <div class="content-overlay">
-      <div id="phrase-id" class="phrase-number">Cargando...</div>
-      
-      <!-- Selector de Bloque -->
-      <div class="filter-container">
-        <select id="block-select">
-          <option value="todos">Todos los bloques</option>
-          <!-- Los bloques disponibles se añadirán dinámicamente -->
+    <div class="controls">
+        <select id="blockSelect" onchange="changeBlock()">
+            <option value="">Cargando bloques...</option>
         </select>
-      </div>
-
-      <div id="phrase-text" class="phrase-text">Cargando huellas...</div>
-      
-      <div class="controls">
-        <button id="prev-btn">Anterior</button>
-        <button id="random-btn">Aleatoria</button>
-        <button id="next-btn">Siguiente</button>
-      </div>
+        <button onclick="goToRandom()">🎲 Huella Aleatoria</button>
     </div>
-  </div>
 
-  <script>
-    let todasLasFrases = [];
-    let listaActual = [];
-    let currentIndex = 0;
+    <div class="viewer-container" id="viewerContainer">
+        <div class="loading" id="loadingText">Cargando colección...</div>
+        
+        <div class="card" id="card" style="display: none;">
+            <div class="image-wrapper">
+                <img id="cardImage" src="" alt="Huella visual">
+                <div class="text-overlay" id="cardText"></div>
+            </div>
+        </div>
 
-    const idElement = document.getElementById('phrase-id');
-    const textElement = document.getElementById('phrase-text');
-    const bgImage = document.getElementById('bg-image');
-    const blockSelect = document.getElementById('block-select');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const randomBtn = document.getElementById('random-btn');
+        <div class="nav-buttons" id="navButtons" style="display: none;">
+            <button class="nav-btn" onclick="prevPhrase()">← Anterior</button>
+            <span class="counter" id="counterText">0 / 0</span>
+            <button class="nav-btn" onclick="nextPhrase()">Siguiente →</button>
+        </div>
+    </div>
 
-    // Mezcla proporcional (Fisher-Yates)
-    function mezclarProporcional(array) {
-      let copia = [...array];
-      for (let i = copia.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [copia[i], copia[j]] = [copia[j], copia[i]];
-      }
-      return copia;
-    }
+    <script>
+        // Nombres personalizados de los bloques
+        const blockNames = {
+            1: "Bloque 1: El eco del silencio",
+            2: "Bloque 2: Sombras del tiempo",
+            3: "Bloque 3: Luces en el laberinto",
+            4: "Bloque 4: Cimientos de arena",
+            5: "Bloque 5: MÁSCARAS Y ESPEJOS",
+            6: "Bloque 6: EL RUIDO DE LOS NECIOS"
+        };
 
-    fetch('frases.json')
-      .then(response => response.json())
-      .then(data => {
-        if (data && data.length > 0) {
-          todasLasFrases = data;
-          
-          // Detectar bloques únicos presentes en el JSON y poblar el desplegable
-          poblarSelectorBloques();
+        let allPhrases = [];
+        let filteredPhrases = [];
+        let currentIndex = 0;
 
-          // Por defecto arranca con la mezcla proporcional de todos los bloques
-          aplicarFiltro("todos");
-        } else {
-          idElement.textContent = "Sin datos";
-          textElement.textContent = "El archivo frases.json está vacío.";
+        // Cargar las frases desde frases.json
+        async function loadPhrases() {
+            try {
+                const response = await fetch('frases.json');
+                if (!response.ok) throw new Error('No se pudo cargar el archivo frases.json');
+                allPhrases = await response.json();
+
+                setupBlockSelector();
+                
+                // Mostrar primer bloque por defecto
+                if (allPhrases.length > 0) {
+                    const firstBlock = allPhrases[0].bloque;
+                    document.getElementById('blockSelect').value = firstBlock;
+                    filterByBlock(firstBlock);
+                }
+
+                document.getElementById('loadingText').style.display = 'none';
+                document.getElementById('card').style.display = 'flex';
+                document.getElementById('navButtons').style.display = 'flex';
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loadingText').innerText = 'Error al cargar los datos. Verifica que frases.json esté presente.';
+            }
         }
-      })
-      .catch(error => {
-        console.error('Error al cargar frases:', error);
-        idElement.textContent = "Error";
-        textElement.textContent = "Hubo un problema al cargar el archivo JSON.";
-      });
 
-    function poblarSelectorBloques() {
-      // Extrae los números de bloque sin duplicados y ordenados
-      const bloquesUnicos = [...new Set(todasLasFrases.map(f => f.bloque))].sort((a, b) => a - b);
-      
-      bloquesUnicos.forEach(b => {
-        if (b) {
-          const option = document.createElement('option');
-          option.value = b;
-          option.textContent = `Bloque ${b}`;
-          blockSelect.appendChild(option);
+        // Poblar el menú desplegable dinámicamente según los bloques existentes
+        function setupBlockSelector() {
+            const select = document.getElementById('blockSelect');
+            select.innerHTML = '';
+
+            const blocks = [...new Set(allPhrases.map(item => item.bloque))].sort((a, b) => a - b);
+
+            blocks.forEach(blockNum => {
+                const option = document.createElement('option');
+                option.value = blockNum;
+                option.textContent = blockNames[blockNum] || `Bloque ${blockNum}`;
+                select.appendChild(option);
+            });
         }
-      });
-    }
 
-    function aplicarFiltro(bloque) {
-      if (bloque === "todos") {
-        listaActual = mezclarProporcional(todasLasFrases);
-      } else {
-        // Filtra únicamente las frases del bloque seleccionado (sin desordenar para mantener el orden de huella)
-        listaActual = todasLasFrases.filter(f => f.bloque == bloque);
-      }
-      showPhrase(0);
-    }
-
-    function showPhrase(index) {
-      if (index >= 0 && index < listaActual.length) {
-        currentIndex = index;
-        const item = listaActual[currentIndex];
-
-        idElement.textContent = `Huella #${item.id}`;
-        textElement.textContent = `"${item.texto}"`;
-
-        // Asignar dinámicamente la plantilla asociada a cada bloque
-        if (item.bloque) {
-          bgImage.src = `plantilla${item.bloque}.png`;
+        // Filtrar frases según el bloque seleccionado
+        function filterByBlock(blockNum) {
+            filteredPhrases = allPhrases.filter(item => item.bloque == blockNum);
+            currentIndex = 0;
+            renderCard();
         }
-      }
-    }
 
-    // Eventos
-    blockSelect.addEventListener('change', (e) => {
-      aplicarFiltro(e.target.value);
-    });
+        function changeBlock() {
+            const selectedBlock = document.getElementById('blockSelect').value;
+            filterByBlock(selectedBlock);
+        }
 
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) showPhrase(currentIndex - 1);
-    });
+        // Renderizar la tarjeta actual (Imagen + Texto)
+        function renderCard() {
+            if (filteredPhrases.length === 0) return;
 
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < listaActual.length - 1) showPhrase(currentIndex + 1);
-    });
+            const current = filteredPhrases[currentIndex];
+            const imgElement = document.getElementById('cardImage');
+            const textElement = document.getElementById('cardText');
+            const counterElement = document.getElementById('counterText');
 
-    randomBtn.addEventListener('click', () => {
-      const randomIndex = Math.floor(Math.random() * listaActual.length);
-      showPhrase(randomIndex);
-    });
-  </script>
+            // Asignar plantilla correspondiente al bloque (plantilla1.png, plantilla2.png, plantilla6.png, etc.)
+            imgElement.src = `plantilla${current.bloque}.png`;
+            imgElement.alt = `Plantilla del Bloque ${current.bloque}`;
 
+            // Si el objeto no tiene texto o está vacío, asumimos que es una portada/separador
+            textElement.innerText = current.texto || '';
+
+            counterElement.innerText = `Huella ${current.id || (currentIndex + 1)} (${currentIndex + 1} de ${filteredPhrases.length})`;
+        }
+
+        // Navegación
+        function nextPhrase() {
+            if (filteredPhrases.length === 0) return;
+            currentIndex = (currentIndex + 1) % filteredPhrases.length;
+            renderCard();
+        }
+
+        function prevPhrase() {
+            if (filteredPhrases.length === 0) return;
+            currentIndex = (currentIndex - 1 + filteredPhrases.length) % filteredPhrases.length;
+            renderCard();
+        }
+
+        function goToRandom() {
+            if (allPhrases.length === 0) return;
+            
+            // Seleccionar un elemento aleatorio de toda la colección
+            const randomIndex = Math.floor(Math.random() * allPhrases.length);
+            const randomItem = allPhrases[randomIndex];
+
+            // Cambiar selector de bloque si es diferente al actual
+            document.getElementById('blockSelect').value = randomItem.bloque;
+            filteredPhrases = allPhrases.filter(item => item.bloque == randomItem.bloque);
+            
+            // Encontrar el índice dentro del bloque filtrado
+            currentIndex = filteredPhrases.findIndex(item => item.id === randomItem.id);
+            if (currentIndex === -1) currentIndex = 0;
+
+            renderCard();
+        }
+
+        // Eventos de teclado para facilitar navegación con flechas
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextPhrase();
+            if (e.key === 'ArrowLeft') prevPhrase();
+        });
+
+        // Inicializar al cargar la página
+        window.onload = loadPhrases;
+    </script>
 </body>
 </html>
