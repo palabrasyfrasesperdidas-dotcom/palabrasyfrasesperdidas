@@ -3,45 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Palabras y frases perdidas</title>
+  <title>Palabras y frases perdidas - Bloque 5</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f6f8;
-      color: #333;
-      margin: 0;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
       padding: 20px;
     }
     header {
+      margin-bottom: 20px;
       text-align: center;
-      padding: 20px 0;
-      border-bottom: 2px solid #ddd;
     }
     h1 {
-      margin: 0;
-      color: #2c3e50;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: #e0e0e0;
     }
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
+    .main-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      background-color: #000;
     }
-    .phrase-card {
-      background: #ffffff;
-      border-left: 4px solid #3498db;
-      padding: 15px 20px;
+    .template-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .content-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 30px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.35);
+    }
+    .phrase-number {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #a3e635;
       margin-bottom: 15px;
-      border-radius: 4px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .phrase-id {
-      font-size: 0.85em;
-      color: #7f8c8d;
-      font-weight: bold;
-      margin-bottom: 5px;
     }
     .phrase-text {
-      font-size: 1.1em;
-      line-height: 1.5;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      font-weight: 300;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+      margin-bottom: 30px;
+    }
+    .controls {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    button {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: #a3e635;
+      color: #a3e635;
     }
   </style>
 </head>
@@ -51,29 +101,68 @@
     <h1>Palabras y frases perdidas</h1>
   </header>
 
-  <div class="container" id="phrases-container">
-    <!-- Aquí se cargarán las frases dinámicamente -->
+  <div class="main-container">
+    <!-- Imagen de la Plantilla 5 -->
+    <img src="plantilla5.png" alt="La Mirada del Mundo" class="template-img">
+    
+    <div class="content-overlay">
+      <div id="phrase-id" class="phrase-number">Cargando...</div>
+      <div id="phrase-text" class="phrase-text">Buscando huella...</div>
+      
+      <div class="controls">
+        <button id="prev-btn">Anterior</button>
+        <button id="next-btn">Siguiente</button>
+      </div>
+    </div>
   </div>
 
   <script>
-    // Asumiendo que guardas tus frases en un archivo llamado 'frases.json'
-fetch('frases.json')
+    let frasesBloque = [];
+    let currentIndex = 0;
+
+    const idElement = document.getElementById('phrase-id');
+    const textElement = document.getElementById('phrase-text');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    fetch('frases.json')
       .then(response => response.json())
       .then(data => {
-        const container = document.getElementById('phrases-container');
-        data.forEach(item => {
-          const card = document.createElement('div');
-          card.className = 'phrase-card';
-          
-          card.innerHTML = `
-            <div class="phrase-id">Huella #${item.id}</div>
-            <div class="phrase-text">${item.texto}</div>
-          `;
-          
-          container.appendChild(card);
-        });
+        // Filtrar únicamente las frases del bloque 5
+        frasesBloque = data.filter(item => item.bloque === 5);
+
+        if (frasesBloque.length > 0) {
+          showPhrase(0);
+        } else {
+          idElement.textContent = "Sin datos";
+          textElement.textContent = "No se encontraron frases para el bloque 5 en frases.json";
+        }
       })
-      .catch(error => console.error('Error al cargar el JSON:', error));
+      .catch(error => {
+        console.error('Error al cargar frases:', error);
+        idElement.textContent = "Error";
+        textElement.textContent = "Hubo un problema al cargar el archivo JSON.";
+      });
+
+    function showPhrase(index) {
+      if (index >= 0 && index < frasesBloque.length) {
+        currentIndex = index;
+        idElement.textContent = `Huella #${frasesBloque[currentIndex].id}`;
+        textElement.textContent = `"${frasesBloque[currentIndex].texto}"`;
+      }
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        showPhrase(currentIndex - 1);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < frasesBloque.length - 1) {
+        showPhrase(currentIndex + 1);
+      }
+    });
   </script>
 
 </body>
