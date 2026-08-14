@@ -53,7 +53,6 @@
             letter-spacing: 1px;
         }
 
-        /* Barra de Control Top */
         .controls-top {
             display: flex;
             gap: 15px;
@@ -100,7 +99,6 @@
             color: var(--bg-color);
         }
 
-        /* Contenedor del Canvas / Lámina Visual */
         .canvas-container {
             position: relative;
             width: 100%;
@@ -117,7 +115,6 @@
             height: auto;
         }
 
-        /* Navegación Inferior (Debajo de la imagen) */
         .controls-bottom {
             display: flex;
             justify-content: space-between;
@@ -154,7 +151,6 @@
             color: var(--text-muted);
         }
 
-        /* Loading state */
         .loading {
             position: absolute;
             top: 50%;
@@ -174,14 +170,14 @@
 
     <div class="controls-top">
         <select id="blockSelect">
-            <option value="1">Bloque 1: REFLEJOS EN EL TIEMPO</option>
-            <option value="2">Bloque 2: ECO DEL SILENCIO</option>
-            <option value="3">Bloque 3: LUCES Y SOMBRAS</option>
-            <option value="4">Bloque 4: CAMINOS Y HUELLAS</option>
-            <option value="5">Bloque 5: MÁSCARAS Y ESPEJOS</option>
-            <option value="6">Bloque 6: EL LIBRO DE LA VIDA</option>
-            <option value="7">Bloque 7: EL CIELO DE LAS ESTRELLAS</option>
-            <option value="8" selected>Bloque 8: LA ÉTICA DEL CORAZÓN</option>
+            <option value="1">Bloque 1: Geometría del destino</option>
+            <option value="2">Bloque 2: Arquitectura del alma</option>
+            <option value="3">Bloque 3: Anatomía del silencio</option>
+            <option value="4">Bloque 4: El Miedo y sus Sombras</option>
+            <option value="5">Bloque 5: La Mirada del Mundo</option>
+            <option value="6">Bloque 6: El Ruido de los Necios</option>
+            <option value="7">Bloque 7: El Cielo de las Estrellas</option>
+            <option value="8" selected>Bloque 8: La Ética del Corazón</option>
         </select>
 
         <button class="btn-random" id="randomBtn">
@@ -201,7 +197,6 @@
     </div>
 
     <script>
-        // Configuración de Plantillas asociadas por Bloque
         const blockTemplates = {
             1: 'plantilla1.png',
             2: 'plantilla2.png',
@@ -227,43 +222,42 @@
         const huellaCounter = document.getElementById('huellaCounter');
         const loadingElem = document.getElementById('loading');
 
-        // Cargar datos
         async function loadData() {
             try {
                 const response = await fetch('frases.json');
                 allFrases = await response.json();
                 loadingElem.style.display = 'none';
-                
-                // Cargar bloque inicial (Bloque 8 o el seleccionado)
                 filterByBlock(parseInt(blockSelect.value));
             } catch (error) {
                 console.error("Error al cargar frases.json:", error);
-                loadingElem.textContent = "Error al cargar los datos";
+                loadingElem.textContent = "Error de sintaxis en frases.json";
             }
         }
 
-        // Filtrar frases por bloque
         function filterByBlock(blockNum) {
-            currentFilteredFrases = allFrases.filter(f => f.bloque === blockNum);
+            currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(blockNum));
             currentIndex = 0;
+
+            if (currentFilteredFrases.length === 0) {
+                huellaCounter.textContent = "Sin huellas en este bloque";
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                return;
+            }
+
             renderCurrentHuella();
         }
 
-        // Renderizar huella actual en el canvas
         function renderCurrentHuella() {
             if (currentFilteredFrases.length === 0) return;
 
             const item = currentFilteredFrases[currentIndex];
-            const templatePath = blockTemplates[item.bloque] || 'plantilla1.png';
+            const templatePath = blockTemplates[item.bloque] || 'plantilla8.png';
 
-            // Actualizar contador
             huellaCounter.textContent = `Huella ${item.id} (${currentIndex + 1} de ${currentFilteredFrases.length})`;
 
-            // Actualizar estado de botones
             prevBtn.disabled = currentIndex === 0;
             nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-            // Cargar o usar imagen en caché
             if (loadedImages[templatePath]) {
                 drawCanvas(loadedImages[templatePath], item.texto);
             } else {
@@ -276,12 +270,10 @@
             }
         }
 
-        // Dibujar en el Canvas con ajuste automático de líneas
         function drawCanvas(bgImg, text) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
 
-            // Estilos del texto dinámico
             ctx.fillStyle = "#ffffff";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
@@ -291,14 +283,12 @@
             const x = canvas.width / 2;
             const y = canvas.height / 2;
 
-            // Ajustar tamaño de fuente dinámicamente según la longitud
             let fontSize = 42;
             if (text.length > 150) fontSize = 36;
             if (text.length > 250) fontSize = 32;
 
             ctx.font = `400 ${fontSize}px 'Montserrat', sans-serif`;
 
-            // Dividir texto en líneas para que no desborde la plantilla
             const words = text.split(' ');
             let lines = [];
             let currentLine = words[0];
@@ -315,7 +305,6 @@
             }
             lines.push(currentLine);
 
-            // Centrar verticalmente las líneas
             const totalHeight = lines.length * lineHeight;
             let startY = y - (totalHeight / 2) + (lineHeight / 2);
 
@@ -324,7 +313,6 @@
             });
         }
 
-        // Eventos
         blockSelect.addEventListener('change', (e) => {
             filterByBlock(parseInt(e.target.value));
         });
@@ -348,15 +336,12 @@
             const randomIndex = Math.floor(Math.random() * allFrases.length);
             const randomItem = allFrases[randomIndex];
             
-            // Cambiar select al bloque de la huella aleatoria
             blockSelect.value = randomItem.bloque;
-            currentFilteredFrases = allFrases.filter(f => f.bloque === randomItem.bloque);
+            filterByBlock(randomItem.bloque);
             currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
-            
             renderCurrentHuella();
         });
 
-        // Iniciar
         loadData();
     </script>
 </body>
