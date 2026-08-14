@@ -237,7 +237,8 @@
             3: "Bloque 3: Luces en el laberinto",
             4: "Bloque 4: Cimientos de arena",
             5: "Bloque 5: MÁSCARAS Y ESPEJOS",
-            6: "Bloque 6: EL RUIDO DE LOS NECIOS"
+            6: "Bloque 6: EL RUIDO DE LOS NECIOS",
+            7: "Bloque 7: EL CIELO DE LAS ESTRELLAS"
         };
 
         let allPhrases = [];
@@ -306,7 +307,7 @@
             const textElement = document.getElementById('cardText');
             const counterElement = document.getElementById('counterText');
 
-            // Asignar plantilla correspondiente al bloque (plantilla1.png, plantilla2.png, plantilla6.png, etc.)
+            // Asignar plantilla correspondiente al bloque (plantilla1.png, plantilla7.png, etc.)
             imgElement.src = `plantilla${current.bloque}.png`;
             imgElement.alt = `Plantilla del Bloque ${current.bloque}`;
 
