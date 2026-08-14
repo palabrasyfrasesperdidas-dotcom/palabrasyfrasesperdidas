@@ -36,165 +36,132 @@
 
         header {
             text-align: center;
-            margin-bottom: 25px;
-            width: 100%;
-            max-width: 800px;
+            margin-bottom: 20px;
         }
 
-        h1 {
+        header h1 {
             font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
             color: var(--accent-gold);
-            font-size: 2.2rem;
             letter-spacing: 2px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
+            margin-bottom: 5px;
         }
 
-        p.subtitle {
+        header p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 300;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
-        .controls {
+        /* Barra de Control Top */
+        .controls-top {
             display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
-            width: 100%;
-            max-width: 600px;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        select, button {
+        select {
             background-color: var(--card-bg);
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            padding: 10px 16px;
+            padding: 8px 16px;
             border-radius: 6px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            outline: none;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            outline: none;
+            transition: border-color 0.3s;
         }
 
-        select:hover, button:hover {
+        select:hover, select:focus {
             border-color: var(--accent-gold);
         }
 
-        select {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        button {
-            background-color: var(--border-color);
-            font-weight: 500;
-        }
-
-        button:hover {
-            background-color: var(--accent-gold);
-            color: #000;
-        }
-
-        .viewer-container {
-            width: 100%;
-            max-width: 700px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .card {
+        .btn-random {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-random:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-color);
+        }
+
+        /* Contenedor del Canvas / Lámina Visual */
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 15px 35px var(--shadow-color);
             border-radius: 12px;
-            width: 100%;
             overflow: hidden;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .image-wrapper {
-            width: 100%;
-            position: relative;
             background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 300px;
         }
 
-        .image-wrapper img {
+        canvas {
+            display: block;
             width: 100%;
             height: auto;
-            display: block;
-            object-fit: contain;
         }
 
-        .text-overlay {
+        /* Navegación Inferior (Debajo de la imagen) */
+        .controls-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 420px;
+            margin-top: 15px;
+        }
+
+        .btn-nav {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .counter {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Loading state */
+        .loading {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 80%;
-            text-align: center;
-            color: #ffffff;
-            font-size: 1.15rem;
-            line-height: 1.6;
-            font-weight: 400;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
-            pointer-events: none;
-            padding: 10px;
-        }
-
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 700px;
-            margin-top: 5px;
-        }
-
-        .nav-btn {
-            padding: 12px 24px;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .counter {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            align-self: center;
-        }
-
-        .loading {
             color: var(--accent-gold);
-            font-size: 1.1rem;
-            margin: 40px 0;
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.6rem;
-            }
-            .text-overlay {
-                font-size: 0.95rem;
-                width: 88%;
-            }
-            .controls {
-                flex-direction: column;
-            }
-            select {
-                width: 100%;
-            }
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -202,160 +169,195 @@
 
     <header>
         <h1>Palabras y frases perdidas</h1>
-        <p class="subtitle">Colección de huellas y reflexiones</p>
+        <p>Colección de huellas y reflexiones</p>
     </header>
 
-    <div class="controls">
-        <select id="blockSelect" onchange="changeBlock()">
-            <option value="">Cargando bloques...</option>
+    <div class="controls-top">
+        <select id="blockSelect">
+            <option value="1">Bloque 1: REFLEJOS EN EL TIEMPO</option>
+            <option value="2">Bloque 2: ECO DEL SILENCIO</option>
+            <option value="3">Bloque 3: LUCES Y SOMBRAS</option>
+            <option value="4">Bloque 4: CAMINOS Y HUELLAS</option>
+            <option value="5">Bloque 5: MÁSCARAS Y ESPEJOS</option>
+            <option value="6">Bloque 6: EL LIBRO DE LA VIDA</option>
+            <option value="7">Bloque 7: EL CIELO DE LAS ESTRELLAS</option>
+            <option value="8" selected>Bloque 8: LA ÉTICA DEL CORAZÓN</option>
         </select>
-        <button onclick="goToRandom()">🎲 Huella Aleatoria</button>
+
+        <button class="btn-random" id="randomBtn">
+            <span>🎲</span> Huella Aleatoria
+        </button>
     </div>
 
-    <div class="viewer-container" id="viewerContainer">
-        <div class="loading" id="loadingText">Cargando colección...</div>
-        
-        <div class="card" id="card" style="display: none;">
-            <div class="image-wrapper">
-                <img id="cardImage" src="" alt="Huella visual">
-                <div class="text-overlay" id="cardText"></div>
-            </div>
-        </div>
+    <div class="canvas-container">
+        <div id="loading" class="loading">Cargando huellas...</div>
+        <canvas id="cardCanvas" width="1080" height="1920"></canvas>
+    </div>
 
-        <div class="nav-buttons" id="navButtons" style="display: none;">
-            <button class="nav-btn" onclick="prevPhrase()">← Anterior</button>
-            <span class="counter" id="counterText">0 / 0</span>
-            <button class="nav-btn" onclick="nextPhrase()">Siguiente →</button>
-        </div>
+    <div class="controls-bottom">
+        <button class="btn-nav" id="prevBtn">&larr; Anterior</button>
+        <div class="counter" id="huellaCounter">Huella --</div>
+        <button class="btn-nav" id="nextBtn">Siguiente &rarr;</button>
     </div>
 
     <script>
-        // Nombres personalizados de los bloques
-        const blockNames = {
-            1: "Bloque 1: El eco del silencio",
-            2: "Bloque 2: Sombras del tiempo",
-            3: "Bloque 3: Luces en el laberinto",
-            4: "Bloque 4: Cimientos de arena",
-            5: "Bloque 5: MÁSCARAS Y ESPEJOS",
-            6: "Bloque 6: EL RUIDO DE LOS NECIOS",
-            7: "Bloque 7: EL CIELO DE LAS ESTRELLAS"
+        // Configuración de Plantillas asociadas por Bloque
+        const blockTemplates = {
+            1: 'plantilla1.png',
+            2: 'plantilla2.png',
+            3: 'plantilla3.png',
+            4: 'plantilla4.png',
+            5: 'plantilla5.png',
+            6: 'plantilla6.png',
+            7: 'plantilla7.png',
+            8: 'plantilla8.png'
         };
 
-        let allPhrases = [];
-        let filteredPhrases = [];
+        let allFrases = [];
+        let currentFilteredFrases = [];
         let currentIndex = 0;
+        let loadedImages = {};
 
-        // Cargar las frases desde frases.json
-        async function loadPhrases() {
+        const canvas = document.getElementById('cardCanvas');
+        const ctx = canvas.getContext('2d');
+        const blockSelect = document.getElementById('blockSelect');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const randomBtn = document.getElementById('randomBtn');
+        const huellaCounter = document.getElementById('huellaCounter');
+        const loadingElem = document.getElementById('loading');
+
+        // Cargar datos
+        async function loadData() {
             try {
                 const response = await fetch('frases.json');
-                if (!response.ok) throw new Error('No se pudo cargar el archivo frases.json');
-                allPhrases = await response.json();
-
-                setupBlockSelector();
+                allFrases = await response.json();
+                loadingElem.style.display = 'none';
                 
-                // Mostrar primer bloque por defecto
-                if (allPhrases.length > 0) {
-                    const firstBlock = allPhrases[0].bloque;
-                    document.getElementById('blockSelect').value = firstBlock;
-                    filterByBlock(firstBlock);
-                }
-
-                document.getElementById('loadingText').style.display = 'none';
-                document.getElementById('card').style.display = 'flex';
-                document.getElementById('navButtons').style.display = 'flex';
-
+                // Cargar bloque inicial (Bloque 8 o el seleccionado)
+                filterByBlock(parseInt(blockSelect.value));
             } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('loadingText').innerText = 'Error al cargar los datos. Verifica que frases.json esté presente.';
+                console.error("Error al cargar frases.json:", error);
+                loadingElem.textContent = "Error al cargar los datos";
             }
         }
 
-        // Poblar el menú desplegable dinámicamente según los bloques existentes
-        function setupBlockSelector() {
-            const select = document.getElementById('blockSelect');
-            select.innerHTML = '';
+        // Filtrar frases por bloque
+        function filterByBlock(blockNum) {
+            currentFilteredFrases = allFrases.filter(f => f.bloque === blockNum);
+            currentIndex = 0;
+            renderCurrentHuella();
+        }
 
-            const blocks = [...new Set(allPhrases.map(item => item.bloque))].sort((a, b) => a - b);
+        // Renderizar huella actual en el canvas
+        function renderCurrentHuella() {
+            if (currentFilteredFrases.length === 0) return;
 
-            blocks.forEach(blockNum => {
-                const option = document.createElement('option');
-                option.value = blockNum;
-                option.textContent = blockNames[blockNum] || `Bloque ${blockNum}`;
-                select.appendChild(option);
+            const item = currentFilteredFrases[currentIndex];
+            const templatePath = blockTemplates[item.bloque] || 'plantilla1.png';
+
+            // Actualizar contador
+            huellaCounter.textContent = `Huella ${item.id} (${currentIndex + 1} de ${currentFilteredFrases.length})`;
+
+            // Actualizar estado de botones
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
+
+            // Cargar o usar imagen en caché
+            if (loadedImages[templatePath]) {
+                drawCanvas(loadedImages[templatePath], item.texto);
+            } else {
+                const img = new Image();
+                img.src = templatePath;
+                img.onload = () => {
+                    loadedImages[templatePath] = img;
+                    drawCanvas(img, item.texto);
+                };
+            }
+        }
+
+        // Dibujar en el Canvas con ajuste automático de líneas
+        function drawCanvas(bgImg, text) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+
+            // Estilos del texto dinámico
+            ctx.fillStyle = "#ffffff";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+
+            const maxWidth = 820;
+            const lineHeight = 65;
+            const x = canvas.width / 2;
+            const y = canvas.height / 2;
+
+            // Ajustar tamaño de fuente dinámicamente según la longitud
+            let fontSize = 42;
+            if (text.length > 150) fontSize = 36;
+            if (text.length > 250) fontSize = 32;
+
+            ctx.font = `400 ${fontSize}px 'Montserrat', sans-serif`;
+
+            // Dividir texto en líneas para que no desborde la plantilla
+            const words = text.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                let word = words[i];
+                let width = ctx.measureText(currentLine + " " + word).width;
+                if (width < maxWidth) {
+                    currentLine += " " + word;
+                } else {
+                    lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            lines.push(currentLine);
+
+            // Centrar verticalmente las líneas
+            const totalHeight = lines.length * lineHeight;
+            let startY = y - (totalHeight / 2) + (lineHeight / 2);
+
+            lines.forEach((line, index) => {
+                ctx.fillText(line, x, startY + (index * lineHeight));
             });
         }
 
-        // Filtrar frases según el bloque seleccionado
-        function filterByBlock(blockNum) {
-            filteredPhrases = allPhrases.filter(item => item.bloque == blockNum);
-            currentIndex = 0;
-            renderCard();
-        }
-
-        function changeBlock() {
-            const selectedBlock = document.getElementById('blockSelect').value;
-            filterByBlock(selectedBlock);
-        }
-
-        // Renderizar la tarjeta actual (Imagen + Texto)
-        function renderCard() {
-            if (filteredPhrases.length === 0) return;
-
-            const current = filteredPhrases[currentIndex];
-            const imgElement = document.getElementById('cardImage');
-            const textElement = document.getElementById('cardText');
-            const counterElement = document.getElementById('counterText');
-
-            // Asignar plantilla correspondiente al bloque (plantilla1.png, plantilla7.png, etc.)
-            imgElement.src = `plantilla${current.bloque}.png`;
-            imgElement.alt = `Plantilla del Bloque ${current.bloque}`;
-
-            // Si el objeto no tiene texto o está vacío, asumimos que es una portada/separador
-            textElement.innerText = current.texto || '';
-
-            counterElement.innerText = `Huella ${current.id || (currentIndex + 1)} (${currentIndex + 1} de ${filteredPhrases.length})`;
-        }
-
-        // Navegación
-        function nextPhrase() {
-            if (filteredPhrases.length === 0) return;
-            currentIndex = (currentIndex + 1) % filteredPhrases.length;
-            renderCard();
-        }
-
-        function prevPhrase() {
-            if (filteredPhrases.length === 0) return;
-            currentIndex = (currentIndex - 1 + filteredPhrases.length) % filteredPhrases.length;
-            renderCard();
-        }
-
-        function goToRandom() {
-            if (allPhrases.length === 0) return;
-            
-            // Seleccionar un elemento aleatorio de toda la colección
-            const randomIndex = Math.floor(Math.random() * allPhrases.length);
-            const randomItem = allPhrases[randomIndex];
-
-            // Cambiar selector de bloque si es diferente al actual
-            document.getElementById('blockSelect').value = randomItem.bloque;
-            filteredPhrases = allPhrases.filter(item => item.bloque == randomItem.bloque);
-            
-            // Encontrar el índice dentro del bloque filtrado
-            currentIndex = filteredPhrases.findIndex(item => item.id === randomItem.id);
-            if (currentIndex === -1) currentIndex = 0;
-
-            renderCard();
-        }
-
-        // Eventos de teclado para facilitar navegación con flechas
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextPhrase();
-            if (e.key === 'ArrowLeft') prevPhrase();
+        // Eventos
+        blockSelect.addEventListener('change', (e) => {
+            filterByBlock(parseInt(e.target.value));
         });
 
-        // Inicializar al cargar la página
-        window.onload = loadPhrases;
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderCurrentHuella();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < currentFilteredFrases.length - 1) {
+                currentIndex++;
+                renderCurrentHuella();
+            }
+        });
+
+        randomBtn.addEventListener('click', () => {
+            if (allFrases.length === 0) return;
+            const randomIndex = Math.floor(Math.random() * allFrases.length);
+            const randomItem = allFrases[randomIndex];
+            
+            // Cambiar select al bloque de la huella aleatoria
+            blockSelect.value = randomItem.bloque;
+            currentFilteredFrases = allFrases.filter(f => f.bloque === randomItem.bloque);
+            currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
+            
+            renderCurrentHuella();
+        });
+
+        // Iniciar
+        loadData();
     </script>
 </body>
 </html>
