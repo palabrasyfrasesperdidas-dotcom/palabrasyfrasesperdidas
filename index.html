@@ -34,6 +34,82 @@
             padding: 20px 10px;
         }
 
+        /* ----- PANTALLA INICIAL (VIDEO / PORTADA) ----- */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 11;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 60px;
+            transition: opacity 0.5s ease;
+        }
+
+        .language-container {
+            text-align: center;
+            width: 90%;
+            max-width: 380px;
+        }
+
+        .language-title {
+            color: #f0f3f8;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-lang {
+            background: rgba(22, 26, 34, 0.85);
+            color: #c5a059;
+            border: 1px solid #c5a059;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .btn-lang:hover {
+            background: #c5a059;
+            color: #0d0f12;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
+        }
+
+        /* ----- APLICACIÓN PRINCIPAL (CANVAS Y BLOQUES) ----- */
         header {
             text-align: center;
             margin-bottom: 20px;
@@ -55,7 +131,7 @@
 
         .controls-top {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 20px;
             align-items: center;
             flex-wrap: wrap;
@@ -72,18 +148,13 @@
             font-size: 0.85rem;
             cursor: pointer;
             outline: none;
-            transition: border-color 0.3s;
         }
 
-        select:hover, select:focus {
-            border-color: var(--accent-gold);
-        }
-
-        .btn-random {
+        .btn-action {
             background-color: var(--card-bg);
             color: var(--accent-gold);
             border: 1px solid var(--accent-gold);
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 6px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
@@ -94,7 +165,7 @@
             gap: 6px;
         }
 
-        .btn-random:hover {
+        .btn-action:hover {
             background-color: var(--accent-gold);
             color: var(--bg-color);
         }
@@ -133,12 +204,6 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-nav:hover:not(:disabled) {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
         }
 
         .btn-nav:disabled {
@@ -163,6 +228,22 @@
 </head>
 <body>
 
+    <div class="video-background" id="videoBg">
+        <video autoplay loop muted playsinline poster="Copilot_20260711_124710.png">
+            <source src="Intro PYFP.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="intro-overlay" id="introOverlay">
+        <div class="language-container">
+            <p class="language-title">Selecciona tu idioma / Select language</p>
+            <div class="btn-group">
+                <button class="btn-lang" onclick="selectLanguage('es')">Español</button>
+                <button class="btn-lang" onclick="selectLanguage('en')">English (Próximamente)</button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <h1>Palabras y frases perdidas</h1>
         <p>Colección de huellas y reflexiones</p>
@@ -186,9 +267,8 @@
             <option value="14">Bloque 14: La Soledad que Habla</option>
         </select>
 
-        <button class="btn-random" id="randomBtn">
-            <span>🎲</span> Huella Aleatoria
-        </button>
+        <button class="btn-action" id="randomBtn">🎲 Aleatoria</button>
+        <button class="btn-action" onclick="showLanguageScreen()">🌐 Idioma</button>
     </div>
 
     <div class="canvas-container">
@@ -204,22 +284,14 @@
 
     <script>
         const blockTemplates = {
-            1: 'plantilla1.png',
-            2: 'plantilla2.png',
-            3: 'plantilla3.png',
-            4: 'plantilla4.png',
-            5: 'plantilla5.png',
-            6: 'plantilla6.png',
-            7: 'plantilla7.png',
-            8: 'plantilla8.png',
-            9: 'plantilla9.png',
-            10: 'plantilla10.png',
-            11: 'plantilla11.png',
-            12: 'plantilla12.png',
-            13: 'plantilla13.png',
-            14: 'plantilla14.png'
+            1: 'plantilla1.png', 2: 'plantilla2.png', 3: 'plantilla3.png',
+            4: 'plantilla4.png', 5: 'plantilla5.png', 6: 'plantilla6.png',
+            7: 'plantilla7.png', 8: 'plantilla8.png', 9: 'plantilla9.png',
+            10: 'plantilla10.png', 11: 'plantilla11.png', 12: 'plantilla12.png',
+            13: 'plantilla13.png', 14: 'plantilla14.png'
         };
 
+        let currentLang = 'es';
         let allFrases = [];
         let currentFilteredFrases = [];
         let currentIndex = 0;
@@ -234,15 +306,32 @@
         const huellaCounter = document.getElementById('huellaCounter');
         const loadingElem = document.getElementById('loading');
 
-        async function loadData() {
+        function selectLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('introOverlay').style.display = 'none';
+            document.getElementById('videoBg').style.display = 'none';
+
+            // Por ahora carga frases.json (Español).
+            // En la fase 2 se llamará dinámicamente a frases_en.json, frases_fr.json, etc.
+            const fileToLoad = (lang === 'es') ? 'frases.json' : `frases_${lang}.json`;
+            loadData(fileToLoad);
+        }
+
+        function showLanguageScreen() {
+            document.getElementById('introOverlay').style.display = 'flex';
+            document.getElementById('videoBg').style.display = 'block';
+        }
+
+        async function loadData(file) {
+            loadingElem.style.display = 'block';
             try {
-                const response = await fetch('frases.json');
+                const response = await fetch(file);
                 allFrases = await response.json();
                 loadingElem.style.display = 'none';
                 filterByBlock(parseInt(blockSelect.value));
             } catch (error) {
-                console.error("Error al cargar frases.json:", error);
-                loadingElem.textContent = "Error de sintaxis en frases.json";
+                console.error("Error al cargar frases:", error);
+                loadingElem.textContent = "Error al cargar las frases de este idioma";
             }
         }
 
@@ -315,46 +404,3 @@
                     currentLine = word;
                 }
             }
-            lines.push(currentLine);
-
-            const totalHeight = lines.length * lineHeight;
-            let startY = y - (totalHeight / 2) + (lineHeight / 2);
-
-            lines.forEach((line, index) => {
-                ctx.fillText(line, x, startY + (index * lineHeight));
-            });
-        }
-
-        blockSelect.addEventListener('change', (e) => {
-            filterByBlock(parseInt(e.target.value));
-        });
-
-        prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                renderCurrentHuella();
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (currentIndex < currentFilteredFrases.length - 1) {
-                currentIndex++;
-                renderCurrentHuella();
-            }
-        });
-
-        randomBtn.addEventListener('click', () => {
-            if (allFrases.length === 0) return;
-            const randomIndex = Math.floor(Math.random() * allFrases.length);
-            const randomItem = allFrases[randomIndex];
-            
-            blockSelect.value = randomItem.bloque;
-            filterByBlock(randomItem.bloque);
-            currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
-            renderCurrentHuella();
-        });
-
-        loadData();
-    </script>
-</body>
-</html>
