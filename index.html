@@ -291,7 +291,7 @@
     </div>
 
     <script>
-        // Mapeo de archivos de imagen y vídeo por bloque
+        // Mapeo dinámico de plantillas de vídeo e imagen por bloque
         const blockTemplates = {
             1: { img: 'plantilla1.png', video: 'plantilla1_video.mp4' },
             2: { img: 'plantilla2.png', video: 'plantilla2_video.mp4' },
@@ -400,7 +400,7 @@
 
             useFallbackImage = false;
 
-            // Intento 1: Cargar y reproducir Vídeo
+            // Intenta reproducir el video correspondiente al bloque (1 al 6)
             if (loadedVideos[config.video]) {
                 startVideoLoop(loadedVideos[config.video], item.texto);
             } else {
@@ -419,7 +419,7 @@
                 };
 
                 vid.onerror = () => {
-                    // Fallback automático a la plantilla estática si no existe el video
+                    // Si el mp4 falla o no existe (bloques 7 a 14), pasa automáticamente a la imagen .png
                     useFallbackImage = true;
                     loadFallbackImage(config.img, item.texto);
                 };
@@ -428,10 +428,16 @@
 
         function startVideoLoop(videoElem, text) {
             activeVideo = videoElem;
-            videoElem.play().catch(() => {});
+            videoElem.play().catch(() => {
+                // Si el navegador bloquea la reproducción automática con vídeo, recurre a la imagen estática
+                useFallbackImage = true;
+                const item = currentFilteredFrases[currentIndex];
+                const config = blockTemplates[item.bloque];
+                loadFallbackImage(config.img, text);
+            });
 
             function loop() {
-                if (activeVideo === videoElem) {
+                if (activeVideo === videoElem && !useFallbackImage) {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     ctx.drawImage(videoElem, 0, 0, canvas.width, canvas.height);
                     drawTextOverlay(text);
