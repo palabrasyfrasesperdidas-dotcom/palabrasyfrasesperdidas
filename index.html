@@ -32,6 +32,11 @@
             flex-direction: column;
             align-items: center;
             padding: 20px 10px;
+            overflow-x: hidden;
+        }
+
+        body.intro-active {
+            overflow: hidden;
         }
 
         /* ----- PANTALLA INICIAL (VIDEO / PORTADA) ----- */
@@ -41,14 +46,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 10;
-            overflow: hidden;
+            z-index: 100;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .video-background video {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Ajusta el vídeo entero sin recortar la marca ni la pluma */
+            background-color: #000;
         }
 
         .intro-overlay {
@@ -57,46 +66,47 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 11;
-            background: rgba(0, 0, 0, 0.5);
+            z-index: 101;
+            background: rgba(0, 0, 0, 0.35);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            padding-bottom: 60px;
+            padding-bottom: 40px;
             transition: opacity 0.5s ease;
         }
 
         .language-container {
             text-align: center;
             width: 90%;
-            max-width: 380px;
+            max-width: 360px;
         }
 
         .language-title {
             color: #f0f3f8;
             font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
 
         .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .btn-lang {
-            background: rgba(22, 26, 34, 0.85);
+            background: rgba(22, 26, 34, 0.9);
             color: #c5a059;
             border: 1px solid #c5a059;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 8px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
@@ -106,10 +116,10 @@
         .btn-lang:hover {
             background: #c5a059;
             color: #0d0f12;
-            box-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.6);
         }
 
-        /* ----- APLICACIÓN PRINCIPAL (CANVAS Y BLOQUES) ----- */
+        /* ----- APLICACIÓN PRINCIPAL ----- */
         header {
             text-align: center;
             margin-bottom: 20px;
@@ -131,7 +141,7 @@
 
         .controls-top {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 20px;
             align-items: center;
             flex-wrap: wrap;
@@ -142,7 +152,7 @@
             background-color: var(--card-bg);
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 6px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
@@ -160,9 +170,6 @@
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .btn-action:hover {
@@ -199,7 +206,7 @@
             background-color: var(--card-bg);
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 6px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
@@ -226,10 +233,10 @@
         }
     </style>
 </head>
-<body>
+<body class="intro-active">
 
     <div class="video-background" id="videoBg">
-        <video autoplay loop muted playsinline poster="Copilot_20260711_124710.png">
+        <video autoplay loop muted playsinline poster="Intro PYFP.png">
             <source src="Intro PYFP.mp4" type="video/mp4">
         </video>
     </div>
@@ -283,9 +290,10 @@
     </div>
 
     <script>
+        // Mapeo flexible adaptado a mayúsculas/minúsculas exactas del repositorio
         const blockTemplates = {
             1: 'plantilla1.png', 2: 'plantilla2.png', 3: 'plantilla3.png',
-            4: 'plantilla4.png', 5: 'plantilla5.png', 6: 'plantilla6.png',
+            4: 'Plantilla4.png', 5: 'plantilla5.png', 6: 'plantilla6.png',
             7: 'plantilla7.png', 8: 'plantilla8.png', 9: 'plantilla9.png',
             10: 'plantilla10.png', 11: 'plantilla11.png', 12: 'plantilla12.png',
             13: 'plantilla13.png', 14: 'plantilla14.png'
@@ -308,99 +316,14 @@
 
         function selectLanguage(lang) {
             currentLang = lang;
+            document.body.classList.remove('intro-active');
             document.getElementById('introOverlay').style.display = 'none';
             document.getElementById('videoBg').style.display = 'none';
 
-            // Por ahora carga frases.json (Español).
-            // En la fase 2 se llamará dinámicamente a frases_en.json, frases_fr.json, etc.
             const fileToLoad = (lang === 'es') ? 'frases.json' : `frases_${lang}.json`;
             loadData(fileToLoad);
         }
 
         function showLanguageScreen() {
+            document.body.classList.add('intro-active');
             document.getElementById('introOverlay').style.display = 'flex';
-            document.getElementById('videoBg').style.display = 'block';
-        }
-
-        async function loadData(file) {
-            loadingElem.style.display = 'block';
-            try {
-                const response = await fetch(file);
-                allFrases = await response.json();
-                loadingElem.style.display = 'none';
-                filterByBlock(parseInt(blockSelect.value));
-            } catch (error) {
-                console.error("Error al cargar frases:", error);
-                loadingElem.textContent = "Error al cargar las frases de este idioma";
-            }
-        }
-
-        function filterByBlock(blockNum) {
-            currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(blockNum));
-            currentIndex = 0;
-
-            if (currentFilteredFrases.length === 0) {
-                huellaCounter.textContent = "Sin huellas en este bloque";
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                return;
-            }
-
-            renderCurrentHuella();
-        }
-
-        function renderCurrentHuella() {
-            if (currentFilteredFrases.length === 0) return;
-
-            const item = currentFilteredFrases[currentIndex];
-            const templatePath = blockTemplates[item.bloque] || 'plantilla1.png';
-
-            huellaCounter.textContent = `Huella ${item.id} (${currentIndex + 1} de ${currentFilteredFrases.length})`;
-
-            prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
-
-            if (loadedImages[templatePath]) {
-                drawCanvas(loadedImages[templatePath], item.texto);
-            } else {
-                const img = new Image();
-                img.src = templatePath;
-                img.onload = () => {
-                    loadedImages[templatePath] = img;
-                    drawCanvas(img, item.texto);
-                };
-            }
-        }
-
-        function drawCanvas(bgImg, text) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = "#ffffff";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-
-            const maxWidth = 820;
-            const lineHeight = 65;
-            const x = canvas.width / 2;
-            const y = canvas.height / 2;
-
-            let fontSize = 42;
-            if (text.length > 150) fontSize = 36;
-            if (text.length > 250) fontSize = 32;
-
-            ctx.font = `400 ${fontSize}px 'Montserrat', sans-serif`;
-
-            const words = text.split(' ');
-            let lines = [];
-            let currentLine = words[0];
-
-            for (let i = 1; i < words.length; i++) {
-                let word = words[i];
-                let width = ctx.measureText(currentLine + " " + word).width;
-                if (width < maxWidth) {
-                    currentLine += " " + word;
-                } else {
-                    lines.push(currentLine);
-                    currentLine = word;
-                }
-            }
