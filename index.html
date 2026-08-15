@@ -291,19 +291,34 @@
     </div>
 
     <script>
+        // Mapeo de archivos de imagen y vídeo por bloque
         const blockTemplates = {
-            1: 'plantilla1.png', 2: 'plantilla2.png', 3: 'plantilla3.png',
-            4: 'plantilla4.png', 5: 'plantilla5.png', 6: 'plantilla6.png',
-            7: 'plantilla7.png', 8: 'plantilla8.png', 9: 'plantilla9.png',
-            10: 'plantilla10.png', 11: 'plantilla11.png', 12: 'plantilla12.png',
-            13: 'plantilla13.png', 14: 'plantilla14.png'
+            1: { img: 'plantilla1.png', video: 'plantilla1_video.mp4' },
+            2: { img: 'plantilla2.png', video: 'plantilla2_video.mp4' },
+            3: { img: 'plantilla3.png', video: 'plantilla3_video.mp4' },
+            4: { img: 'plantilla4.png', video: 'plantilla4_video.mp4' },
+            5: { img: 'plantilla5.png', video: 'plantilla5_video.mp4' },
+            6: { img: 'plantilla6.png', video: 'plantilla6_video.mp4' },
+            7: { img: 'plantilla7.png', video: 'plantilla7_video.mp4' },
+            8: { img: 'plantilla8.png', video: 'plantilla8_video.mp4' },
+            9: { img: 'plantilla9.png', video: 'plantilla9_video.mp4' },
+            10: { img: 'plantilla10.png', video: 'plantilla10_video.mp4' },
+            11: { img: 'plantilla11.png', video: 'plantilla11_video.mp4' },
+            12: { img: 'plantilla12.png', video: 'plantilla12_video.mp4' },
+            13: { img: 'plantilla13.png', video: 'plantilla13_video.mp4' },
+            14: { img: 'plantilla14.png', video: 'plantilla14_video.mp4' }
         };
 
         let currentLang = 'es';
         let allFrases = [];
         let currentFilteredFrases = [];
         let currentIndex = 0;
+        
         let loadedImages = {};
+        let loadedVideos = {};
+        let activeVideo = null;
+        let animationFrameId = null;
+        let useFallbackImage = false;
 
         const canvas = document.getElementById('cardCanvas');
         const ctx = canvas.getContext('2d');
@@ -334,7 +349,6 @@
             loadingElem.style.display = 'block';
             loadingElem.textContent = "Cargando huellas...";
             try {
-                // Añadimos parámetro de tiempo para evitar caché antigua
                 const response = await fetch(file + '?v=' + new Date().getTime());
                 if (!response.ok) throw new Error("No se encuentra el archivo " + file);
                 allFrases = await response.json();
@@ -343,7 +357,7 @@
             } catch (error) {
                 console.error("Error al cargar frases:", error);
                 loadingElem.style.display = 'block';
-                loadingElem.textContent = "Error al leer " + file + ". Revisa que no tenga comas sobrantes en el archivo.";
+                loadingElem.textContent = "Error al leer " + file + ". Revisa que no tenga comas sobrantes.";
             }
         }
 
@@ -352,6 +366,7 @@
             currentIndex = 0;
 
             if (currentFilteredFrases.length === 0) {
+                stopAnimation();
                 huellaCounter.textContent = "Sin huellas en este bloque";
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 return;
@@ -360,36 +375,92 @@
             renderCurrentHuella();
         }
 
+        function stopAnimation() {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            if (activeVideo) {
+                activeVideo.pause();
+                activeVideo = null;
+            }
+        }
+
         function renderCurrentHuella() {
             if (currentFilteredFrases.length === 0) return;
 
+            stopAnimation();
+
             const item = currentFilteredFrases[currentIndex];
-            const templatePath = blockTemplates[item.bloque] || 'plantilla1.png';
+            const config = blockTemplates[item.bloque] || { img: 'plantilla1.png', video: 'plantilla1_video.mp4' };
 
             huellaCounter.textContent = `Huella ${item.id} (${currentIndex + 1} de ${currentFilteredFrases.length})`;
-
             prevBtn.disabled = currentIndex === 0;
             nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-            if (loadedImages[templatePath]) {
-                drawCanvas(loadedImages[templatePath], item.texto);
+            useFallbackImage = false;
+
+            // Intento 1: Cargar y reproducir Vídeo
+            if (loadedVideos[config.video]) {
+                startVideoLoop(loadedVideos[config.video], item.texto);
             } else {
-                const img = new Image();
-                img.src = templatePath;
-                img.onload = () => {
-                    loadedImages[templatePath] = img;
-                    drawCanvas(img, item.texto);
+                const vid = document.createElement('video');
+                vid.src = config.video;
+                vid.autoplay = true;
+                vid.loop = true;
+                vid.muted = true;
+                vid.playsInline = true;
+
+                vid.oncanplay = () => {
+                    loadedVideos[config.video] = vid;
+                    if (!useFallbackImage) {
+                        startVideoLoop(vid, item.texto);
+                    }
                 };
-                img.onerror = () => {
-                    console.error("Error al cargar la plantilla:", templatePath);
+
+                vid.onerror = () => {
+                    // Fallback automático a la plantilla estática si no existe el video
+                    useFallbackImage = true;
+                    loadFallbackImage(config.img, item.texto);
                 };
             }
         }
 
-        function drawCanvas(bgImg, text) {
+        function startVideoLoop(videoElem, text) {
+            activeVideo = videoElem;
+            videoElem.play().catch(() => {});
+
+            function loop() {
+                if (activeVideo === videoElem) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(videoElem, 0, 0, canvas.width, canvas.height);
+                    drawTextOverlay(text);
+                    animationFrameId = requestAnimationFrame(loop);
+                }
+            }
+            loop();
+        }
+
+        function loadFallbackImage(imgPath, text) {
+            if (loadedImages[imgPath]) {
+                drawStaticCanvas(loadedImages[imgPath], text);
+            } else {
+                const img = new Image();
+                img.src = imgPath;
+                img.onload = () => {
+                    loadedImages[imgPath] = img;
+                    drawStaticCanvas(img, text);
+                };
+            }
+        }
+
+        function drawStaticCanvas(bgImg, text) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+            drawTextOverlay(text);
+        }
 
+        function drawTextOverlay(text) {
             ctx.fillStyle = "#ffffff";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
