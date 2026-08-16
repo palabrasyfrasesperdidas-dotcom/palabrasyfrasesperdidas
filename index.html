@@ -400,7 +400,7 @@
 
             useFallbackImage = false;
 
-            // Intenta reproducir el video correspondiente al bloque (1 al 6)
+            // Intenta reproducir el video correspondiente al bloque (1 al 9)
             if (loadedVideos[config.video]) {
                 startVideoLoop(loadedVideos[config.video], item.texto);
             } else {
@@ -419,7 +419,7 @@
                 };
 
                 vid.onerror = () => {
-                    // Si el mp4 falla o no existe (bloques 7 a 14), pasa automáticamente a la imagen .png
+                    // Si el mp4 falla o no existe (bloques 10 a 14), pasa automáticamente a la imagen .png
                     useFallbackImage = true;
                     loadFallbackImage(config.img, item.texto);
                 };
