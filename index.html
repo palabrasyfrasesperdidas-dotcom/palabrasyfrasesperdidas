@@ -209,6 +209,8 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
             cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .btn-nav:disabled {
@@ -353,7 +355,14 @@
                 if (!response.ok) throw new Error("No se encuentra el archivo " + file);
                 allFrases = await response.json();
                 loadingElem.style.display = 'none';
-                filterByBlock(parseInt(blockSelect.value));
+
+                // Restaurar bloque guardado si existe
+                const savedBlock = localStorage.getItem('pyfp_current_block');
+                if (savedBlock && blockSelect.querySelector(`option[value="${savedBlock}"]`)) {
+                    blockSelect.value = savedBlock;
+                }
+
+                filterByBlock(parseInt(blockSelect.value), true);
             } catch (error) {
                 console.error("Error al cargar frases:", error);
                 loadingElem.style.display = 'block';
@@ -361,9 +370,21 @@
             }
         }
 
-        function filterByBlock(blockNum) {
+        function filterByBlock(blockNum, isInitialLoad = false) {
+            localStorage.setItem('pyfp_current_block', blockNum);
             currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(blockNum));
-            currentIndex = 0;
+
+            if (isInitialLoad) {
+                const savedIndex = localStorage.getItem('pyfp_current_index');
+                if (savedIndex !== null && !isNaN(savedIndex)) {
+                    const parsedIndex = parseInt(savedIndex, 10);
+                    currentIndex = (parsedIndex >= 0 && parsedIndex < currentFilteredFrases.length) ? parsedIndex : 0;
+                } else {
+                    currentIndex = 0;
+                }
+            } else {
+                currentIndex = 0;
+            }
 
             if (currentFilteredFrases.length === 0) {
                 stopAnimation();
@@ -389,6 +410,9 @@
         function renderCurrentHuella() {
             if (currentFilteredFrases.length === 0) return;
 
+            // Guardar posición actual en localStorage
+            localStorage.setItem('pyfp_current_index', currentIndex);
+
             stopAnimation();
 
             const item = currentFilteredFrases[currentIndex];
@@ -400,7 +424,7 @@
 
             useFallbackImage = false;
 
-            // Intenta reproducir el vídeo correspondiente al bloque (del 1 al 14)
+            // Intenta reproducir el vídeo correspondiente al bloque
             if (loadedVideos[config.video]) {
                 startVideoLoop(loadedVideos[config.video], item.texto);
             } else {
@@ -419,7 +443,6 @@
                 };
 
                 vid.onerror = () => {
-                    // Si el archivo mp4 falla o no carga, recurre automáticamente a la imagen .png estática
                     useFallbackImage = true;
                     loadFallbackImage(config.img, item.texto);
                 };
@@ -429,7 +452,6 @@
         function startVideoLoop(videoElem, text) {
             activeVideo = videoElem;
             videoElem.play().catch(() => {
-                // Si el navegador bloquea la reproducción automática de vídeo, recurre a la imagen estática
                 useFallbackImage = true;
                 const item = currentFilteredFrases[currentIndex];
                 const config = blockTemplates[item.bloque];
@@ -510,29 +532,44 @@
             filterByBlock(parseInt(e.target.value));
         });
 
-        prevBtn.addEventListener('click', () => {
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (currentIndex > 0) {
                 currentIndex--;
                 renderCurrentHuella();
             }
         });
 
-        nextBtn.addEventListener('click', () => {
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (currentIndex < currentFilteredFrases.length - 1) {
                 currentIndex++;
                 renderCurrentHuella();
             }
         });
 
-        randomBtn.addEventListener('click', () => {
+        randomBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (allFrases.length === 0) return;
             const randomIndex = Math.floor(Math.random() * allFrases.length);
             const randomItem = allFrases[randomIndex];
             
             blockSelect.value = randomItem.bloque;
-            filterByBlock(randomItem.bloque);
+            currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(randomItem.bloque));
             currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
+            localStorage.setItem('pyfp_current_block', randomItem.bloque);
             renderCurrentHuella();
+        });
+
+        // Evento especial para navegadores móviles que recuperan la pestaña de caché
+        window.addEventListener('pageshow', (event) => {
+            if (currentFilteredFrases.length > 0) {
+                const savedIndex = localStorage.getItem('pyfp_current_index');
+                if (savedIndex !== null && !isNaN(savedIndex)) {
+                    currentIndex = parseInt(savedIndex, 10);
+                    renderCurrentHuella();
+                }
+            }
         });
     </script>
 </body>
