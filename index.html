@@ -38,12 +38,13 @@
         }
         .intro-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 720px;
             margin: 10px auto;
             text-align: center;
         }
         .intro-video-wrapper {
             width: 100%;
+            aspect-ratio: 16 / 9;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
@@ -51,9 +52,9 @@
         }
         .intro-video-wrapper video {
             width: 100%;
-            max-height: 65vh;
+            height: 100%;
             display: block;
-            object-fit: contain;
+            object-fit: cover;
         }
         .lang-select-container {
             display: flex;
@@ -71,6 +72,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            touch-action: manipulation;
         }
         .lang-select-container button:hover {
             background-color: #333;
@@ -101,6 +103,7 @@
             border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.2s, border-color 0.2s;
+            touch-action: manipulation;
         }
         select:hover, button:hover:not(:disabled) {
             background-color: #2a2a2a;
@@ -157,7 +160,6 @@
         <p id="appSubtitle" class="subtitle">Colección de huellas y reflexiones</p>
     </header>
 
-    <!-- PORTADA / INTRODUCCIÓN CON SELECCIÓN DE IDIOMA -->
     <div id="introSection" class="intro-container">
         <div class="intro-video-wrapper">
             <video id="introVideo" autoplay loop muted playsinline>
@@ -171,7 +173,6 @@
         </div>
     </div>
 
-    <!-- VISOR DE HUELLAS -->
     <div id="viewerSection" class="viewer-section">
         <div class="controls">
             <button id="homeBtn">🏠 Home</button>
@@ -252,10 +253,10 @@
         }
     };
 
-    let currentLang = 'es';
+    let currentLang = sessionStorage.getItem('pyfp_lang') || 'es';
     let allFrases = [];
     let currentFilteredFrases = [];
-    let currentIndex = 0;
+    let currentIndex = parseInt(sessionStorage.getItem('pyfp_index') || '0', 10);
     let animationFrameId = null;
     let currentVideoElem = null;
 
@@ -263,7 +264,7 @@
 
     function populateSelect() {
         if (!blockSelect) return;
-        const currentVal = blockSelect.value || "1";
+        const currentVal = blockSelect.value || sessionStorage.getItem('pyfp_block') || "1";
         blockSelect.innerHTML = "";
         const names = blockNames[currentLang];
         names.forEach((name, index) => {
@@ -290,21 +291,25 @@
 
     function showIntro() {
         stopAnimation();
+        sessionStorage.removeItem('pyfp_active');
         if (viewerSection) viewerSection.style.display = 'none';
         if (introSection) introSection.style.display = 'block';
     }
 
-    function startExperience(lang) {
+    function startExperience(lang, restoreState = false) {
         currentLang = lang;
+        sessionStorage.setItem('pyfp_lang', lang);
+        sessionStorage.setItem('pyfp_active', 'true');
+        
         updateUIStrings();
         if (introSection) introSection.style.display = 'none';
         if (viewerSection) viewerSection.style.display = 'flex';
         
         const fileToLoad = (currentLang === 'es') ? 'frases.json' : 'frases_en.json';
-        loadData(fileToLoad);
+        loadData(fileToLoad, restoreState);
     }
 
-    async function loadData(file) {
+    async function loadData(file, restoreState = false) {
         const t = translations[currentLang];
         if (loadingElem) {
             loadingElem.style.display = 'block';
@@ -316,8 +321,13 @@
             allFrases = await response.json();
             if (loadingElem) loadingElem.style.display = 'none';
 
-            const activeBlock = blockSelect.value || "1";
-            filterByBlock(parseInt(activeBlock, 10));
+            let activeBlock = blockSelect.value || "1";
+            if (restoreState) {
+                activeBlock = sessionStorage.getItem('pyfp_block') || activeBlock;
+                if (blockSelect) blockSelect.value = activeBlock;
+            }
+
+            filterByBlock(parseInt(activeBlock, 10), restoreState);
         } catch (error) {
             console.error("Error al cargar datos:", error);
             if (loadingElem) {
@@ -327,9 +337,16 @@
         }
     }
 
-    function filterByBlock(blockNum) {
+    function filterByBlock(blockNum, keepIndex = false) {
+        sessionStorage.setItem('pyfp_block', blockNum.toString());
         currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(blockNum));
-        currentIndex = 0;
+        
+        if (!keepIndex) {
+            currentIndex = 0;
+        } else {
+            const savedIndex = parseInt(sessionStorage.getItem('pyfp_index') || '0', 10);
+            currentIndex = (savedIndex < currentFilteredFrases.length) ? savedIndex : 0;
+        }
 
         if (currentFilteredFrases.length === 0) {
             stopAnimation();
@@ -358,6 +375,7 @@
         if (currentFilteredFrases.length === 0) return;
 
         stopAnimation();
+        sessionStorage.setItem('pyfp_index', currentIndex.toString());
 
         const item = currentFilteredFrases[currentIndex];
         const label = translations[currentLang].footprintLabel;
@@ -368,30 +386,27 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-        const imgPath = (currentLang === 'en') ? `plantilla${item.bloque}_en.png` : `plantilla${item.bloque}.png`;
-        const videoPath = (currentLang === 'en') ? `plantilla${item.bloque}_en_video.mp4` : `plantilla${item.bloque}_video.mp4`;
+        const primaryImgPath = (currentLang === 'en') ? `plantilla${item.bloque}_en.png` : `plantilla${item.bloque}.png`;
+        const primaryVideoPath = (currentLang === 'en') ? `plantilla${item.bloque}_en_video.mp4` : `plantilla${item.bloque}_video.mp4`;
 
         const bgImg = new Image();
-        bgImg.src = imgPath;
+        bgImg.src = primaryImgPath;
 
         bgImg.onload = () => {
             adjustCanvasSize(bgImg.naturalWidth, bgImg.naturalHeight);
             drawCanvasFrame(bgImg, item.texto);
-            tryLoadVideo(videoPath, item.texto, bgImg);
+            tryLoadVideo(primaryVideoPath, item.texto, bgImg);
         };
 
         bgImg.onerror = () => {
-            if (currentLang === 'en') {
-                const fallbackImg = new Image();
-                fallbackImg.src = `plantilla${item.bloque}.png`;
-                fallbackImg.onload = () => {
-                    adjustCanvasSize(fallbackImg.naturalWidth, fallbackImg.naturalHeight);
-                    drawCanvasFrame(fallbackImg, item.texto);
-                };
-                fallbackImg.onerror = () => drawTextOnly(item.texto);
-            } else {
-                drawTextOnly(item.texto);
-            }
+            const fallbackImg = new Image();
+            fallbackImg.src = `plantilla${item.bloque}.png`;
+            fallbackImg.onload = () => {
+                adjustCanvasSize(fallbackImg.naturalWidth, fallbackImg.naturalHeight);
+                drawCanvasFrame(fallbackImg, item.texto);
+                tryLoadVideo(primaryVideoPath, item.texto, fallbackImg);
+            };
+            fallbackImg.onerror = () => drawTextOnly(item.texto);
         };
     }
 
@@ -429,7 +444,6 @@
         };
 
         video.onerror = () => {
-            // Si el vídeo no existe, aseguramos renderizar la imagen estática correspondiente
             drawCanvasFrame(fallbackImg, text);
         };
     }
@@ -516,7 +530,7 @@
 
         if (blockSelect) {
             blockSelect.addEventListener('change', (e) => {
-                filterByBlock(parseInt(e.target.value, 10));
+                filterByBlock(parseInt(e.target.value, 10), false);
             });
         }
 
@@ -553,6 +567,11 @@
                 if (currentIndex === -1) currentIndex = 0;
                 renderCurrentHuella();
             });
+        }
+
+        // Restablece el estado previo si el móvil refresca la pantalla o borra memoria
+        if (sessionStorage.getItem('pyfp_active') === 'true') {
+            startExperience(currentLang, true);
         }
     });
 </script>
