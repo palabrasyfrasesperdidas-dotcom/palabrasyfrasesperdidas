@@ -36,24 +36,53 @@
             font-size: 1rem;
             color: #888888;
         }
-        .intro-video-wrapper {
-            margin: 20px auto;
-            max-width: 900px;
+        .intro-container {
             width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .intro-video-wrapper {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            background: #000;
         }
         .intro-video-wrapper video {
             width: 100%;
-            height: auto;
-            border-radius: 12px;
-            object-fit: contain;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            max-height: 70vh;
             display: block;
+            object-fit: contain;
         }
         .lang-select-container {
             display: flex;
             gap: 15px;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 20px;
+        }
+        .lang-select-container button {
+            padding: 12px 24px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            background-color: #1f1f1f;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-select-container button:hover {
+            background-color: #333;
+            border-color: #777;
+            transform: translateY(-2px);
+        }
+        .viewer-section {
+            display: none; /* Se activa tras elegir idioma */
+            width: 100%;
+            max-width: 900px;
+            flex-direction: column;
+            align-items: center;
         }
         .controls {
             display: flex;
@@ -61,7 +90,6 @@
             gap: 10px;
             justify-content: center;
             margin-bottom: 20px;
-            max-width: 900px;
             width: 100%;
         }
         select, button {
@@ -85,8 +113,7 @@
         .canvas-container {
             position: relative;
             width: 100%;
-            max-width: 900px;
-            aspect-ratio: 16 / 9;
+            max-width: 800px;
             background-color: #000000;
             border-radius: 12px;
             overflow: hidden;
@@ -94,11 +121,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0 auto;
         }
         canvas {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
+            height: auto;
+            max-height: 80vh;
             display: block;
         }
         .info-panel {
@@ -107,7 +135,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
             font-size: 0.9rem;
             color: #aaaaaa;
         }
@@ -125,40 +153,43 @@
 </head>
 <body>
 
-    <header id="welcomeSection">
+    <header>
         <h1 id="appTitle">Palabras y frases perdidas</h1>
         <p id="appSubtitle" class="subtitle">Colección de huellas y reflexiones</p>
+    </header>
 
-        <!-- Vídeo de presentación -->
+    <!-- PORTADA / VÍDEO DE INTRODUCCIÓN CON SELECCIÓN DE IDIOMA -->
+    <div id="introSection" class="intro-container">
         <div class="intro-video-wrapper">
             <video id="introVideo" autoplay loop muted playsinline>
-                <source src="intro.mp4" type="video/mp4">
-                Tu navegador no soporta el elemento de vídeo.
+                <source src="Intro PYFP.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de este vídeo.
             </video>
         </div>
-
-        <!-- Botones de selección de idioma inicial -->
         <div class="lang-select-container">
             <button id="initEsBtn">🇪🇸 Español</button>
             <button id="initEnBtn">🇬🇧 English</button>
         </div>
-    </header>
-
-    <div class="controls">
-        <select id="blockSelect"></select>
-        <button id="prevBtn">&larr; Anterior</button>
-        <button id="nextBtn">Siguiente &rarr;</button>
-        <button id="randomBtn">🎲 Aleatoria</button>
-        <button id="langBtn">🌐 English</button>
     </div>
 
-    <div class="canvas-container">
-        <div id="loading">Cargando...</div>
-        <canvas id="cardCanvas" width="1280" height="720"></canvas>
-    </div>
+    <!-- SECCIÓN DEL REPRODUCTOR / HUELAS -->
+    <div id="viewerSection" class="viewer-section">
+        <div class="controls">
+            <select id="blockSelect"></select>
+            <button id="prevBtn">&larr; Anterior</button>
+            <button id="nextBtn">Siguiente &rarr;</button>
+            <button id="randomBtn">🎲 Aleatoria</button>
+            <button id="langBtn">🌐 English</button>
+        </div>
 
-    <div class="info-panel">
-        <span id="huellaCounter">--</span>
+        <div class="canvas-container">
+            <div id="loading">Cargando...</div>
+            <canvas id="cardCanvas"></canvas>
+        </div>
+
+        <div class="info-panel">
+            <span id="huellaCounter">--</span>
+        </div>
     </div>
 
 <script>
@@ -229,7 +260,7 @@
     let animationFrameId = null;
     let currentVideoElem = null;
 
-    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, huellaCounter, loadingElem, appTitle, appSubtitle, initEsBtn, initEnBtn;
+    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, huellaCounter, loadingElem, appTitle, appSubtitle, introSection, viewerSection;
 
     function getTemplateConfig(blockNum, lang) {
         const imgSuffix = (lang === 'en') ? '_en' : '';
@@ -266,9 +297,12 @@
         populateSelect();
     }
 
-    function selectInitialLanguage(lang) {
+    function startExperience(lang) {
         currentLang = lang;
         updateUIStrings();
+        if (introSection) introSection.style.display = 'none';
+        if (viewerSection) viewerSection.style.display = 'flex';
+        
         const fileToLoad = (currentLang === 'es') ? 'frases.json' : 'frases_en.json';
         loadData(fileToLoad);
     }
@@ -348,6 +382,7 @@
         const bgImg = new Image();
         bgImg.src = config.img;
         bgImg.onload = () => {
+            adjustCanvasSize(bgImg.naturalWidth, bgImg.naturalHeight);
             drawCanvasFrame(bgImg, item.texto);
             tryLoadVideo(config.video, item.texto, bgImg);
         };
@@ -356,6 +391,7 @@
                 const fallbackImg = new Image();
                 fallbackImg.src = `plantilla${item.bloque}.png`;
                 fallbackImg.onload = () => {
+                    adjustCanvasSize(fallbackImg.naturalWidth, fallbackImg.naturalHeight);
                     drawCanvasFrame(fallbackImg, item.texto);
                     tryLoadVideo(config.video, item.texto, fallbackImg);
                 };
@@ -366,23 +402,10 @@
         };
     }
 
-    /* Dibujado proporcional adaptativo (Contain) */
-    function drawContainElement(mediaElem) {
-        if (!ctx || !canvas) return;
-        const mediaWidth = mediaElem.videoWidth || mediaElem.naturalWidth || mediaElem.width;
-        const mediaHeight = mediaElem.videoHeight || mediaElem.naturalHeight || mediaElem.height;
-
-        if (!mediaWidth || !mediaHeight) return;
-
-        const hRatio = canvas.width / mediaWidth;
-        const vRatio = canvas.height / mediaHeight;
-        const ratio = Math.min(hRatio, vRatio);
-
-        const centerShiftX = (canvas.width - mediaWidth * ratio) / 2;
-        const centerShiftY = (canvas.height - mediaHeight * ratio) / 2;
-
-        ctx.drawImage(mediaElem, 0, 0, mediaWidth, mediaHeight,
-                      centerShiftX, centerShiftY, mediaWidth * ratio, mediaHeight * ratio);
+    function adjustCanvasSize(width, height) {
+        if (!canvas) return;
+        canvas.width = width || 1080;
+        canvas.height = height || 1350;
     }
 
     function tryLoadVideo(videoSrc, text, fallbackImg) {
@@ -394,11 +417,14 @@
 
         video.onloadeddata = () => {
             currentVideoElem = video;
+            if (video.videoWidth && video.videoHeight) {
+                adjustCanvasSize(video.videoWidth, video.videoHeight);
+            }
             video.play().then(() => {
                 function loop() {
                     if (currentVideoElem === video && ctx && canvas) {
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        drawContainElement(video);
+                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                         drawTextOverlay(text);
                         animationFrameId = requestAnimationFrame(loop);
                     }
@@ -413,12 +439,13 @@
     function drawCanvasFrame(bgImg, text) {
         if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawContainElement(bgImg);
+        ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
         drawTextOverlay(text);
     }
 
     function drawTextOnly(text) {
         if (!ctx || !canvas) return;
+        adjustCanvasSize(1080, 1350);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawTextOverlay(text);
     }
@@ -429,14 +456,14 @@
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
-        const maxWidth = 820;
-        const lineHeight = 65;
+        const maxWidth = canvas.width * 0.75;
+        const lineHeight = canvas.height * 0.055;
         const x = canvas.width / 2;
-        const y = canvas.height / 2;
+        const y = canvas.height * 0.45;
 
-        let fontSize = 42;
-        if (text.length > 150) fontSize = 36;
-        if (text.length > 250) fontSize = 32;
+        let fontSize = Math.round(canvas.width * 0.038);
+        if (text.length > 150) fontSize = Math.round(canvas.width * 0.032);
+        if (text.length > 250) fontSize = Math.round(canvas.width * 0.028);
 
         ctx.font = `400 ${fontSize}px 'Montserrat', sans-serif`;
 
@@ -476,24 +503,11 @@
         loadingElem = document.getElementById('loading');
         appTitle = document.getElementById('appTitle');
         appSubtitle = document.getElementById('appSubtitle');
-        initEsBtn = document.getElementById('initEsBtn');
-        initEnBtn = document.getElementById('initEnBtn');
+        introSection = document.getElementById('introSection');
+        viewerSection = document.getElementById('viewerSection');
 
-        updateUIStrings();
-
-        if (initEsBtn) {
-            initEsBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                selectInitialLanguage('es');
-            });
-        }
-
-        if (initEnBtn) {
-            initEnBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                selectInitialLanguage('en');
-            });
-        }
+        document.getElementById('initEsBtn').addEventListener('click', () => startExperience('es'));
+        document.getElementById('initEnBtn').addEventListener('click', () => startExperience('en'));
 
         if (blockSelect) {
             blockSelect.addEventListener('change', (e) => {
@@ -542,8 +556,6 @@
                 toggleLanguage();
             });
         }
-
-        loadData('frases.json');
     });
 </script>
 </body>
