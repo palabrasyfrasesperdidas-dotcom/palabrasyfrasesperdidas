@@ -387,7 +387,6 @@
                 fallbackImg.onload = () => {
                     adjustCanvasSize(fallbackImg.naturalWidth, fallbackImg.naturalHeight);
                     drawCanvasFrame(fallbackImg, item.texto);
-                    tryLoadVideo(videoPath, item.texto, fallbackImg);
                 };
                 fallbackImg.onerror = () => drawTextOnly(item.texto);
             } else {
@@ -430,12 +429,8 @@
         };
 
         video.onerror = () => {
-            if (currentLang === 'en' && videoSrc.includes('_en_video.mp4')) {
-                const fallbackVideoSrc = `plantilla${currentFilteredFrases[currentIndex].bloque}_video.mp4`;
-                tryLoadVideo(fallbackVideoSrc, text, fallbackImg);
-            } else {
-                drawCanvasFrame(fallbackImg, text);
-            }
+            // Si el vídeo no existe, aseguramos renderizar la imagen estática correspondiente
+            drawCanvasFrame(fallbackImg, text);
         };
     }
 
