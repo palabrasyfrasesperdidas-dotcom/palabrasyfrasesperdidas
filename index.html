@@ -316,7 +316,7 @@
         });
     }
 
-    // Inicialización una vez montado el árbol DOM
+    // Inicialización diferida dentro del evento DOMContentLoaded
     document.addEventListener('DOMContentLoaded', () => {
         canvas = document.getElementById('cardCanvas');
         ctx = canvas ? canvas.getContext('2d') : null;
@@ -371,6 +371,7 @@
             });
         }
 
+        // Ejecutar la actualización e inicio de datos una vez que los elementos del DOM están asignados
         updateUIStrings();
         loadData('frases.json');
     });
@@ -384,6 +385,6 @@
             }
         }
     });
-    </script>
+</script>
 </body>
 </html>
