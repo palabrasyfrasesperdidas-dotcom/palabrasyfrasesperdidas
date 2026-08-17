@@ -38,8 +38,8 @@
         }
         .intro-container {
             width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 500px;
+            margin: 10px auto;
             text-align: center;
         }
         .intro-video-wrapper {
@@ -51,7 +51,7 @@
         }
         .intro-video-wrapper video {
             width: 100%;
-            max-height: 70vh;
+            max-height: 65vh;
             display: block;
             object-fit: contain;
         }
@@ -78,7 +78,7 @@
             transform: translateY(-2px);
         }
         .viewer-section {
-            display: none; /* Se activa tras elegir idioma */
+            display: none;
             width: 100%;
             max-width: 900px;
             flex-direction: column;
@@ -113,7 +113,7 @@
         .canvas-container {
             position: relative;
             width: 100%;
-            max-width: 800px;
+            max-width: 480px;
             background-color: #000000;
             border-radius: 12px;
             overflow: hidden;
@@ -126,16 +126,15 @@
         canvas {
             width: 100%;
             height: auto;
-            max-height: 80vh;
             display: block;
         }
         .info-panel {
             margin-top: 15px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             width: 100%;
-            max-width: 800px;
+            max-width: 480px;
             font-size: 0.9rem;
             color: #aaaaaa;
         }
@@ -158,7 +157,7 @@
         <p id="appSubtitle" class="subtitle">Colección de huellas y reflexiones</p>
     </header>
 
-    <!-- PORTADA / VÍDEO DE INTRODUCCIÓN CON SELECCIÓN DE IDIOMA -->
+    <!-- PORTADA / INTRODUCCIÓN CON SELECCIÓN DE IDIOMA -->
     <div id="introSection" class="intro-container">
         <div class="intro-video-wrapper">
             <video id="introVideo" autoplay loop muted playsinline>
@@ -172,9 +171,10 @@
         </div>
     </div>
 
-    <!-- SECCIÓN DEL REPRODUCTOR / HUELAS -->
+    <!-- VISOR DE HUELLAS -->
     <div id="viewerSection" class="viewer-section">
         <div class="controls">
+            <button id="homeBtn">🏠 Inicio</button>
             <select id="blockSelect"></select>
             <button id="prevBtn">&larr; Anterior</button>
             <button id="nextBtn">Siguiente &rarr;</button>
@@ -232,6 +232,7 @@
         es: {
             title: "Palabras y frases perdidas",
             subtitle: "Colección de huellas y reflexiones",
+            home: "🏠 Inicio",
             random: "🎲 Aleatoria",
             langBtn: "🌐 English",
             prev: "&larr; Anterior",
@@ -243,6 +244,7 @@
         en: {
             title: "Lost Words and Phrases",
             subtitle: "Collection of footprints and reflections",
+            home: "🏠 Home",
             random: "🎲 Random",
             langBtn: "🌐 Español",
             prev: "&larr; Previous",
@@ -260,7 +262,7 @@
     let animationFrameId = null;
     let currentVideoElem = null;
 
-    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, huellaCounter, loadingElem, appTitle, appSubtitle, introSection, viewerSection;
+    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, homeBtn, huellaCounter, loadingElem, appTitle, appSubtitle, introSection, viewerSection;
 
     function getTemplateConfig(blockNum, lang) {
         const imgSuffix = (lang === 'en') ? '_en' : '';
@@ -290,11 +292,18 @@
         const t = translations[currentLang];
         if (appTitle) appTitle.textContent = t.title;
         if (appSubtitle) appSubtitle.textContent = t.subtitle;
+        if (homeBtn) homeBtn.innerHTML = t.home;
         if (randomBtn) randomBtn.innerHTML = t.random;
         if (langBtn) langBtn.innerHTML = t.langBtn;
         if (prevBtn) prevBtn.innerHTML = t.prev;
         if (nextBtn) nextBtn.innerHTML = t.next;
         populateSelect();
+    }
+
+    function showIntro() {
+        stopAnimation();
+        if (viewerSection) viewerSection.style.display = 'none';
+        if (introSection) introSection.style.display = 'block';
     }
 
     function startExperience(lang) {
@@ -387,18 +396,14 @@
             tryLoadVideo(config.video, item.texto, bgImg);
         };
         bgImg.onerror = () => {
-            if (config.img.includes('_en.png')) {
-                const fallbackImg = new Image();
-                fallbackImg.src = `plantilla${item.bloque}.png`;
-                fallbackImg.onload = () => {
-                    adjustCanvasSize(fallbackImg.naturalWidth, fallbackImg.naturalHeight);
-                    drawCanvasFrame(fallbackImg, item.texto);
-                    tryLoadVideo(config.video, item.texto, fallbackImg);
-                };
-                fallbackImg.onerror = () => drawTextOnly(item.texto);
-            } else {
-                drawTextOnly(item.texto);
-            }
+            const fallbackImg = new Image();
+            fallbackImg.src = `plantilla${item.bloque}.png`;
+            fallbackImg.onload = () => {
+                adjustCanvasSize(fallbackImg.naturalWidth, fallbackImg.naturalHeight);
+                drawCanvasFrame(fallbackImg, item.texto);
+                tryLoadVideo(config.video, item.texto, fallbackImg);
+            };
+            fallbackImg.onerror = () => drawTextOnly(item.texto);
         };
     }
 
@@ -456,14 +461,14 @@
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
-        const maxWidth = canvas.width * 0.75;
-        const lineHeight = canvas.height * 0.055;
+        const maxWidth = canvas.width * 0.8;
+        const lineHeight = canvas.height * 0.052;
         const x = canvas.width / 2;
-        const y = canvas.height * 0.45;
+        const y = canvas.height * 0.46;
 
         let fontSize = Math.round(canvas.width * 0.038);
         if (text.length > 150) fontSize = Math.round(canvas.width * 0.032);
-        if (text.length > 250) fontSize = Math.round(canvas.width * 0.028);
+        if (text.length > 250) fontSize = Math.round(canvas.width * 0.027);
 
         ctx.font = `400 ${fontSize}px 'Montserrat', sans-serif`;
 
@@ -499,6 +504,7 @@
         nextBtn = document.getElementById('nextBtn');
         randomBtn = document.getElementById('randomBtn');
         langBtn = document.getElementById('langBtn');
+        homeBtn = document.getElementById('homeBtn');
         huellaCounter = document.getElementById('huellaCounter');
         loadingElem = document.getElementById('loading');
         appTitle = document.getElementById('appTitle');
@@ -508,6 +514,13 @@
 
         document.getElementById('initEsBtn').addEventListener('click', () => startExperience('es'));
         document.getElementById('initEnBtn').addEventListener('click', () => startExperience('en'));
+
+        if (homeBtn) {
+            homeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showIntro();
+            });
+        }
 
         if (blockSelect) {
             blockSelect.addEventListener('change', (e) => {
