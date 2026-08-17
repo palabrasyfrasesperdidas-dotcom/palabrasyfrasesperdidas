@@ -24,6 +24,8 @@
         header {
             text-align: center;
             margin-bottom: 20px;
+            width: 100%;
+            max-width: 900px;
         }
         h1 {
             font-size: 2rem;
@@ -33,6 +35,25 @@
         p.subtitle {
             font-size: 1rem;
             color: #888888;
+        }
+        .intro-video-wrapper {
+            margin: 20px auto;
+            max-width: 900px;
+            width: 100%;
+        }
+        .intro-video-wrapper video {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            display: block;
+        }
+        .lang-select-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
         }
         .controls {
             display: flex;
@@ -104,9 +125,23 @@
 </head>
 <body>
 
-    <header>
+    <header id="welcomeSection">
         <h1 id="appTitle">Palabras y frases perdidas</h1>
         <p id="appSubtitle" class="subtitle">Colección de huellas y reflexiones</p>
+
+        <!-- Vídeo de presentación -->
+        <div class="intro-video-wrapper">
+            <video id="introVideo" autoplay loop muted playsinline>
+                <source src="intro.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de vídeo.
+            </video>
+        </div>
+
+        <!-- Botones de selección de idioma inicial -->
+        <div class="lang-select-container">
+            <button id="initEsBtn">🇪🇸 Español</button>
+            <button id="initEnBtn">🇬🇧 English</button>
+        </div>
     </header>
 
     <div class="controls">
@@ -194,7 +229,7 @@
     let animationFrameId = null;
     let currentVideoElem = null;
 
-    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, huellaCounter, loadingElem, appTitle, appSubtitle;
+    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, huellaCounter, loadingElem, appTitle, appSubtitle, initEsBtn, initEnBtn;
 
     function getTemplateConfig(blockNum, lang) {
         const imgSuffix = (lang === 'en') ? '_en' : '';
@@ -231,6 +266,13 @@
         populateSelect();
     }
 
+    function selectInitialLanguage(lang) {
+        currentLang = lang;
+        updateUIStrings();
+        const fileToLoad = (currentLang === 'es') ? 'frases.json' : 'frases_en.json';
+        loadData(fileToLoad);
+    }
+
     function toggleLanguage() {
         currentLang = (currentLang === 'es') ? 'en' : 'es';
         updateUIStrings();
@@ -262,7 +304,6 @@
     }
 
     function filterByBlock(blockNum) {
-        // Conversión limpia a número para evitar discrepancias tipo string vs number
         currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(blockNum));
         currentIndex = 0;
 
@@ -304,7 +345,6 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-        // Dibujar primero la imagen base para garantizar visualización instantánea
         const bgImg = new Image();
         bgImg.src = config.img;
         bgImg.onload = () => {
@@ -312,7 +352,6 @@
             tryLoadVideo(config.video, item.texto, bgImg);
         };
         bgImg.onerror = () => {
-            // Reintento con plantilla predeterminada si falta la variante traducida
             if (config.img.includes('_en.png')) {
                 const fallbackImg = new Image();
                 fallbackImg.src = `plantilla${item.bloque}.png`;
@@ -327,6 +366,25 @@
         };
     }
 
+    /* Dibujado proporcional adaptativo (Contain) */
+    function drawContainElement(mediaElem) {
+        if (!ctx || !canvas) return;
+        const mediaWidth = mediaElem.videoWidth || mediaElem.naturalWidth || mediaElem.width;
+        const mediaHeight = mediaElem.videoHeight || mediaElem.naturalHeight || mediaElem.height;
+
+        if (!mediaWidth || !mediaHeight) return;
+
+        const hRatio = canvas.width / mediaWidth;
+        const vRatio = canvas.height / mediaHeight;
+        const ratio = Math.min(hRatio, vRatio);
+
+        const centerShiftX = (canvas.width - mediaWidth * ratio) / 2;
+        const centerShiftY = (canvas.height - mediaHeight * ratio) / 2;
+
+        ctx.drawImage(mediaElem, 0, 0, mediaWidth, mediaHeight,
+                      centerShiftX, centerShiftY, mediaWidth * ratio, mediaHeight * ratio);
+    }
+
     function tryLoadVideo(videoSrc, text, fallbackImg) {
         const video = document.createElement('video');
         video.src = videoSrc;
@@ -334,20 +392,19 @@
         video.loop = true;
         video.playsInline = true;
 
-        video.oncanplay = () => {
+        video.onloadeddata = () => {
             currentVideoElem = video;
             video.play().then(() => {
                 function loop() {
                     if (currentVideoElem === video && ctx && canvas) {
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        drawContainElement(video);
                         drawTextOverlay(text);
                         animationFrameId = requestAnimationFrame(loop);
                     }
                 }
                 loop();
             }).catch(() => {
-                // Si el navegador impide el autoplay, se mantiene la imagen cargada
                 drawCanvasFrame(fallbackImg, text);
             });
         };
@@ -356,7 +413,7 @@
     function drawCanvasFrame(bgImg, text) {
         if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+        drawContainElement(bgImg);
         drawTextOverlay(text);
     }
 
@@ -419,8 +476,24 @@
         loadingElem = document.getElementById('loading');
         appTitle = document.getElementById('appTitle');
         appSubtitle = document.getElementById('appSubtitle');
+        initEsBtn = document.getElementById('initEsBtn');
+        initEnBtn = document.getElementById('initEnBtn');
 
         updateUIStrings();
+
+        if (initEsBtn) {
+            initEsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                selectInitialLanguage('es');
+            });
+        }
+
+        if (initEnBtn) {
+            initEnBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                selectInitialLanguage('en');
+            });
+        }
 
         if (blockSelect) {
             blockSelect.addEventListener('change', (e) => {
