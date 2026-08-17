@@ -249,33 +249,18 @@
             <p class="language-title">Selecciona tu idioma / Select language</p>
             <div class="btn-group">
                 <button class="btn-lang" onclick="selectLanguage('es')">Español</button>
-                <button class="btn-lang" onclick="selectLanguage('en')">English (Próximamente)</button>
+                <button class="btn-lang" onclick="selectLanguage('en')">English</button>
             </div>
         </div>
     </div>
 
     <header>
-        <h1>Palabras y frases perdidas</h1>
-        <p>Colección de huellas y reflexiones</p>
+        <h1 id="appTitle">Palabras y frases perdidas</h1>
+        <p id="appSubtitle">Colección de huellas y reflexiones</p>
     </header>
 
     <div class="controls-top">
-        <select id="blockSelect">
-            <option value="1" selected>Bloque 1: Geometría del destino</option>
-            <option value="2">Bloque 2: Arquitectura del alma</option>
-            <option value="3">Bloque 3: Anatomía del silencio</option>
-            <option value="4">Bloque 4: El Miedo y sus Sombras</option>
-            <option value="5">Bloque 5: La Mirada del Mundo</option>
-            <option value="6">Bloque 6: El Ruido de los Necios</option>
-            <option value="7">Bloque 7: El Cielo de las Estrellas</option>
-            <option value="8">Bloque 8: La Ética del Corazón</option>
-            <option value="9">Bloque 9: El Tiempo que Respira</option>
-            <option value="10">Bloque 10: El Juego de Vivir</option>
-            <option value="11">Bloque 11: El latido de la libertad</option>
-            <option value="12">Bloque 12: La Razón y el Corazón</option>
-            <option value="13">Bloque 13: El Universo de las Palabras</option>
-            <option value="14">Bloque 14: La Soledad que Habla</option>
-        </select>
+        <select id="blockSelect"></select>
 
         <button class="btn-action" id="randomBtn">🎲 Aleatoria</button>
         <button class="btn-action" onclick="showLanguageScreen()">🌐 Idioma</button>
@@ -311,6 +296,65 @@
             14: { img: 'plantilla14.png', video: 'plantilla14_video.mp4' }
         };
 
+        // Definición de nombres de bloques según el idioma
+        const blockNames = {
+            es: [
+                "Bloque 1: Geometría del destino",
+                "Bloque 2: Arquitectura del alma",
+                "Bloque 3: Anatomía del silencio",
+                "Bloque 4: El Miedo y sus Sombras",
+                "Bloque 5: La Mirada del Mundo",
+                "Bloque 6: El Ruido de los Necios",
+                "Bloque 7: El Cielo de las Estrellas",
+                "Bloque 8: La Ética del Corazón",
+                "Bloque 9: El Tiempo que Respira",
+                "Bloque 10: El Juego de Vivir",
+                "Bloque 11: El latido de la libertad",
+                "Bloque 12: La Razón y el Corazón",
+                "Bloque 13: El Universo de las Palabras",
+                "Bloque 14: La Soledad que Habla"
+            ],
+            en: [
+                "Block 1: Geometry of Destiny",
+                "Block 2: Architecture of the Soul",
+                "Block 3: Anatomy of Silence",
+                "Block 4: Fear and Its Shadows",
+                "Block 5: The World's Gaze",
+                "Block 6: The Noise of Fools",
+                "Block 7: The Sky of Stars",
+                "Block 8: Ethics of the Heart",
+                "Block 9: Time That Breathes",
+                "Block 10: The Game of Living",
+                "Block 11: The Pulse of Freedom",
+                "Block 12: Reason and Heart",
+                "Block 13: Universe of Words",
+                "Block 14: Solitude That Speaks"
+            ]
+        };
+
+        const translations = {
+            es: {
+                title: "Palabras y frases perdidas",
+                subtitle: "Colección de huellas y reflexiones",
+                random: "🎲 Aleatoria",
+                prev: "&larr; Anterior",
+                next: "Siguiente &rarr;",
+                loading: "Cargando huellas...",
+                noFootprints: "Sin huellas en este bloque",
+                footprintLabel: "Huella"
+            },
+            en: {
+                title: "Lost Words and Phrases",
+                subtitle: "Collection of footprints and reflections",
+                random: "🎲 Random",
+                prev: "&larr; Previous",
+                next: "Next &rarr;",
+                loading: "Loading footprints...",
+                noFootprints: "No footprints in this block",
+                footprintLabel: "Footprint"
+            }
+        };
+
         let currentLang = 'es';
         let allFrases = [];
         let currentFilteredFrases = [];
@@ -330,9 +374,35 @@
         const randomBtn = document.getElementById('randomBtn');
         const huellaCounter = document.getElementById('huellaCounter');
         const loadingElem = document.getElementById('loading');
+        const appTitle = document.getElementById('appTitle');
+        const appSubtitle = document.getElementById('appSubtitle');
+
+        function updateUIStrings() {
+            const t = translations[currentLang];
+            appTitle.textContent = t.title;
+            appSubtitle.textContent = t.subtitle;
+            randomBtn.innerHTML = t.random;
+            prevBtn.innerHTML = t.prev;
+            nextBtn.innerHTML = t.next;
+
+            // Rellenar selector de bloques
+            const currentBlockVal = blockSelect.value || "1";
+            blockSelect.innerHTML = "";
+            const names = blockNames[currentLang];
+            names.forEach((name, index) => {
+                const opt = document.createElement('option');
+                opt.value = (index + 1).toString();
+                opt.textContent = name;
+                if ((index + 1).toString() === currentBlockVal) {
+                    opt.selected = true;
+                }
+                blockSelect.appendChild(opt);
+            });
+        }
 
         function selectLanguage(lang) {
             currentLang = lang;
+            updateUIStrings();
             document.body.classList.remove('intro-active');
             document.getElementById('introOverlay').style.display = 'none';
             document.getElementById('videoBg').style.display = 'none';
@@ -348,8 +418,9 @@
         }
 
         async function loadData(file) {
+            const t = translations[currentLang];
             loadingElem.style.display = 'block';
-            loadingElem.textContent = "Cargando huellas...";
+            loadingElem.textContent = t.loading;
             try {
                 const response = await fetch(file + '?v=' + new Date().getTime());
                 if (!response.ok) throw new Error("No se encuentra el archivo " + file);
@@ -388,7 +459,7 @@
 
             if (currentFilteredFrases.length === 0) {
                 stopAnimation();
-                huellaCounter.textContent = "Sin huellas en este bloque";
+                huellaCounter.textContent = translations[currentLang].noFootprints;
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 return;
             }
@@ -418,7 +489,8 @@
             const item = currentFilteredFrases[currentIndex];
             const config = blockTemplates[item.bloque] || { img: 'plantilla1.png', video: 'plantilla1_video.mp4' };
 
-            huellaCounter.textContent = `Huella ${item.id} (${currentIndex + 1} de ${currentFilteredFrases.length})`;
+            const label = translations[currentLang].footprintLabel;
+            huellaCounter.textContent = `${label} ${item.id} (${currentIndex + 1} / ${currentFilteredFrases.length})`;
             prevBtn.disabled = currentIndex === 0;
             nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
@@ -571,6 +643,9 @@
                 }
             }
         });
+
+        // Inicialización básica de UI
+        updateUIStrings();
     </script>
 </body>
 </html>
