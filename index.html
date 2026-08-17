@@ -1,7 +1,7 @@
 <script>
-    // Mapeo dinámico de plantillas según el idioma (corregido _EN a mayúsculas)
+    // Mapeo dinámico de plantillas según el idioma (sufijo _en en minúsculas)
     function getTemplateConfig(blockNum, lang) {
-        const suffix = (lang === 'en') ? '_EN' : '';
+        const suffix = (lang === 'en') ? '_en' : '';
         return {
             img: `plantilla${blockNum}${suffix}.png`,
             video: `plantilla${blockNum}${suffix}_video.mp4`
@@ -60,7 +60,7 @@
             title: "Lost Words and Phrases",
             subtitle: "Collection of footprints and reflections",
             random: "🎲 Random",
-            langBtn: "🌐 English", // Muestra dinámicamente el idioma activo
+            langBtn: "🌐 English",
             prev: "&larr; Previous",
             next: "Next &rarr;",
             loading: "Loading footprints...",
@@ -81,7 +81,7 @@
     let useFallbackImage = false;
 
     const canvas = document.getElementById('cardCanvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas ? canvas.getContext('2d') : null;
     const blockSelect = document.getElementById('blockSelect');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -95,29 +95,27 @@
     function updateUIStrings() {
         const t = translations[currentLang];
         
-        // 1. Encabezados
-        appTitle.textContent = t.title;
-        appSubtitle.textContent = t.subtitle;
-        
-        // 2. Botones
-        randomBtn.innerHTML = t.random;
-        langBtn.innerHTML = t.langBtn;
-        prevBtn.innerHTML = t.prev;
-        nextBtn.innerHTML = t.next;
+        if (appTitle) appTitle.textContent = t.title;
+        if (appSubtitle) appSubtitle.textContent = t.subtitle;
+        if (randomBtn) randomBtn.innerHTML = t.random;
+        if (langBtn) langBtn.innerHTML = t.langBtn;
+        if (prevBtn) prevBtn.innerHTML = t.prev;
+        if (nextBtn) nextBtn.innerHTML = t.next;
 
-        // 3. Reconstrucción del selector de bloques
-        const currentBlockVal = blockSelect.value || "1";
-        blockSelect.innerHTML = "";
-        const names = blockNames[currentLang];
-        names.forEach((name, index) => {
-            const opt = document.createElement('option');
-            opt.value = (index + 1).toString();
-            opt.textContent = name;
-            if ((index + 1).toString() === currentBlockVal) {
-                opt.selected = true;
-            }
-            blockSelect.appendChild(opt);
-        });
+        if (blockSelect) {
+            const currentBlockVal = blockSelect.value || "1";
+            blockSelect.innerHTML = "";
+            const names = blockNames[currentLang];
+            names.forEach((name, index) => {
+                const opt = document.createElement('option');
+                opt.value = (index + 1).toString();
+                opt.textContent = name;
+                if ((index + 1).toString() === currentBlockVal) {
+                    opt.selected = true;
+                }
+                blockSelect.appendChild(opt);
+            });
+        }
     }
 
     function selectLanguage(lang) {
@@ -125,8 +123,10 @@
         updateUIStrings();
         
         document.body.classList.remove('intro-active');
-        document.getElementById('introOverlay').style.display = 'none';
-        document.getElementById('videoBg').style.display = 'none';
+        const overlay = document.getElementById('introOverlay');
+        const videoBg = document.getElementById('videoBg');
+        if (overlay) overlay.style.display = 'none';
+        if (videoBg) videoBg.style.display = 'none';
 
         const fileToLoad = (lang === 'es') ? 'frases.json' : `frases_${lang}.json`;
         loadData(fileToLoad);
@@ -134,30 +134,36 @@
 
     function showLanguageScreen() {
         document.body.classList.add('intro-active');
-        document.getElementById('introOverlay').style.display = 'flex';
-        document.getElementById('videoBg').style.display = 'flex';
+        const overlay = document.getElementById('introOverlay');
+        const videoBg = document.getElementById('videoBg');
+        if (overlay) overlay.style.display = 'flex';
+        if (videoBg) videoBg.style.display = 'flex';
     }
 
     async function loadData(file) {
         const t = translations[currentLang];
-        loadingElem.style.display = 'block';
-        loadingElem.textContent = t.loading;
+        if (loadingElem) {
+            loadingElem.style.display = 'block';
+            loadingElem.textContent = t.loading;
+        }
         try {
             const response = await fetch(file + '?v=' + new Date().getTime());
             if (!response.ok) throw new Error("No se encuentra el archivo " + file);
             allFrases = await response.json();
-            loadingElem.style.display = 'none';
+            if (loadingElem) loadingElem.style.display = 'none';
 
             const savedBlock = localStorage.getItem('pyfp_current_block');
-            if (savedBlock && blockSelect.querySelector(`option[value="${savedBlock}"]`)) {
+            if (savedBlock && blockSelect && blockSelect.querySelector(`option[value="${savedBlock}"]`)) {
                 blockSelect.value = savedBlock;
             }
 
-            filterByBlock(parseInt(blockSelect.value), true);
+            filterByBlock(parseInt(blockSelect.value || "1"), true);
         } catch (error) {
             console.error("Error al cargar frases:", error);
-            loadingElem.style.display = 'block';
-            loadingElem.textContent = "Error al leer " + file + ".";
+            if (loadingElem) {
+                loadingElem.style.display = 'block';
+                loadingElem.textContent = "Error al leer " + file + ".";
+            }
         }
     }
 
@@ -179,8 +185,8 @@
 
         if (currentFilteredFrases.length === 0) {
             stopAnimation();
-            huellaCounter.textContent = translations[currentLang].noFootprints;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (huellaCounter) huellaCounter.textContent = translations[currentLang].noFootprints;
+            if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
             return;
         }
 
@@ -208,9 +214,9 @@
         const config = getTemplateConfig(item.bloque, currentLang);
 
         const label = translations[currentLang].footprintLabel;
-        huellaCounter.textContent = `${label} ${item.id} (${currentIndex + 1} / ${currentFilteredFrases.length})`;
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
+        if (huellaCounter) huellaCounter.textContent = `${label} ${item.id} (${currentIndex + 1} / ${currentFilteredFrases.length})`;
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
         useFallbackImage = false;
 
@@ -248,7 +254,7 @@
         });
 
         function loop() {
-            if (activeVideo === videoElem && !useFallbackImage) {
+            if (activeVideo === videoElem && !useFallbackImage && ctx && canvas) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(videoElem, 0, 0, canvas.width, canvas.height);
                 drawTextOverlay(text);
@@ -272,12 +278,14 @@
     }
 
     function drawStaticCanvas(bgImg, text) {
+        if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
         drawTextOverlay(text);
     }
 
     function drawTextOverlay(text) {
+        if (!ctx || !canvas) return;
         ctx.fillStyle = "#ffffff";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -317,38 +325,46 @@
         });
     }
 
-    blockSelect.addEventListener('change', (e) => {
-        filterByBlock(parseInt(e.target.value));
-    });
+    if (blockSelect) {
+        blockSelect.addEventListener('change', (e) => {
+            filterByBlock(parseInt(e.target.value));
+        });
+    }
 
-    prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (currentIndex > 0) {
-            currentIndex--;
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderCurrentHuella();
+            }
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentIndex < currentFilteredFrases.length - 1) {
+                currentIndex++;
+                renderCurrentHuella();
+            }
+        });
+    }
+
+    if (randomBtn) {
+        randomBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (allFrases.length === 0) return;
+            const randomIndex = Math.floor(Math.random() * allFrases.length);
+            const randomItem = allFrases[randomIndex];
+            
+            if (blockSelect) blockSelect.value = randomItem.bloque;
+            currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(randomItem.bloque));
+            currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
+            localStorage.setItem('pyfp_current_block', randomItem.bloque);
             renderCurrentHuella();
-        }
-    });
-
-    nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (currentIndex < currentFilteredFrases.length - 1) {
-            currentIndex++;
-            renderCurrentHuella();
-        }
-    });
-
-    randomBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (allFrases.length === 0) return;
-        const randomIndex = Math.floor(Math.random() * allFrases.length);
-        const randomItem = allFrases[randomIndex];
-        
-        blockSelect.value = randomItem.bloque;
-        currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(randomItem.bloque));
-        currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
-        localStorage.setItem('pyfp_current_block', randomItem.bloque);
-        renderCurrentHuella();
-    });
+        });
+    }
 
     window.addEventListener('pageshow', (event) => {
         if (currentFilteredFrases.length > 0) {
@@ -360,6 +376,7 @@
         }
     });
 
-    // Inicialización básica
+    // Inicialización al cargar
     updateUIStrings();
+    loadData('frases.json');
 </script>
