@@ -118,7 +118,7 @@
     </div>
 
     <div class="canvas-container">
-        <div id="loading">Cargando huellas...</div>
+        <div id="loading">Cargando...</div>
         <canvas id="cardCanvas" width="1280" height="720"></canvas>
     </div>
 
@@ -128,10 +128,11 @@
 
 <script>
     function getTemplateConfig(blockNum, lang) {
-        const suffix = (lang === 'en') ? '_en' : '';
+        // Coincide exactamente con los nombres de archivo en tu repositorio de GitHub
+        const imgSuffix = (lang === 'en') ? '_en' : '';
         return {
-            img: `plantilla${blockNum}${suffix}.png`,
-            video: `plantilla${blockNum}${suffix}_video.mp4`
+            img: `plantilla${blockNum}${imgSuffix}.png`,
+            video: `plantilla${blockNum}_video.mp4`
         };
     }
 
@@ -233,8 +234,7 @@
     }
 
     function toggleLanguage() {
-        const nextLang = (currentLang === 'es') ? 'en' : 'es';
-        currentLang = nextLang;
+        currentLang = (currentLang === 'es') ? 'en' : 'es';
         updateUIStrings();
         const fileToLoad = (currentLang === 'es') ? 'frases.json' : `frases_${currentLang}.json`;
         loadData(fileToLoad);
@@ -248,7 +248,7 @@
         }
         try {
             const response = await fetch(file + '?v=' + new Date().getTime());
-            if (!response.ok) throw new Error("No se encuentra el archivo " + file);
+            if (!response.ok) throw new Error("No se encuentra " + file);
             allFrases = await response.json();
             if (loadingElem) loadingElem.style.display = 'none';
 
@@ -257,7 +257,7 @@
 
             filterByBlock(parseInt(savedBlock), true);
         } catch (error) {
-            console.error("Error al cargar frases:", error);
+            console.error("Error al cargar datos:", error);
             if (loadingElem) {
                 loadingElem.style.display = 'block';
                 loadingElem.textContent = "Error al leer " + file;
@@ -316,31 +316,42 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-        // Carga prioritaria de la Plantilla en Imagen de fondo
-        loadAndDrawImage(config.img, item.texto, config.video);
+        // Primero dibujamos la imagen estática obligatoriamente
+        displayImageFirst(config.img, item.texto, config.video);
     }
 
-    function loadAndDrawImage(imgPath, text, videoPath) {
+    function displayImageFirst(imgPath, text, videoPath) {
         if (loadedImages[imgPath]) {
             drawStaticCanvas(loadedImages[imgPath], text);
-            tryLoadVideo(videoPath, text);
+            attemptVideoPlayback(videoPath, text);
         } else {
             const img = new Image();
             img.src = imgPath;
             img.onload = () => {
                 loadedImages[imgPath] = img;
                 drawStaticCanvas(img, text);
-                tryLoadVideo(videoPath, text);
+                attemptVideoPlayback(videoPath, text);
             };
             img.onerror = () => {
-                // Si la imagen falla, dibuja de todos modos el texto
-                if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
-                drawTextOverlay(text);
+                // Intento secundario si la plantilla en inglés no existe
+                if (imgPath.includes('_en.png')) {
+                    const fallbackImg = imgPath.replace('_en.png', '.png');
+                    const imgFallback = new Image();
+                    imgFallback.src = fallbackImg;
+                    imgFallback.onload = () => {
+                        loadedImages[imgPath] = imgFallback;
+                        drawStaticCanvas(imgFallback, text);
+                        attemptVideoPlayback(videoPath, text);
+                    };
+                    imgFallback.onerror = () => drawTextOnly(text);
+                } else {
+                    drawTextOnly(text);
+                }
             };
         }
     }
 
-    function tryLoadVideo(videoPath, text) {
+    function attemptVideoPlayback(videoPath, text) {
         if (loadedVideos[videoPath]) {
             startVideoLoop(loadedVideos[videoPath], text);
         } else {
@@ -354,9 +365,6 @@
             vid.oncanplay = () => {
                 loadedVideos[videoPath] = vid;
                 startVideoLoop(vid, text);
-            };
-            vid.onerror = () => {
-                // Si no existe video, mantiene la imagen de fondo estática ya dibujada
             };
         }
     }
@@ -374,7 +382,7 @@
             }
             loop();
         }).catch(() => {
-            // Mantiene imagen estática si el navegador bloquea la reproducción automática
+            // Mantiene la plantilla de imagen estática
         });
     }
 
@@ -382,6 +390,12 @@
         if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+        drawTextOverlay(text);
+    }
+
+    function drawTextOnly(text) {
+        if (!ctx || !canvas) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawTextOverlay(text);
     }
 
