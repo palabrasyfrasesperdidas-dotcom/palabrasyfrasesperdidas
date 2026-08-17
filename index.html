@@ -400,7 +400,7 @@
 
             useFallbackImage = false;
 
-            // Intenta reproducir el video correspondiente al bloque (1 al 9)
+            // Intenta reproducir el vídeo correspondiente al bloque (del 1 al 14)
             if (loadedVideos[config.video]) {
                 startVideoLoop(loadedVideos[config.video], item.texto);
             } else {
@@ -419,7 +419,7 @@
                 };
 
                 vid.onerror = () => {
-                    // Si el mp4 falla o no existe (bloques 10 a 14), pasa automáticamente a la imagen .png
+                    // Si el archivo mp4 falla o no carga, recurre automáticamente a la imagen .png estática
                     useFallbackImage = true;
                     loadFallbackImage(config.img, item.texto);
                 };
@@ -429,7 +429,7 @@
         function startVideoLoop(videoElem, text) {
             activeVideo = videoElem;
             videoElem.play().catch(() => {
-                // Si el navegador bloquea la reproducción automática con vídeo, recurre a la imagen estática
+                // Si el navegador bloquea la reproducción automática de vídeo, recurre a la imagen estática
                 useFallbackImage = true;
                 const item = currentFilteredFrases[currentIndex];
                 const config = blockTemplates[item.bloque];
