@@ -98,6 +98,7 @@
             padding: 10px 20px;
             border-radius: 8px;
             display: none;
+            z-index: 10;
         }
     </style>
 </head>
@@ -113,7 +114,7 @@
         <button id="prevBtn">&larr; Anterior</button>
         <button id="nextBtn">Siguiente &rarr;</button>
         <button id="randomBtn">🎲 Aleatoria</button>
-        <button id="langBtn" onclick="toggleLanguage()">🌐 Idioma</button>
+        <button id="langBtn" onclick="toggleLanguage()">🌐 English</button>
     </div>
 
     <div class="canvas-container">
@@ -177,7 +178,7 @@
             langBtn: "🌐 English",
             prev: "&larr; Anterior",
             next: "Siguiente &rarr;",
-            loading: "Cargando huellas...",
+            loading: "Cargando...",
             noFootprints: "Sin huellas en este bloque",
             footprintLabel: "Huella"
         },
@@ -188,7 +189,7 @@
             langBtn: "🌐 Español",
             prev: "&larr; Previous",
             next: "Next &rarr;",
-            loading: "Loading footprints...",
+            loading: "Loading...",
             noFootprints: "No footprints in this block",
             footprintLabel: "Footprint"
         }
@@ -203,13 +204,11 @@
     let loadedVideos = {};
     let activeVideo = null;
     let animationFrameId = null;
-    let useFallbackImage = false;
 
     let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, huellaCounter, loadingElem, appTitle, appSubtitle;
 
     function updateUIStrings() {
         const t = translations[currentLang];
-        
         if (appTitle) appTitle.textContent = t.title;
         if (appSubtitle) appSubtitle.textContent = t.subtitle;
         if (randomBtn) randomBtn.innerHTML = t.random;
@@ -235,13 +234,9 @@
 
     function toggleLanguage() {
         const nextLang = (currentLang === 'es') ? 'en' : 'es';
-        selectLanguage(nextLang);
-    }
-
-    function selectLanguage(lang) {
-        currentLang = lang;
+        currentLang = nextLang;
         updateUIStrings();
-        const fileToLoad = (lang === 'es') ? 'frases.json' : `frases_${lang}.json`;
+        const fileToLoad = (currentLang === 'es') ? 'frases.json' : `frases_${currentLang}.json`;
         loadData(fileToLoad);
     }
 
@@ -257,17 +252,15 @@
             allFrases = await response.json();
             if (loadingElem) loadingElem.style.display = 'none';
 
-            const savedBlock = localStorage.getItem('pyfp_current_block');
-            if (savedBlock && blockSelect && blockSelect.querySelector(`option[value="${savedBlock}"]`)) {
-                blockSelect.value = savedBlock;
-            }
+            const savedBlock = localStorage.getItem('pyfp_current_block') || "1";
+            if (blockSelect) blockSelect.value = savedBlock;
 
-            filterByBlock(parseInt(blockSelect ? blockSelect.value : "1"), true);
+            filterByBlock(parseInt(savedBlock), true);
         } catch (error) {
             console.error("Error al cargar frases:", error);
             if (loadingElem) {
                 loadingElem.style.display = 'block';
-                loadingElem.textContent = "Error al leer " + file + ".";
+                loadingElem.textContent = "Error al leer " + file;
             }
         }
     }
@@ -323,63 +316,66 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-        useFallbackImage = false;
-
-        if (loadedVideos[config.video]) {
-            startVideoLoop(loadedVideos[config.video], item.texto);
-        } else {
-            const vid = document.createElement('video');
-            vid.src = config.video;
-            vid.autoplay = true;
-            vid.loop = true;
-            vid.muted = true;
-            vid.playsInline = true;
-
-            vid.oncanplay = () => {
-                loadedVideos[config.video] = vid;
-                if (!useFallbackImage) {
-                    startVideoLoop(vid, item.texto);
-                }
-            };
-
-            vid.onerror = () => {
-                useFallbackImage = true;
-                loadFallbackImage(config.img, item.texto);
-            };
-        }
+        // Carga prioritaria de la Plantilla en Imagen de fondo
+        loadAndDrawImage(config.img, item.texto, config.video);
     }
 
-    function startVideoLoop(videoElem, text) {
-        activeVideo = videoElem;
-        videoElem.play().catch(() => {
-            useFallbackImage = true;
-            const item = currentFilteredFrases[currentIndex];
-            const config = getTemplateConfig(item.bloque, currentLang);
-            loadFallbackImage(config.img, text);
-        });
-
-        function loop() {
-            if (activeVideo === videoElem && !useFallbackImage && ctx && canvas) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(videoElem, 0, 0, canvas.width, canvas.height);
-                drawTextOverlay(text);
-                animationFrameId = requestAnimationFrame(loop);
-            }
-        }
-        loop();
-    }
-
-    function loadFallbackImage(imgPath, text) {
+    function loadAndDrawImage(imgPath, text, videoPath) {
         if (loadedImages[imgPath]) {
             drawStaticCanvas(loadedImages[imgPath], text);
+            tryLoadVideo(videoPath, text);
         } else {
             const img = new Image();
             img.src = imgPath;
             img.onload = () => {
                 loadedImages[imgPath] = img;
                 drawStaticCanvas(img, text);
+                tryLoadVideo(videoPath, text);
+            };
+            img.onerror = () => {
+                // Si la imagen falla, dibuja de todos modos el texto
+                if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawTextOverlay(text);
             };
         }
+    }
+
+    function tryLoadVideo(videoPath, text) {
+        if (loadedVideos[videoPath]) {
+            startVideoLoop(loadedVideos[videoPath], text);
+        } else {
+            const vid = document.createElement('video');
+            vid.src = videoPath;
+            vid.autoplay = true;
+            vid.loop = true;
+            vid.muted = true;
+            vid.playsInline = true;
+
+            vid.oncanplay = () => {
+                loadedVideos[videoPath] = vid;
+                startVideoLoop(vid, text);
+            };
+            vid.onerror = () => {
+                // Si no existe video, mantiene la imagen de fondo estática ya dibujada
+            };
+        }
+    }
+
+    function startVideoLoop(videoElem, text) {
+        activeVideo = videoElem;
+        videoElem.play().then(() => {
+            function loop() {
+                if (activeVideo === videoElem && ctx && canvas) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(videoElem, 0, 0, canvas.width, canvas.height);
+                    drawTextOverlay(text);
+                    animationFrameId = requestAnimationFrame(loop);
+                }
+            }
+            loop();
+        }).catch(() => {
+            // Mantiene imagen estática si el navegador bloquea la reproducción automática
+        });
     }
 
     function drawStaticCanvas(bgImg, text) {
@@ -486,16 +482,6 @@
 
         updateUIStrings();
         loadData('frases.json');
-    });
-
-    window.addEventListener('pageshow', (event) => {
-        if (currentFilteredFrases.length > 0) {
-            const savedIndex = localStorage.getItem('pyfp_current_index');
-            if (savedIndex !== null && !isNaN(savedIndex)) {
-                currentIndex = parseInt(savedIndex, 10);
-                renderCurrentHuella();
-            }
-        }
     });
 </script>
 </body>
