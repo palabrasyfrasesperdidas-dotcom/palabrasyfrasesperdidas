@@ -114,7 +114,7 @@
         <button id="prevBtn">&larr; Anterior</button>
         <button id="nextBtn">Siguiente &rarr;</button>
         <button id="randomBtn">🎲 Aleatoria</button>
-        <button id="langBtn" onclick="toggleLanguage()">🌐 English</button>
+        <button id="langBtn">🌐 English</button>
     </div>
 
     <div class="canvas-container">
@@ -127,15 +127,6 @@
     </div>
 
 <script>
-    function getTemplateConfig(blockNum, lang) {
-        // Coincide exactamente con los nombres de archivo en tu repositorio de GitHub
-        const imgSuffix = (lang === 'en') ? '_en' : '';
-        return {
-            img: `plantilla${blockNum}${imgSuffix}.png`,
-            video: `plantilla${blockNum}_video.mp4`
-        };
-    }
-
     const blockNames = {
         es: [
             "Bloque 1: Geometría del destino",
@@ -200,13 +191,34 @@
     let allFrases = [];
     let currentFilteredFrases = [];
     let currentIndex = 0;
-    
-    let loadedImages = {};
-    let loadedVideos = {};
-    let activeVideo = null;
     let animationFrameId = null;
+    let currentVideoElem = null;
 
     let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, huellaCounter, loadingElem, appTitle, appSubtitle;
+
+    function getTemplateConfig(blockNum, lang) {
+        const imgSuffix = (lang === 'en') ? '_en' : '';
+        return {
+            img: `plantilla${blockNum}${imgSuffix}.png`,
+            video: `plantilla${blockNum}_video.mp4`
+        };
+    }
+
+    function populateSelect() {
+        if (!blockSelect) return;
+        const currentVal = blockSelect.value || "1";
+        blockSelect.innerHTML = "";
+        const names = blockNames[currentLang];
+        names.forEach((name, index) => {
+            const opt = document.createElement('option');
+            opt.value = (index + 1).toString();
+            opt.textContent = name;
+            if ((index + 1).toString() === currentVal) {
+                opt.selected = true;
+            }
+            blockSelect.appendChild(opt);
+        });
+    }
 
     function updateUIStrings() {
         const t = translations[currentLang];
@@ -216,27 +228,13 @@
         if (langBtn) langBtn.innerHTML = t.langBtn;
         if (prevBtn) prevBtn.innerHTML = t.prev;
         if (nextBtn) nextBtn.innerHTML = t.next;
-
-        if (blockSelect) {
-            const currentBlockVal = blockSelect.value || "1";
-            blockSelect.innerHTML = "";
-            const names = blockNames[currentLang];
-            names.forEach((name, index) => {
-                const opt = document.createElement('option');
-                opt.value = (index + 1).toString();
-                opt.textContent = name;
-                if ((index + 1).toString() === currentBlockVal) {
-                    opt.selected = true;
-                }
-                blockSelect.appendChild(opt);
-            });
-        }
+        populateSelect();
     }
 
     function toggleLanguage() {
         currentLang = (currentLang === 'es') ? 'en' : 'es';
         updateUIStrings();
-        const fileToLoad = (currentLang === 'es') ? 'frases.json' : `frases_${currentLang}.json`;
+        const fileToLoad = (currentLang === 'es') ? 'frases.json' : 'frases_en.json';
         loadData(fileToLoad);
     }
 
@@ -247,39 +245,26 @@
             loadingElem.textContent = t.loading;
         }
         try {
-            const response = await fetch(file + '?v=' + new Date().getTime());
-            if (!response.ok) throw new Error("No se encuentra " + file);
+            const response = await fetch(file + '?t=' + Date.now());
+            if (!response.ok) throw new Error("Error HTTP " + response.status);
             allFrases = await response.json();
             if (loadingElem) loadingElem.style.display = 'none';
 
-            const savedBlock = localStorage.getItem('pyfp_current_block') || "1";
-            if (blockSelect) blockSelect.value = savedBlock;
-
-            filterByBlock(parseInt(savedBlock), true);
+            const activeBlock = blockSelect.value || "1";
+            filterByBlock(parseInt(activeBlock, 10));
         } catch (error) {
             console.error("Error al cargar datos:", error);
             if (loadingElem) {
                 loadingElem.style.display = 'block';
-                loadingElem.textContent = "Error al leer " + file;
+                loadingElem.textContent = "Error al cargar " + file;
             }
         }
     }
 
-    function filterByBlock(blockNum, isInitialLoad = false) {
-        localStorage.setItem('pyfp_current_block', blockNum);
+    function filterByBlock(blockNum) {
+        // Conversión limpia a número para evitar discrepancias tipo string vs number
         currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(blockNum));
-
-        if (isInitialLoad) {
-            const savedIndex = localStorage.getItem('pyfp_current_index');
-            if (savedIndex !== null && !isNaN(savedIndex)) {
-                const parsedIndex = parseInt(savedIndex, 10);
-                currentIndex = (parsedIndex >= 0 && parsedIndex < currentFilteredFrases.length) ? parsedIndex : 0;
-            } else {
-                currentIndex = 0;
-            }
-        } else {
-            currentIndex = 0;
-        }
+        currentIndex = 0;
 
         if (currentFilteredFrases.length === 0) {
             stopAnimation();
@@ -296,97 +281,79 @@
             cancelAnimationFrame(animationFrameId);
             animationFrameId = null;
         }
-        if (activeVideo) {
-            activeVideo.pause();
-            activeVideo = null;
+        if (currentVideoElem) {
+            currentVideoElem.pause();
+            currentVideoElem.removeAttribute('src');
+            currentVideoElem.load();
+            currentVideoElem = null;
         }
     }
 
     function renderCurrentHuella() {
         if (currentFilteredFrases.length === 0) return;
 
-        localStorage.setItem('pyfp_current_index', currentIndex);
         stopAnimation();
 
         const item = currentFilteredFrases[currentIndex];
         const config = getTemplateConfig(item.bloque, currentLang);
-
         const label = translations[currentLang].footprintLabel;
-        if (huellaCounter) huellaCounter.textContent = `${label} ${item.id} (${currentIndex + 1} / ${currentFilteredFrases.length})`;
+
+        if (huellaCounter) {
+            huellaCounter.textContent = `${label} ${item.id} (${currentIndex + 1} / ${currentFilteredFrases.length})`;
+        }
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-        // Primero dibujamos la imagen estática obligatoriamente
-        displayImageFirst(config.img, item.texto, config.video);
-    }
-
-    function displayImageFirst(imgPath, text, videoPath) {
-        if (loadedImages[imgPath]) {
-            drawStaticCanvas(loadedImages[imgPath], text);
-            attemptVideoPlayback(videoPath, text);
-        } else {
-            const img = new Image();
-            img.src = imgPath;
-            img.onload = () => {
-                loadedImages[imgPath] = img;
-                drawStaticCanvas(img, text);
-                attemptVideoPlayback(videoPath, text);
-            };
-            img.onerror = () => {
-                // Intento secundario si la plantilla en inglés no existe
-                if (imgPath.includes('_en.png')) {
-                    const fallbackImg = imgPath.replace('_en.png', '.png');
-                    const imgFallback = new Image();
-                    imgFallback.src = fallbackImg;
-                    imgFallback.onload = () => {
-                        loadedImages[imgPath] = imgFallback;
-                        drawStaticCanvas(imgFallback, text);
-                        attemptVideoPlayback(videoPath, text);
-                    };
-                    imgFallback.onerror = () => drawTextOnly(text);
-                } else {
-                    drawTextOnly(text);
-                }
-            };
-        }
-    }
-
-    function attemptVideoPlayback(videoPath, text) {
-        if (loadedVideos[videoPath]) {
-            startVideoLoop(loadedVideos[videoPath], text);
-        } else {
-            const vid = document.createElement('video');
-            vid.src = videoPath;
-            vid.autoplay = true;
-            vid.loop = true;
-            vid.muted = true;
-            vid.playsInline = true;
-
-            vid.oncanplay = () => {
-                loadedVideos[videoPath] = vid;
-                startVideoLoop(vid, text);
-            };
-        }
-    }
-
-    function startVideoLoop(videoElem, text) {
-        activeVideo = videoElem;
-        videoElem.play().then(() => {
-            function loop() {
-                if (activeVideo === videoElem && ctx && canvas) {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(videoElem, 0, 0, canvas.width, canvas.height);
-                    drawTextOverlay(text);
-                    animationFrameId = requestAnimationFrame(loop);
-                }
+        // Dibujar primero la imagen base para garantizar visualización instantánea
+        const bgImg = new Image();
+        bgImg.src = config.img;
+        bgImg.onload = () => {
+            drawCanvasFrame(bgImg, item.texto);
+            tryLoadVideo(config.video, item.texto, bgImg);
+        };
+        bgImg.onerror = () => {
+            // Reintento con plantilla predeterminada si falta la variante traducida
+            if (config.img.includes('_en.png')) {
+                const fallbackImg = new Image();
+                fallbackImg.src = `plantilla${item.bloque}.png`;
+                fallbackImg.onload = () => {
+                    drawCanvasFrame(fallbackImg, item.texto);
+                    tryLoadVideo(config.video, item.texto, fallbackImg);
+                };
+                fallbackImg.onerror = () => drawTextOnly(item.texto);
+            } else {
+                drawTextOnly(item.texto);
             }
-            loop();
-        }).catch(() => {
-            // Mantiene la plantilla de imagen estática
-        });
+        };
     }
 
-    function drawStaticCanvas(bgImg, text) {
+    function tryLoadVideo(videoSrc, text, fallbackImg) {
+        const video = document.createElement('video');
+        video.src = videoSrc;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+
+        video.oncanplay = () => {
+            currentVideoElem = video;
+            video.play().then(() => {
+                function loop() {
+                    if (currentVideoElem === video && ctx && canvas) {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        drawTextOverlay(text);
+                        animationFrameId = requestAnimationFrame(loop);
+                    }
+                }
+                loop();
+            }).catch(() => {
+                // Si el navegador impide el autoplay, se mantiene la imagen cargada
+                drawCanvasFrame(fallbackImg, text);
+            });
+        };
+    }
+
+    function drawCanvasFrame(bgImg, text) {
         if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
@@ -453,9 +420,11 @@
         appTitle = document.getElementById('appTitle');
         appSubtitle = document.getElementById('appSubtitle');
 
+        updateUIStrings();
+
         if (blockSelect) {
             blockSelect.addEventListener('change', (e) => {
-                filterByBlock(parseInt(e.target.value));
+                filterByBlock(parseInt(e.target.value, 10));
             });
         }
 
@@ -486,15 +455,21 @@
                 const randomIndex = Math.floor(Math.random() * allFrases.length);
                 const randomItem = allFrases[randomIndex];
                 
-                if (blockSelect) blockSelect.value = randomItem.bloque;
+                blockSelect.value = randomItem.bloque.toString();
                 currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(randomItem.bloque));
                 currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
-                localStorage.setItem('pyfp_current_block', randomItem.bloque);
+                if (currentIndex === -1) currentIndex = 0;
                 renderCurrentHuella();
             });
         }
 
-        updateUIStrings();
+        if (langBtn) {
+            langBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleLanguage();
+            });
+        }
+
         loadData('frases.json');
     });
 </script>
