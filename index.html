@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palabras y frases perdidas</title>
+    <title>Palabras y frases perdidas / Lost Words and Phrases</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -263,7 +263,7 @@
         <select id="blockSelect"></select>
 
         <button class="btn-action" id="randomBtn">🎲 Aleatoria</button>
-        <button class="btn-action" onclick="showLanguageScreen()">🌐 Idioma</button>
+        <button class="btn-action" id="langBtn" onclick="showLanguageScreen()">🌐 Idioma</button>
     </div>
 
     <div class="canvas-container">
@@ -278,23 +278,14 @@
     </div>
 
     <script>
-        // Mapeo dinámico de plantillas de vídeo e imagen por bloque
-        const blockTemplates = {
-            1: { img: 'plantilla1.png', video: 'plantilla1_video.mp4' },
-            2: { img: 'plantilla2.png', video: 'plantilla2_video.mp4' },
-            3: { img: 'plantilla3.png', video: 'plantilla3_video.mp4' },
-            4: { img: 'plantilla4.png', video: 'plantilla4_video.mp4' },
-            5: { img: 'plantilla5.png', video: 'plantilla5_video.mp4' },
-            6: { img: 'plantilla6.png', video: 'plantilla6_video.mp4' },
-            7: { img: 'plantilla7.png', video: 'plantilla7_video.mp4' },
-            8: { img: 'plantilla8.png', video: 'plantilla8_video.mp4' },
-            9: { img: 'plantilla9.png', video: 'plantilla9_video.mp4' },
-            10: { img: 'plantilla10.png', video: 'plantilla10_video.mp4' },
-            11: { img: 'plantilla11.png', video: 'plantilla11_video.mp4' },
-            12: { img: 'plantilla12.png', video: 'plantilla12_video.mp4' },
-            13: { img: 'plantilla13.png', video: 'plantilla13_video.mp4' },
-            14: { img: 'plantilla14.png', video: 'plantilla14_video.mp4' }
-        };
+        // Mapeo dinámico de plantillas según el idioma
+        function getTemplateConfig(blockNum, lang) {
+            const suffix = (lang === 'en') ? '_en' : '';
+            return {
+                img: `plantilla${blockNum}${suffix}.png`,
+                video: `plantilla${blockNum}${suffix}_video.mp4`
+            };
+        }
 
         // Definición de nombres de bloques según el idioma
         const blockNames = {
@@ -337,6 +328,7 @@
                 title: "Palabras y frases perdidas",
                 subtitle: "Colección de huellas y reflexiones",
                 random: "🎲 Aleatoria",
+                langBtn: "🌐 Idioma",
                 prev: "&larr; Anterior",
                 next: "Siguiente &rarr;",
                 loading: "Cargando huellas...",
@@ -347,6 +339,7 @@
                 title: "Lost Words and Phrases",
                 subtitle: "Collection of footprints and reflections",
                 random: "🎲 Random",
+                langBtn: "🌐 Language",
                 prev: "&larr; Previous",
                 next: "Next &rarr;",
                 loading: "Loading footprints...",
@@ -372,6 +365,7 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const randomBtn = document.getElementById('randomBtn');
+        const langBtn = document.getElementById('langBtn');
         const huellaCounter = document.getElementById('huellaCounter');
         const loadingElem = document.getElementById('loading');
         const appTitle = document.getElementById('appTitle');
@@ -379,13 +373,18 @@
 
         function updateUIStrings() {
             const t = translations[currentLang];
+            
+            // 1. Encabezados
             appTitle.textContent = t.title;
             appSubtitle.textContent = t.subtitle;
+            
+            // 2. Botones superiores e inferiores
             randomBtn.innerHTML = t.random;
+            langBtn.innerHTML = t.langBtn;
             prevBtn.innerHTML = t.prev;
             nextBtn.innerHTML = t.next;
 
-            // Rellenar selector de bloques
+            // 3. Reconstrucción del selector de bloques
             const currentBlockVal = blockSelect.value || "1";
             blockSelect.innerHTML = "";
             const names = blockNames[currentLang];
@@ -403,6 +402,7 @@
         function selectLanguage(lang) {
             currentLang = lang;
             updateUIStrings();
+            
             document.body.classList.remove('intro-active');
             document.getElementById('introOverlay').style.display = 'none';
             document.getElementById('videoBg').style.display = 'none';
@@ -427,7 +427,6 @@
                 allFrases = await response.json();
                 loadingElem.style.display = 'none';
 
-                // Restaurar bloque guardado si existe
                 const savedBlock = localStorage.getItem('pyfp_current_block');
                 if (savedBlock && blockSelect.querySelector(`option[value="${savedBlock}"]`)) {
                     blockSelect.value = savedBlock;
@@ -437,7 +436,7 @@
             } catch (error) {
                 console.error("Error al cargar frases:", error);
                 loadingElem.style.display = 'block';
-                loadingElem.textContent = "Error al leer " + file + ". Revisa que no tenga comas sobrantes.";
+                loadingElem.textContent = "Error al leer " + file + ".";
             }
         }
 
@@ -481,13 +480,12 @@
         function renderCurrentHuella() {
             if (currentFilteredFrases.length === 0) return;
 
-            // Guardar posición actual en localStorage
             localStorage.setItem('pyfp_current_index', currentIndex);
-
             stopAnimation();
 
             const item = currentFilteredFrases[currentIndex];
-            const config = blockTemplates[item.bloque] || { img: 'plantilla1.png', video: 'plantilla1_video.mp4' };
+            // Obtener plantilla (imagen/video) según idioma y bloque
+            const config = getTemplateConfig(item.bloque, currentLang);
 
             const label = translations[currentLang].footprintLabel;
             huellaCounter.textContent = `${label} ${item.id} (${currentIndex + 1} / ${currentFilteredFrases.length})`;
@@ -496,7 +494,6 @@
 
             useFallbackImage = false;
 
-            // Intenta reproducir el vídeo correspondiente al bloque
             if (loadedVideos[config.video]) {
                 startVideoLoop(loadedVideos[config.video], item.texto);
             } else {
@@ -526,7 +523,7 @@
             videoElem.play().catch(() => {
                 useFallbackImage = true;
                 const item = currentFilteredFrases[currentIndex];
-                const config = blockTemplates[item.bloque];
+                const config = getTemplateConfig(item.bloque, currentLang);
                 loadFallbackImage(config.img, text);
             });
 
@@ -633,7 +630,6 @@
             renderCurrentHuella();
         });
 
-        // Evento especial para navegadores móviles que recuperan la pestaña de caché
         window.addEventListener('pageshow', (event) => {
             if (currentFilteredFrases.length > 0) {
                 const savedIndex = localStorage.getItem('pyfp_current_index');
@@ -644,7 +640,7 @@
             }
         });
 
-        // Inicialización básica de UI
+        // Inicialización básica
         updateUIStrings();
     </script>
 </body>
