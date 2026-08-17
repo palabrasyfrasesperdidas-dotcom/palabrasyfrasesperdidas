@@ -174,12 +174,11 @@
     <!-- VISOR DE HUELLAS -->
     <div id="viewerSection" class="viewer-section">
         <div class="controls">
-            <button id="homeBtn">🏠 Inicio</button>
+            <button id="homeBtn">🏠 Home</button>
             <select id="blockSelect"></select>
             <button id="prevBtn">&larr; Anterior</button>
             <button id="nextBtn">Siguiente &rarr;</button>
             <button id="randomBtn">🎲 Aleatoria</button>
-            <button id="langBtn">🌐 English</button>
         </div>
 
         <div class="canvas-container">
@@ -234,7 +233,6 @@
             subtitle: "Colección de huellas y reflexiones",
             home: "🏠 Inicio",
             random: "🎲 Aleatoria",
-            langBtn: "🌐 English",
             prev: "&larr; Anterior",
             next: "Siguiente &rarr;",
             loading: "Cargando...",
@@ -246,7 +244,6 @@
             subtitle: "Collection of footprints and reflections",
             home: "🏠 Home",
             random: "🎲 Random",
-            langBtn: "🌐 Español",
             prev: "&larr; Previous",
             next: "Next &rarr;",
             loading: "Loading...",
@@ -262,15 +259,7 @@
     let animationFrameId = null;
     let currentVideoElem = null;
 
-    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, homeBtn, huellaCounter, loadingElem, appTitle, appSubtitle, introSection, viewerSection;
-
-    function getTemplateConfig(blockNum, lang) {
-        const imgSuffix = (lang === 'en') ? '_en' : '';
-        return {
-            img: `plantilla${blockNum}${imgSuffix}.png`,
-            video: `plantilla${blockNum}_video.mp4`
-        };
-    }
+    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, homeBtn, huellaCounter, loadingElem, appTitle, appSubtitle, introSection, viewerSection;
 
     function populateSelect() {
         if (!blockSelect) return;
@@ -294,7 +283,6 @@
         if (appSubtitle) appSubtitle.textContent = t.subtitle;
         if (homeBtn) homeBtn.innerHTML = t.home;
         if (randomBtn) randomBtn.innerHTML = t.random;
-        if (langBtn) langBtn.innerHTML = t.langBtn;
         if (prevBtn) prevBtn.innerHTML = t.prev;
         if (nextBtn) nextBtn.innerHTML = t.next;
         populateSelect();
@@ -312,13 +300,6 @@
         if (introSection) introSection.style.display = 'none';
         if (viewerSection) viewerSection.style.display = 'flex';
         
-        const fileToLoad = (currentLang === 'es') ? 'frases.json' : 'frases_en.json';
-        loadData(fileToLoad);
-    }
-
-    function toggleLanguage() {
-        currentLang = (currentLang === 'es') ? 'en' : 'es';
-        updateUIStrings();
         const fileToLoad = (currentLang === 'es') ? 'frases.json' : 'frases_en.json';
         loadData(fileToLoad);
     }
@@ -379,7 +360,6 @@
         stopAnimation();
 
         const item = currentFilteredFrases[currentIndex];
-        const config = getTemplateConfig(item.bloque, currentLang);
         const label = translations[currentLang].footprintLabel;
 
         if (huellaCounter) {
@@ -388,22 +368,31 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
+        const imgPath = (currentLang === 'en') ? `plantilla${item.bloque}_en.png` : `plantilla${item.bloque}.png`;
+        const videoPath = (currentLang === 'en') ? `plantilla${item.bloque}_en_video.mp4` : `plantilla${item.bloque}_video.mp4`;
+
         const bgImg = new Image();
-        bgImg.src = config.img;
+        bgImg.src = imgPath;
+
         bgImg.onload = () => {
             adjustCanvasSize(bgImg.naturalWidth, bgImg.naturalHeight);
             drawCanvasFrame(bgImg, item.texto);
-            tryLoadVideo(config.video, item.texto, bgImg);
+            tryLoadVideo(videoPath, item.texto, bgImg);
         };
+
         bgImg.onerror = () => {
-            const fallbackImg = new Image();
-            fallbackImg.src = `plantilla${item.bloque}.png`;
-            fallbackImg.onload = () => {
-                adjustCanvasSize(fallbackImg.naturalWidth, fallbackImg.naturalHeight);
-                drawCanvasFrame(fallbackImg, item.texto);
-                tryLoadVideo(config.video, item.texto, fallbackImg);
-            };
-            fallbackImg.onerror = () => drawTextOnly(item.texto);
+            if (currentLang === 'en') {
+                const fallbackImg = new Image();
+                fallbackImg.src = `plantilla${item.bloque}.png`;
+                fallbackImg.onload = () => {
+                    adjustCanvasSize(fallbackImg.naturalWidth, fallbackImg.naturalHeight);
+                    drawCanvasFrame(fallbackImg, item.texto);
+                    tryLoadVideo(videoPath, item.texto, fallbackImg);
+                };
+                fallbackImg.onerror = () => drawTextOnly(item.texto);
+            } else {
+                drawTextOnly(item.texto);
+            }
         };
     }
 
@@ -438,6 +427,15 @@
             }).catch(() => {
                 drawCanvasFrame(fallbackImg, text);
             });
+        };
+
+        video.onerror = () => {
+            if (currentLang === 'en' && videoSrc.includes('_en_video.mp4')) {
+                const fallbackVideoSrc = `plantilla${currentFilteredFrases[currentIndex].bloque}_video.mp4`;
+                tryLoadVideo(fallbackVideoSrc, text, fallbackImg);
+            } else {
+                drawCanvasFrame(fallbackImg, text);
+            }
         };
     }
 
@@ -503,7 +501,6 @@
         prevBtn = document.getElementById('prevBtn');
         nextBtn = document.getElementById('nextBtn');
         randomBtn = document.getElementById('randomBtn');
-        langBtn = document.getElementById('langBtn');
         homeBtn = document.getElementById('homeBtn');
         huellaCounter = document.getElementById('huellaCounter');
         loadingElem = document.getElementById('loading');
@@ -560,13 +557,6 @@
                 currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
                 if (currentIndex === -1) currentIndex = 0;
                 renderCurrentHuella();
-            });
-        }
-
-        if (langBtn) {
-            langBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleLanguage();
             });
         }
     });
