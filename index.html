@@ -80,17 +80,8 @@
     let animationFrameId = null;
     let useFallbackImage = false;
 
-    const canvas = document.getElementById('cardCanvas');
-    const ctx = canvas ? canvas.getContext('2d') : null;
-    const blockSelect = document.getElementById('blockSelect');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const randomBtn = document.getElementById('randomBtn');
-    const langBtn = document.getElementById('langBtn');
-    const huellaCounter = document.getElementById('huellaCounter');
-    const loadingElem = document.getElementById('loading');
-    const appTitle = document.getElementById('appTitle');
-    const appSubtitle = document.getElementById('appSubtitle');
+    // Variables de referencias al DOM (se obtienen tras DOMContentLoaded)
+    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, langBtn, huellaCounter, loadingElem, appTitle, appSubtitle;
 
     function updateUIStrings() {
         const t = translations[currentLang];
@@ -157,7 +148,7 @@
                 blockSelect.value = savedBlock;
             }
 
-            filterByBlock(parseInt(blockSelect.value || "1"), true);
+            filterByBlock(parseInt(blockSelect ? blockSelect.value : "1"), true);
         } catch (error) {
             console.error("Error al cargar frases:", error);
             if (loadingElem) {
@@ -325,46 +316,64 @@
         });
     }
 
-    if (blockSelect) {
-        blockSelect.addEventListener('change', (e) => {
-            filterByBlock(parseInt(e.target.value));
-        });
-    }
+    // Inicialización una vez montado el árbol DOM
+    document.addEventListener('DOMContentLoaded', () => {
+        canvas = document.getElementById('cardCanvas');
+        ctx = canvas ? canvas.getContext('2d') : null;
+        blockSelect = document.getElementById('blockSelect');
+        prevBtn = document.getElementById('prevBtn');
+        nextBtn = document.getElementById('nextBtn');
+        randomBtn = document.getElementById('randomBtn');
+        langBtn = document.getElementById('langBtn');
+        huellaCounter = document.getElementById('huellaCounter');
+        loadingElem = document.getElementById('loading');
+        appTitle = document.getElementById('appTitle');
+        appSubtitle = document.getElementById('appSubtitle');
 
-    if (prevBtn) {
-        prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentIndex > 0) {
-                currentIndex--;
+        if (blockSelect) {
+            blockSelect.addEventListener('change', (e) => {
+                filterByBlock(parseInt(e.target.value));
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    renderCurrentHuella();
+                }
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentIndex < currentFilteredFrases.length - 1) {
+                    currentIndex++;
+                    renderCurrentHuella();
+                }
+            });
+        }
+
+        if (randomBtn) {
+            randomBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (allFrases.length === 0) return;
+                const randomIndex = Math.floor(Math.random() * allFrases.length);
+                const randomItem = allFrases[randomIndex];
+                
+                if (blockSelect) blockSelect.value = randomItem.bloque;
+                currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(randomItem.bloque));
+                currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
+                localStorage.setItem('pyfp_current_block', randomItem.bloque);
                 renderCurrentHuella();
-            }
-        });
-    }
+            });
+        }
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentIndex < currentFilteredFrases.length - 1) {
-                currentIndex++;
-                renderCurrentHuella();
-            }
-        });
-    }
-
-    if (randomBtn) {
-        randomBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (allFrases.length === 0) return;
-            const randomIndex = Math.floor(Math.random() * allFrases.length);
-            const randomItem = allFrases[randomIndex];
-            
-            if (blockSelect) blockSelect.value = randomItem.bloque;
-            currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(randomItem.bloque));
-            currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
-            localStorage.setItem('pyfp_current_block', randomItem.bloque);
-            renderCurrentHuella();
-        });
-    }
+        updateUIStrings();
+        loadData('frases.json');
+    });
 
     window.addEventListener('pageshow', (event) => {
         if (currentFilteredFrases.length > 0) {
@@ -375,8 +384,6 @@
             }
         }
     });
-
-    // Inicialización al cargar
-    updateUIStrings();
-    loadData('frases.json');
-</script>
+    </script>
+</body>
+</html>
