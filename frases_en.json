@@ -1271,7 +1271,223 @@
         "id": "200",
         "number": 200,
         "text": "To make your dreams a reality, you must wake up and take action."
-      }
-    ]
-  }
+      },
+      {
+        "block": 3,
+        "id": "201",
+        "number": 201,
+        "text": "Winners are those who, instead of thinking themselves losers, thought of how to turn their dreams into reality."
+      },
+      {
+        "block": 3,
+        "id": "202",
+        "number": 202,
+        "text": "We grow frustrated when we fall short of our dreams, forgetting to enjoy what we live while awake."
+      },
+      {
+        "block": 3,
+        "id": "203",
+        "number": 203,
+        "text": "You may feel that everyone has failed you, but what matters is that you do not fail yourself and never cease chasing your dreams."
+      },
+      {
+        "block": 3,
+        "id": "204",
+        "number": 204,
+        "text": "We become our own worst enemies when we give up."
+      },
+      {
+        "block": 3,
+        "id": "205",
+        "number": 205,
+        "text": "The only true winner is the one who works to surpass their limits, not to defeat their rivals."
+      },
+      {
+        "block": 3,
+        "id": "206",
+        "number": 206,
+        "text": "We are all apprentices when we fall, and we become masters when we rise."
+      },
+      {
+        "block": 3,
+        "id": "207",
+        "number": 207,
+        "text": "It is never too early to start dreaming, nor too late to begin anew."
+      },
+      {
+        "block": 3,
+        "id": "208",
+        "number": 208,
+        "text": "The first step in learning to fly is beginning to dream."
+      },
+      {
+        "block": 3,
+        "id": "209",
+        "number": 209,
+        "text": "The worst thing that can happen to us is not having dreams. The worst is forgetting to pursue what our heart desires."
+      },
+      {
+        "block": 3,
+        "id": "210",
+        "number": 210,
+        "text": "Fighting for your dreams can be exhausting, but if you give up, you will live knowing that nothing will ever change."
+      },
+      {
+        "block": 3,
+        "id": "211",
+        "number": 211,
+        "text": "We are not all that we dream we will be, because sometimes we settle for who we are, and other times we grow complacent believing everything will come easy."
+      },
+      {
+        "block": 3,
+        "id": "212",
+        "number": 212,
+        "text": "They may force us to live wide awake, but they can never steal our dreams."
+      },
+      {
+        "block": 3,
+        "id": "213",
+        "number": 213,
+        "text": "Those who fight with all their strength prove their courage, but far greater courage belongs to those who do not surrender even when they have none left."
+      },
+      {
+        "block": 3,
+        "id": "214",
+        "number": 214,
+        "text": "If you believe life is giving you no chances, it is not true; seizing them depends on what you decide in every moment."
+      },
+      {
+        "block": 3,
+        "id": "215",
+        "number": 215,
+        "text": "As long as you have a dream to fulfill, you have a reason to live."
+      },
+      {
+        "block": 3,
+        "id": "216",
+        "number": 216,
+        "text": "Our success depends not on the height of the mountain, but on the willpower our soul demonstrates during the climb."
+      },
+      {
+        "block": 3,
+        "id": "217",
+        "number": 217,
+        "text": "We must always remember that we were born free and nothing stops us from chasing our dreams, for we must not turn the fears we feel into barriers."
+      },
+      {
+        "block": 3,
+        "id": "218",
+        "number": 218,
+        "text": "Our success depends not on the possibilities given to us, but on making the most of the opportunities we find."
+      },
+      {
+        "block": 3,
+        "id": "219",
+        "number": 219,
+        "text": "Success is not having won, but having tried, and having pressed on even when feeling we might not reach our goals."
+      },
+      {
+        "block": 3,
+        "id": "220",
+        "number": 220,
+        "text": "I prefer having a list of lived desires than a list of projects that remained only dreams."
+      },
+      {
+        "block": 3,
+        "id": "221",
+        "number": 221,
+        "text": "If you do not fulfill your dreams, it will not be for lack of opportunities, but because you do not know how to seize the ones you have."
+      },
+      {
+        "block": 3,
+        "id": "222",
+        "number": 222,
+        "text": "Never pay mind to the criticisms directed at you, for they only seek to dishearten you so your dreams remain unfulfilled."
+      },
+      {
+        "block": 3,
+        "id": "223",
+        "number": 223,
+        "text": "No one needs wings to fly, only imagination to dream."
+      },
+      {
+        "block": 3,
+        "id": "224",
+        "number": 224,
+        "text": "The difference between dreaming and achieving those dreams lies in the work we do to see them come true."
+      },
+      {
+        "block": 3,
+        "id": "225",
+        "number": 225,
+        "text": "We waste time while dreaming if we do nothing when we wake to make those dreams come true."
+      },
+      {
+        "block": 3,
+        "id": "226",
+        "number": 226,
+        "text": "When we day-dream, we live what we want. When we dream in sleep, we live what we long for."
+      },
+      {
+        "block": 3,
+        "id": "227",
+        "number": 227,
+        "text": "Sometimes we use silence to express our deepest feelings."
+      },
+      {
+        "block": 3,
+        "id": "228",
+        "number": 228,
+        "text": "We soon forget the caresses that happiness gave us when adversity strikes."
+      },
+      {
+        "block": 3,
+        "id": "229",
+        "number": 229,
+        "text": "When sorrows arrive, they hide the sun of our smiles."
+      },
+      {
+        "block": 3,
+        "id": "230",
+        "number": 230,
+        "text": "We all know what we want. What we do not know is where to find the manual that tells us how to make our dreams a reality."
+      },
+      {
+        "block": 3,
+        "id": "231",
+        "number": 231,
+        "text": "Asleep we dream of what we desire, but awake we must labor to make those dreams real."
+      },
+      {
+        "block": 3,
+        "id": "232",
+        "number": 232,
+        "text": "We are always mistaken when we think we cannot reach our dreams, and right when we devote ourselves to finding the path to reach them."
+      },
+      {
+        "block": 3,
+        "id": "233",
+        "number": 233,
+        "text": "Since we all rise when we fall, we should learn that lamenting serves us little."
+      },
+      {
+        "block": 3,
+        "id": "234",
+        "number": 234,
+        "text": "Living in solitude and carrying sorrow is like walking with eyes fixed only on the stones."
+      },
+      {
+        "block": 3,
+        "id": "235",
+        "number": 235,
+        "text": "Rather than getting lost endlessly in our thoughts, it is better to find ourselves enjoying our feelings."
+      },
+     {
+      "block": 3,
+      "id": "236",
+      "number": 236,
+      "text": "Our problems can be massive, great, or small, depending on the weight we choose to give them."
+    }
+  ]
+}
 ]
