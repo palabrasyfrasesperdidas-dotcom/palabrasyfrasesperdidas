@@ -386,8 +386,9 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
+        // Rutas corregidas para coincidir exactamente con los nombres en GitHub
         const primaryImgPath = (currentLang === 'en') ? `plantilla${item.bloque}_en.png` : `plantilla${item.bloque}.png`;
-        const primaryVideoPath = (currentLang === 'en') ? `plantilla${item.bloque}_en_video.mp4` : `plantilla${item.bloque}_video.mp4`;
+        const primaryVideoPath = (currentLang === 'en') ? `plantilla${item.bloque}_video_en.mp4` : `plantilla${item.bloque}_video.mp4`;
 
         const bgImg = new Image();
         bgImg.src = primaryImgPath;
@@ -569,7 +570,6 @@
             });
         }
 
-        // Restablece el estado previo si el móvil refresca la pantalla o borra memoria
         if (sessionStorage.getItem('pyfp_active') === 'true') {
             startExperience(currentLang, true);
         }
