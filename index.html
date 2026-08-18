@@ -442,7 +442,7 @@
                     if (currentVideoElem === video && ctx && canvas) {
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                        drawTextOverlay(text);
+                        drawTextOverlay(text); // <- Dibuja el texto en cada frame del vídeo
                         animationFrameId = requestAnimationFrame(loop);
                     }
                 }
@@ -453,7 +453,6 @@
         };
 
         video.onerror = () => {
-            // Si falla el vídeo en inglés (_en.mp4), intentamos recurrir al vídeo general por seguridad
             if (videoSrc.includes('_en.mp4')) {
                 const fallbackVideoPath = `plantilla${blockNum}_video.mp4`;
                 if (videoSrc !== fallbackVideoPath) {
@@ -548,16 +547,6 @@
         if (blockSelect) {
             blockSelect.addEventListener('change', (e) => {
                 filterByBlock(parseInt(e.target.value, 10), false);
-            });
-        }
-
-        if (prevBtn) {
-            prevBtn.append || prevBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    renderCurrentHuella();
-                }
             });
         }
 
