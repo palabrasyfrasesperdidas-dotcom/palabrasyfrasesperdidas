@@ -1,1493 +1,674 @@
 [
   {
     "block": 1,
-    "footprints": [
-      {
-        "block": 1,
-        "id": "1",
-        "number": 1,
-        "text": "We are destinies entwined, bound to cross on paths aligned."
-      },
-      {
-        "block": 1,
-        "id": "2",
-        "number": 2,
-        "text": "Life lays roads before our eyes; our minds build mazes in disguise."
-      },
-      {
-        "block": 1,
-        "id": "3",
-        "number": 3,
-        "text": "If our dreams remain unlived, it is the fear of life we give."
-      },
-      {
-        "block": 1,
-        "id": "4",
-        "number": 4,
-        "text": "The hardest choice is not among many trails, but finding a new path when every old one fails."
-      },
-      {
-        "block": 1,
-        "id": "5",
-        "number": 5,
-        "text": "Time rolls the dice upon the board; we are the pawns, our end ignored."
-      },
-      {
-        "block": 1,
-        "id": "6",
-        "number": 6,
-        "text": "The earth is round so wherever we roam, our dreams will find a place called home."
-      },
-      {
-        "block": 1,
-        "id": "7",
-        "number": 7,
-        "text": "Never forget the place of birth; all that matters is how we walked this earth."
-      },
-      {
-        "block": 1,
-        "id": "8",
-        "number": 8,
-        "text": "It is fine to feel astray; each dawn is a route we discover each day."
-      },
-      {
-        "block": 1,
-        "id": "9",
-        "number": 9,
-        "text": "So many trains have passed me by, I learned to walk beneath the sky."
-      },
-      {
-        "block": 1,
-        "id": "10",
-        "number": 10,
-        "text": "To live is to pretend we know where we head, unaware of the winding path ahead."
-      },
-      {
-        "block": 1,
-        "id": "11",
-        "number": 11,
-        "text": "Those who felt no fear to start anew, found horizons fresh and true."
-      },
-      {
-        "block": 1,
-        "id": "12",
-        "number": 12,
-        "text": "We are paths that meet and cross, then part ways with gain or loss."
-      },
-      {
-        "block": 1,
-        "id": "13",
-        "number": 13,
-        "text": "Life moves fast and changes course; we hold the wheel and guide its force."
-      },
-      {
-        "block": 1,
-        "id": "14",
-        "number": 14,
-        "text": "If the moon through clouds still shines above, never give up on the dreams you love."
-      },
-      {
-        "block": 1,
-        "id": "15",
-        "number": 15,
-        "text": "The future holds a promised scheme, but the present is reality, not a dream."
-      },
-      {
-        "block": 1,
-        "id": "16",
-        "number": 16,
-        "text": "On any journey, leave heavy bags behind; choose true souls for peace of mind."
-      },
-      {
-        "block": 1,
-        "id": "17",
-        "number": 17,
-        "text": "Your destiny will ever be, the place where you are held in high degree."
-      },
-      {
-        "block": 1,
-        "id": "18",
-        "number": 18,
-        "text": "We choose to let our failures break our heart, or make them lessons where new victories start."
-      },
-      {
-        "block": 1,
-        "id": "19",
-        "number": 19,
-        "text": "You are the journey you design; you are your own destined line."
-      },
-      {
-        "block": 1,
-        "id": "20",
-        "number": 20,
-        "text": "If Friday is where you long to be, set off today across the sea."
-      },
-      {
-        "block": 1,
-        "id": "21",
-        "number": 21,
-        "text": "We worry where our steps will fall, yet life unfolds beyond it all."
-      },
-      {
-        "block": 1,
-        "id": "22",
-        "number": 22,
-        "text": "The worst roads are not those walked in error, but those left unseen through fear and terror."
-      },
-      {
-        "block": 1,
-        "id": "23",
-        "number": 23,
-        "text": "Awaiting tomorrow while living today, steals the sweet moments that slip away."
-      },
-      {
-        "block": 1,
-        "id": "24",
-        "number": 24,
-        "text": "We trace the paths where we will go, whenever we dream of the souls we'll know."
-      },
-      {
-        "block": 1,
-        "id": "25",
-        "number": 25,
-        "text": "We are rivers flowing to the sea, reaching the end of our history."
-      },
-      {
-        "block": 1,
-        "id": "26",
-        "number": 26,
-        "text": "If every fall makes us give up the fight, we'll never see our fate in light."
-      },
-      {
-        "block": 1,
-        "id": "27",
-        "number": 27,
-        "text": "Remember well as time moves on: each step we take is a mark left upon."
-      },
-      {
-        "block": 1,
-        "id": "28",
-        "number": 28,
-        "text": "If death is the ultimate place to arrive, life is the journey while we are alive."
-      },
-      {
-        "block": 1,
-        "id": "29",
-        "number": 29,
-        "text": "Stones lie on roads both far and near; cowards weep, but the brave persevere."
-      },
-      {
-        "block": 1,
-        "id": "30",
-        "number": 30,
-        "text": "Life isn't measured in months or years; a single second shifts our tears."
-      },
-      {
-        "block": 1,
-        "id": "31",
-        "number": 31,
-        "text": "Though heavy storms the present bring, trust the future and the light of spring."
-      },
-      {
-        "block": 1,
-        "id": "32",
-        "number": 32,
-        "text": "If yesterday seems bright and sweet, ask if today makes your life complete."
-      },
-      {
-        "block": 1,
-        "id": "33",
-        "number": 33,
-        "text": "Two paths remain: to stand and fight, or weep in vain throughout the night."
-      },
-      {
-        "block": 1,
-        "id": "34",
-        "number": 34,
-        "text": "We are the sum of heart and mind; in their deep paths we get lost or aligned."
-      },
-      {
-        "block": 1,
-        "id": "35",
-        "number": 35,
-        "text": "We may not choose the cards we hold, but we choose the grace as our lives unfold."
-      },
-      {
-        "block": 1,
-        "id": "36",
-        "number": 36,
-        "text": "To live is to choose, day by day, which open road will guide our way."
-      },
-      {
-        "block": 1,
-        "id": "37",
-        "number": 37,
-        "text": "Though the road seems tough and steep, keep walking forward, the rewards you'll reap."
-      },
-      {
-        "block": 1,
-        "id": "38",
-        "number": 38,
-        "text": "Our destiny is not to hold or know, but to learn to love and let it grow."
-      },
-      {
-        "block": 1,
-        "id": "39",
-        "number": 39,
-        "text": "Though you choose the road you walk upon, destiny decides where you belong."
-      },
-      {
-        "block": 1,
-        "id": "40",
-        "number": 40,
-        "text": "Though I may not be where your journey ends, I dream of walking beside you as friends."
-      },
-      {
-        "block": 1,
-        "id": "41",
-        "number": 41,
-        "text": "Though our final goal remains unseen, we'll reach a place where we've never been."
-      },
-      {
-        "block": 1,
-        "id": "42",
-        "number": 42,
-        "text": "Fight your fate and change the tide; accept it blindly and suffer inside."
-      },
-      {
-        "block": 1,
-        "id": "43",
-        "number": 43,
-        "text": "We can read our fate upon the page, or write our story on the stage."
-      },
-      {
-        "block": 1,
-        "id": "44",
-        "number": 44,
-        "text": "Fear not the rocks along the trail; with courage high, you shall prevail."
-      },
-      {
-        "block": 1,
-        "id": "45",
-        "number": 45,
-        "text": "We may not gain all that we claim, but we can fight to reach our aim."
-      },
-      {
-        "block": 1,
-        "id": "46",
-        "number": 46,
-        "text": "Heroes are not born from winning the prize, but from fighting on beneath the skies."
-      },
-      {
-        "block": 1,
-        "id": "47",
-        "number": 47,
-        "text": "Only those who fight win the night; those who surrender miss the light."
-      },
-      {
-        "block": 1,
-        "id": "48",
-        "number": 48,
-        "text": "The mind finds excuses to delay, yet finds a way when the heart leads the way."
-      },
-      {
-        "block": 1,
-        "id": "49",
-        "number": 49,
-        "text": "We feel like prisoners bound in place, forgetting we locked our own cell space."
-      },
-      {
-        "block": 1,
-        "id": "50",
-        "number": 50,
-        "text": "Save some applause for those unsung, the silent heroes who died young."
-      },
-      {
-        "block": 1,
-        "id": "51",
-        "number": 51,
-        "text": "Let us be destiny, bright and clear; or quiet silence as our paths draw near."
-      },
-      {
-        "block": 1,
-        "id": "52",
-        "number": 52,
-        "text": "If you walk not by my side today, dream not of destiny along the way."
-      },
-      {
-        "block": 1,
-        "id": "53",
-        "number": 53,
-        "text": "We walked together when spark met spark, and kept on going through the dark."
-      },
-      {
-        "block": 1,
-        "id": "54",
-        "number": 54,
-        "text": "We write the present while we live, and read the past in what we give."
-      },
-      {
-        "block": 1,
-        "id": "55",
-        "number": 55,
-        "text": "The end of a road where shadows fall, is a new journey answering its call."
-      },
-      {
-        "block": 1,
-        "id": "56",
-        "number": 56,
-        "text": "Few understand that life is the stream, the journey itself, not the ultimate dream."
-      },
-      {
-        "block": 1,
-        "id": "57",
-        "number": 57,
-        "text": "Nothing is written in fate above; life awaits the words of our love."
-      },
-      {
-        "block": 1,
-        "id": "58",
-        "number": 58,
-        "text": "We know the haven we wish to reach, but planning forever leaves us on the beach."
-      },
-      {
-        "block": 1,
-        "id": "59",
-        "number": 59,
-        "text": "The present moment you now hold, is the future you awaited, bright and bold."
-      },
-      {
-        "block": 1,
-        "id": "60",
-        "number": 60,
-        "text": "Where we have been matters no more; what counts is the future at our door."
-      },
-      {
-        "block": 1,
-        "id": "61",
-        "number": 61,
-        "text": "Your destiny is never set in stone; you write each line as you walk alone."
-      },
-      {
-        "block": 1,
-        "id": "62",
-        "number": 62,
-        "text": "Life is a voyage sweet or grim, defined by companions and choices within."
-      },
-      {
-        "block": 1,
-        "id": "63",
-        "number": 63,
-        "text": "The hours wasted while we wait, are lost forever to our fate."
-      },
-      {
-        "block": 1,
-        "id": "64",
-        "number": 64,
-        "text": "We have one single day to die, but all our days to touch the sky."
-      },
-      {
-        "block": 1,
-        "id": "65",
-        "number": 65,
-        "text": "We cannot foresee the mistakes ahead, but wise choices today clear the path we tread."
-      },
-      {
-        "block": 1,
-        "id": "66",
-        "number": 66,
-        "text": "Ponder what remains when life is past, to know if this living is built to last."
-      },
-      {
-        "block": 1,
-        "id": "67",
-        "number": 67,
-        "text": "The distant future for which you prayed, is now the present you have made."
-      },
-      {
-        "block": 1,
-        "id": "68",
-        "number": 68,
-        "text": "Not luck, but choices shape our story, bringing regret or triumph's glory."
-      },
-      {
-        "block": 1,
-        "id": "69",
-        "number": 69,
-        "text": "Remember life takes a breath to start, and an instant can break it all apart."
-      },
-      {
-        "block": 1,
-        "id": "70",
-        "number": 70,
-        "text": "Why waste our thoughts on where we'll be? Look at the past and set present free."
-      },
-      {
-        "block": 1,
-        "id": "71",
-        "number": 71,
-        "text": "Tomorrow may bring a brighter sun, but never worse than what is done."
-      },
-      {
-        "block": 1,
-        "id": "72",
-        "number": 72,
-        "text": "Coincidences rarely show, and second chances seldom grow."
-      },
-      {
-        "block": 1,
-        "id": "73",
-        "number": 73,
-        "text": "Losers chase chances that fade away; winners build wealth from the dark and gray."
-      },
-      {
-        "block": 1,
-        "id": "74",
-        "number": 74,
-        "text": "Destiny whispers: a smile to share, a dream to live, and a life to dare."
-      },
-      {
-        "block": 1,
-        "id": "75",
-        "number": 75,
-        "text": "We all have dreams beneath the night, but wake we must to face the light."
-      },
-      {
-        "block": 1,
-        "id": "76",
-        "number": 76,
-        "text": "We value time so little now, then mourn its loss with furrowed brow."
-      },
-      {
-        "block": 1,
-        "id": "77",
-        "number": 77,
-        "text": "True joy is found when we understand: lived moments remain, not wealth in hand."
-      },
-      {
-        "block": 1,
-        "id": "78",
-        "number": 78,
-        "text": "If you stand today where you never planned, why worry where tomorrow lands?"
-      },
-      {
-        "block": 1,
-        "id": "79",
-        "number": 79,
-        "text": "From what I lived, I learned to see; in what comes next, I'll set me free."
-      },
-      {
-        "block": 1,
-        "id": "80",
-        "number": 80,
-        "text": "Never regret the path you took; every step was a lesson in life's book."
-      },
-      {
-        "block": 1,
-        "id": "81",
-        "number": 81,
-        "text": "Life will not pause or wait for you; go live it now, or it passes through."
-      },
-      {
-        "block": 1,
-        "id": "82",
-        "number": 82,
-        "text": "Though sad conclusions bring us tears, they open doors to brighter years."
-      },
-      {
-        "block": 1,
-        "id": "83",
-        "number": 83,
-        "text": "It makes no sense to mourn the dead, if while alive no words were said."
-      },
-      {
-        "block": 1,
-        "id": "84",
-        "number": 84,
-        "text": "Empty we came, empty we go; only lived moments remain below."
-      },
-      {
-        "block": 1,
-        "id": "85",
-        "number": 85,
-        "text": "Time is a treasure we hoard in vain, spent the moment we remember pain."
-      },
-      {
-        "block": 1,
-        "id": "86",
-        "number": 86,
-        "text": "We think too much upon the floor, and end up nowhere as before."
-      },
-      {
-        "block": 1,
-        "id": "87",
-        "number": 87,
-        "text": "Joy is no final place to arrive; it is the spirit keeping us alive."
-      },
-      {
-        "block": 1,
-        "id": "88",
-        "number": 88,
-        "text": "Doubt where we stand, doubt where we go; but doubt not the worth of your inner glow."
-      },
-      {
-        "block": 1,
-        "id": "89",
-        "number": 89,
-        "text": "Others may make our days dark or bright, but only we choose to hold the light."
-      },
-      {
-        "block": 1,
-        "id": "90",
-        "number": 90,
-        "text": "All seek joy with restless mind, forgetting in peace is where we find."
-      },
-      {
-        "block": 1,
-        "id": "91",
-        "number": 91,
-        "text": "Living is simple: let coldness go, and learn from mistakes of long ago."
-      },
-      {
-        "block": 1,
-        "id": "92",
-        "number": 92,
-        "text": "We were not born to dream who we'll be, but to live our truth continuously."
-      },
-      {
-        "block": 1,
-        "id": "93",
-        "number": 93,
-        "text": "We all can find joy in what we hold, keeping hopes bright as stories unfold."
-      },
-      {
-        "block": 1,
-        "id": "94",
-        "number": 94,
-        "text": "Searching for joy can lead astray; true happiness lives in this moment today."
-      },
-      {
-        "block": 1,
-        "id": "95",
-        "number": 95,
-        "text": "Cherish what's yours, fight for your aim, and hold no regrets for choices you claim."
-      },
-      {
-        "block": 1,
-        "id": "96",
-        "number": 96,
-        "text": "Enjoy sweet moments while they last, before they fade into the past."
-      },
-      {
-        "block": 1,
-        "id": "97",
-        "number": 97,
-        "text": "Our life has one true goal above: to spend our days in joy and love."
-      },
-      {
-        "block": 1,
-        "id": "98",
-        "number": 98,
-        "text": "Dreams come in sleep when night is deep, but awake we must walk to hold what we keep."
-      },
-      {
-        "block": 1,
-        "id": "99",
-        "number": 99,
-        "text": "If we cannot rise to be our best, let us not sink beneath the rest."
-      },
-      {
-        "block": 1,
-        "id": "100",
-        "number": 100,
-        "text": "Though we seem alike beneath the sun, unique and rare is every one."
-      },
-      {
-        "block": 1,
-        "id": "101",
-        "number": 101,
-        "text": "The value of gifts is not the paper tied, but the warmth of love felt inside."
-      },
-      {
-        "block": 1,
-        "id": "102",
-        "number": 102,
-        "text": "You light my days and guide my way, whenever your eyes look my way."
-      },
-      {
-        "block": 1,
-        "id": "103",
-        "number": 103,
-        "text": "In past lives I searched for your grace; in this life I find your embrace."
-      },
-      {
-        "block": 1,
-        "id": "104",
-        "number": 104,
-        "text": "The footprints left upon the ground, are marks of dreams we sought and found."
-      },
-      {
-        "block": 1,
-        "id": "105",
-        "number": 105,
-        "text": "If tomorrow is unseen and the past is gone, live this moment until the dawn."
-      },
-      {
-        "block": 1,
-        "id": "106",
-        "number": 106,
-        "text": "In endless space we are a tiny dot; in vast time, a fleeting spot."
-      },
-      {
-        "block": 1,
-        "id": "107",
-        "number": 107,
-        "text": "Though you choose the path you tread, destiny seals where you are led."
-      },
-      {
-        "block": 1,
-        "id": "108",
-        "number": 108,
-        "text": "Fools seek the goal at journey's end; the wise love the road around the bend."
-      },
-      {
-        "block": 1,
-        "id": "109",
-        "number": 109,
-        "text": "Few comprehend this life we claim: the road is real, the goal a name."
-      },
-      {
-        "block": 1,
-        "id": "110",
-        "number": 110,
-        "text": "No traveler ever reached a shore, without departing from the door."
-      },
-      {
-        "block": 1,
-        "id": "111",
-        "number": 111,
-        "text": "Never step out just to search in vain; go forth to find and gain."
-      },
-      {
-        "block": 1,
-        "id": "112",
-        "number": 112,
-        "text": "When tired we rest our weary head, but awake we must live instead."
-      }
-    ]
+    "id": "1",
+    "number": 1,
+    "text": "We are destinies entwined, bound to cross on paths aligned."
   },
   {
-    "block": 2,
-    "footprints": [
-      {
-        "block": 2,
-        "id": "113a",
-        "number": 113,
-        "text": "You shine in the sky of my skies. You illuminate the horizon of my lips. You are the light that my desires await every night."
-      },
-      {
-        "block": 2,
-        "id": "114a",
-        "number": 114,
-        "text": "You will be forgotten for the shadow you left behind, or remembered for the light you cast when you gave love."
-      },
-      {
-        "block": 2,
-        "id": "115a",
-        "number": 115,
-        "text": "Never let your thoughts dim your light. Always let your feelings illuminate you."
-      },
-      {
-        "block": 2,
-        "id": "116a",
-        "number": 116,
-        "text": "Don't allow anyone to extinguish the light of your smiles, for those of us who love you need them every day."
-      },
-      {
-        "block": 2,
-        "id": "117a",
-        "number": 117,
-        "text": "If I have anything to pass on to you, let it be the constant joy you feel by my side."
-      },
-      {
-        "block": 2,
-        "id": "118a",
-        "number": 118,
-        "text": "Smiles can be the dress with which we clothe our joys, or the disguise with which we hide our tears."
-      },
-      {
-        "block": 2,
-        "id": "119a",
-        "number": 119,
-        "text": "We shine when we ignite our smiles, and we fade away when we dim with our sorrows."
-      },
-      {
-        "block": 2,
-        "id": "110",
-        "number": 110,
-        "text": "A life without hope is like a book without words."
-      },
-      {
-        "block": 2,
-        "id": "111",
-        "number": 111,
-        "text": "Never forget that even on the darkest nights, stars never stop shining."
-      },
-      {
-        "block": 2,
-        "id": "112",
-        "number": 112,
-        "text": "Never forget that the sun shines on us all, for it does not care who we are, where we are, or where we were born."
-      },
-      {
-        "block": 2,
-        "id": "113b",
-        "number": 113,
-        "text": "When you see clouds in the sky, remember they are not eternal, so trust that the sun will shine again when drawn by your smiles."
-      },
-      {
-        "block": 2,
-        "id": "114b",
-        "number": 114,
-        "text": "Your smiles hold more value than you think, for you give meaning to the lives of those you share them with."
-      },
-      {
-        "block": 2,
-        "id": "115b",
-        "number": 115,
-        "text": "If we do not lack money to live, perhaps we ought to find reasons to smile."
-      },
-      {
-        "block": 2,
-        "id": "116b",
-        "number": 116,
-        "text": "Never forget that the same person who gives you smiles today may have shed many tears before."
-      },
-      {
-        "block": 2,
-        "id": "117b",
-        "number": 117,
-        "text": "There are those who leave the chill of their shadow wherever they pass, and those who amaze wherever they go."
-      },
-      {
-        "block": 2,
-        "id": "118b",
-        "number": 118,
-        "text": "Our mood does not change our lives, but upon it depends whether we dim with our tears or shine with our smiles."
-      },
-      {
-        "block": 2,
-        "id": "119b",
-        "number": 119,
-        "text": "You are mistaken if you believe goodbyes are wounds, for they are the chance to discover that more stars exist in the sky."
-      },
-      {
-        "block": 2,
-        "id": "120",
-        "number": 120,
-        "text": "We may have reasons to cry and show our sorrows, but we need no excuses to live our finest smiles."
-      },
-      {
-        "block": 2,
-        "id": "121",
-        "number": 121,
-        "text": "True happiness will not come from the wealth you possess, but from the smiles you give away."
-      },
-      {
-        "block": 2,
-        "id": "122",
-        "number": 122,
-        "text": "When you feel you are drowning in a sea of tears, remember that we all learned to swim thanks to our smiles."
-      },
-      {
-        "block": 2,
-        "id": "123",
-        "number": 123,
-        "text": "Never rejoice in another's misfortunes, for life hands out sorrows blindly and tomorrow you may be the one to suffer them."
-      },
-      {
-        "block": 2,
-        "id": "124",
-        "number": 124,
-        "text": "Being happy does not depend on your luck. You will be happy when you decide to be."
-      },
-      {
-        "block": 2,
-        "id": "125",
-        "number": 125,
-        "text": "Our happiness does not depend on the actions of others. It depends solely on what we decide."
-      },
-      {
-        "block": 2,
-        "id": "126",
-        "number": 126,
-        "text": "Though we remain the same each day, you change depending on your desire to live and whether you choose to dress in tears or in smiles."
-      },
-      {
-        "block": 2,
-        "id": "127",
-        "number": 127,
-        "text": "Never forget that the sun needs no company to shine in freedom, and generously shares its light and warmth with everyone."
-      },
-      {
-        "block": 2,
-        "id": "128",
-        "number": 128,
-        "text": "Sometimes we let our lives have tears to spare and smiles to spare."
-      },
-      {
-        "block": 2,
-        "id": "129",
-        "number": 129,
-        "text": "Life gives us days to live, and it is up to us to fill them with hope and smiles."
-      },
-      {
-        "block": 2,
-        "id": "130",
-        "number": 130,
-        "text": "Happiness is being grateful for what we have without regretting what we want, even if we think we will never have it."
-      },
-      {
-        "block": 2,
-        "id": "131",
-        "number": 131,
-        "text": "If the storm is inevitable, your smile is the best raincoat."
-      },
-      {
-        "block": 2,
-        "id": "132",
-        "number": 132,
-        "text": "The key lies not in what we do, but in the passion and hope we pour into everything we do."
-      },
-      {
-        "block": 2,
-        "id": "133",
-        "number": 133,
-        "text": "You provide the smiles, and destiny grants you life to share your joys with everyone."
-      },
-      {
-        "block": 2,
-        "id": "134",
-        "number": 134,
-        "text": "The finest sun is not the one that casts shadows on others, but the one that amazes by the light it gives to everyone."
-      },
-      {
-        "block": 2,
-        "id": "135",
-        "number": 135,
-        "text": "Never trust the compliments of strangers, for the words of your friends will always be more sincere."
-      },
-      {
-        "block": 2,
-        "id": "136",
-        "number": 136,
-        "text": "I would rather be the smile that wipes away your tears than the presence that vanishes when you need it most."
-      },
-      {
-        "block": 2,
-        "id": "137",
-        "number": 137,
-        "text": "Anyone can write our tears, but we alone are the authors of our smiles."
-      },
-      {
-        "block": 2,
-        "id": "138",
-        "number": 138,
-        "text": "Life looks more beautiful when your smile shines."
-      },
-      {
-        "block": 2,
-        "id": "139",
-        "number": 139,
-        "text": "Life holds value when days are lived with love."
-      },
-      {
-        "block": 2,
-        "id": "140",
-        "number": 140,
-        "text": "Do not weep for what you lost. Always smile for what you lived."
-      },
-      {
-        "block": 2,
-        "id": "141",
-        "number": 141,
-        "text": "I could spend life dreaming, but I have chosen to spend it flying."
-      },
-      {
-        "block": 2,
-        "id": "142",
-        "number": 142,
-        "text": "Love needs no definition, for whoever feels it in their heart never needs words."
-      },
-      {
-        "block": 2,
-        "id": "143",
-        "number": 143,
-        "text": "My eyes left tears behind in oblivion, and ever since, I am the sea where my smiles shine."
-      },
-      {
-        "block": 2,
-        "id": "144",
-        "number": 144,
-        "text": "Our home will always be wherever they know how to love us."
-      },
-      {
-        "block": 2,
-        "id": "145",
-        "number": 145,
-        "text": "Nothing and no one can defeat you, for a woman never falters."
-      },
-      {
-        "block": 2,
-        "id": "146",
-        "number": 146,
-        "text": "Whoever makes you smile is the one who teaches you the best way to live."
-      },
-      {
-        "block": 2,
-        "id": "147",
-        "number": 147,
-        "text": "Never forget that the smiles we give away and the tears stolen from us are what make us great."
-      },
-      {
-        "block": 2,
-        "id": "148",
-        "number": 148,
-        "text": "If you expect nothing from life, you will feel you find something good every day."
-      },
-      {
-        "block": 2,
-        "id": "149",
-        "number": 149,
-        "text": "Never forget that wishing well with smiles will bring happiness to those you live with."
-      },
-      {
-        "block": 2,
-        "id": "150",
-        "number": 150,
-        "text": "When our tears speak, words become redundant to our feelings."
-      },
-      {
-        "block": 2,
-        "id": "151",
-        "number": 151,
-        "text": "When dark thoughts cloud our minds, all colors disappear from our feelings."
-      },
-      {
-        "block": 2,
-        "id": "152",
-        "number": 152,
-        "text": "When there is disorder in our feelings, we will find no order in our thoughts."
-      },
-      {
-        "block": 2,
-        "id": "153",
-        "number": 153,
-        "text": "No one deserves our bitterest tears, for we all ought to enjoy our sweetest smiles."
-      },
-      {
-        "block": 2,
-        "id": "154",
-        "number": 154,
-        "text": "Our moods do not change our lives, but they can turn them into tears or into smiles."
-      },
-      {
-        "block": 2,
-        "id": "155",
-        "number": 155,
-        "text": "If your tears are ice, smiles are the finest blend to drink away your sorrows."
-      },
-      {
-        "block": 2,
-        "id": "156",
-        "number": 156,
-        "text": "We all possess superpowers when we are polite and kind to others."
-      },
-      {
-        "block": 2,
-        "id": "157",
-        "number": 157,
-        "text": "We tend to want everything thinking it will make us happy, when we are unable to live joyfully with what we already have."
-      },
-      {
-        "block": 2,
-        "id": "158",
-        "number": 158,
-        "text": "We worry about appearing happy, yet we change nothing to stop being unhappy."
-      },
-      {
-        "block": 2,
-        "id": "159",
-        "number": 159,
-        "text": "Our happiness does not come from the hands of others. Our happiness depends on us."
-      },
-      {
-        "block": 2,
-        "id": "160",
-        "number": 160,
-        "text": "Flees from jealous people, and also from those who are greedy."
-      },
-      {
-        "block": 2,
-        "id": "161",
-        "number": 161,
-        "text": "Whoever dresses in lies feels naked."
-      },
-      {
-        "block": 2,
-        "id": "162",
-        "number": 162,
-        "text": "There will always be someone who wants everything you have, but your true worth can never be taken away."
-      }
-    ]
+    "block": 1,
+    "id": "2",
+    "number": 2,
+    "text": "Life lays roads before our eyes; our minds build mazes in disguise."
   },
   {
-    "block": 3,
-    "footprints": [
-      {
-        "block": 3,
-        "id": "163",
-        "number": 163,
-        "text": "Do not speak of what you do not know, and do not explain what you do not understand."
-      },
-      {
-        "block": 3,
-        "id": "164",
-        "number": 164,
-        "text": "Falling serves us no purpose if afterward we show that we learned nothing."
-      },
-      {
-        "block": 3,
-        "id": "165",
-        "number": 165,
-        "text": "No one has ever learned to swim by staying on the shore staring at the sea."
-      },
-      {
-        "block": 3,
-        "id": "166",
-        "number": 166,
-        "text": "Life is a school where sometimes we pass and sometimes we fail, but where we always learn."
-      },
-      {
-        "block": 3,
-        "id": "167",
-        "number": 167,
-        "text": "He who chooses fools as teachers should not expect to learn good or great lessons."
-      },
-      {
-        "block": 3,
-        "id": "168",
-        "number": 168,
-        "text": "Not knowing is not a problem. The true problem is not learning."
-      },
-      {
-        "block": 3,
-        "id": "169",
-        "number": 169,
-        "text": "Life never gives bad lessons. What you may find at times are bad teachers."
-      },
-      {
-        "block": 3,
-        "id": "170",
-        "number": 170,
-        "text": "Having dreams is not enough. You must be brave and wake up to go out and chase them."
-      },
-      {
-        "block": 3,
-        "id": "171",
-        "number": 171,
-        "text": "Do not think that your dreams are far away. Keep dreaming so they do not slip through your fingers."
-      },
-      {
-        "block": 3,
-        "id": "172",
-        "number": 172,
-        "text": "Whoever believes that making their dream a reality is possible feels that nothing is impossible."
-      },
-      {
-        "block": 3,
-        "id": "173",
-        "number": 173,
-        "text": "We can stop dreaming when we make our dreams come true, or simply when we give up."
-      },
-      {
-        "block": 3,
-        "id": "174",
-        "number": 174,
-        "text": "We may feel tired at times, but that only means we are trying to reach our dreams."
-      },
-      {
-        "block": 3,
-        "id": "175",
-        "number": 175,
-        "text": "Success is the destination of all those who did not surrender while walking the path."
-      },
-      {
-        "block": 3,
-        "id": "176",
-        "number": 176,
-        "text": "We must accept that we lost on the day we gave up."
-      },
-      {
-        "block": 3,
-        "id": "177",
-        "number": 177,
-        "text": "Only dreamers know that what seemed impossible is incredible once achieved."
-      },
-      {
-        "block": 3,
-        "id": "178",
-        "number": 178,
-        "text": "Making mistakes is natural; it is the price we pay to see our dreams and hopes fulfilled."
-      },
-      {
-        "block": 3,
-        "id": "179",
-        "number": 179,
-        "text": "Merit is not having and wanting more, but dreaming, fighting, and in the end, proving your worth to others."
-      },
-      {
-        "block": 3,
-        "id": "180",
-        "number": 180,
-        "text": "Do not waste your life fighting everyone. Fight for your dreams to come true."
-      },
-      {
-        "block": 3,
-        "id": "181",
-        "number": 181,
-        "text": "The worst mistakes we can make are lamenting what we left unsaid, regretting what we left undone, and failing to learn from the mistakes we made."
-      },
-      {
-        "block": 3,
-        "id": "182",
-        "number": 182,
-        "text": "You will be remembered for your triumphs, never for what you left undone because you let your fears defeat you."
-      },
-      {
-        "block": 3,
-        "id": "183",
-        "number": 183,
-        "text": "The worst part of believing we know everything is that it makes learning impossible."
-      },
-      {
-        "block": 3,
-        "id": "184",
-        "number": 184,
-        "text": "You may face problems for which you find no answers, yet they remain great opportunities to prove that you never surrender."
-      },
-      {
-        "block": 3,
-        "id": "185",
-        "number": 185,
-        "text": "Stars will not come closer to us no matter how long we gaze at them, nor will we be closer to our dreams if we do not move."
-      },
-      {
-        "block": 3,
-        "id": "186",
-        "number": 186,
-        "text": "Luck will never come searching for you, so if you wait for your fortune to change while doing nothing, you can remain seated waiting."
-      },
-      {
-        "block": 3,
-        "id": "187",
-        "number": 187,
-        "text": "Life does not aid those who give up. Life tends to smile on those who, despite everything, keep going."
-      },
-      {
-        "block": 3,
-        "id": "188",
-        "number": 188,
-        "text": "Reaching any dream may seem impossible, but if you do not give up, you will make it possible."
-      },
-      {
-        "block": 3,
-        "id": "189",
-        "number": 189,
-        "text": "We can never erase dark moments from our lives, but we can always fight to make our dreams come true."
-      },
-      {
-        "block": 3,
-        "id": "190",
-        "number": 190,
-        "text": "If we removed the days spent in regret from our lives, consider whether it makes any sense to waste time on sorrow."
-      },
-      {
-        "block": 3,
-        "id": "191",
-        "number": 191,
-        "text": "Do not fear failure when reaching for your dreams, for far worse are the doubts in which you will drown thinking about what might have been had you not surrendered to your fears."
-      },
-      {
-        "block": 3,
-        "id": "192",
-        "number": 192,
-        "text": "I prefer knowing what happened by trying than spending the future wondering what it would have been like to achieve it."
-      },
-      {
-        "block": 3,
-        "id": "193",
-        "number": 193,
-        "text": "Do not wait for others to acknowledge your worth, for you alone know that your dreams set no limits."
-      },
-      {
-        "block": 3,
-        "id": "194",
-        "number": 194,
-        "text": "We rush to become the best, forgetting that to become masters we must first be apprentices."
-      },
-      {
-        "block": 3,
-        "id": "195",
-        "number": 195,
-        "text": "If you give up, bid farewell to the dreams you hold."
-      },
-      {
-        "block": 3,
-        "id": "196",
-        "number": 196,
-        "text": "It matters not whether we are winners or losers, for what will always set us apart is being great dreamers."
-      },
-      {
-        "block": 3,
-        "id": "197",
-        "number": 197,
-        "text": "There is no dream so wild that it cannot be reached, nor fear so great that it cannot be overcome."
-      },
-      {
-        "block": 3,
-        "id": "198",
-        "number": 198,
-        "text": "Whatever you decide, whatever you live through, never give up."
-      },
-      {
-        "block": 3,
-        "id": "199",
-        "number": 199,
-        "text": "Miracles exist because they are the dreams of those who never surrender."
-      },
-      {
-        "block": 3,
-        "id": "200",
-        "number": 200,
-        "text": "To make your dreams a reality, you must wake up and take action."
-      },
-      {
-        "block": 3,
-        "id": "201",
-        "number": 201,
-        "text": "Winners are those who, instead of thinking themselves losers, thought of how to turn their dreams into reality."
-      },
-      {
-        "block": 3,
-        "id": "202",
-        "number": 202,
-        "text": "We grow frustrated when we fall short of our dreams, forgetting to enjoy what we live while awake."
-      },
-      {
-        "block": 3,
-        "id": "203",
-        "number": 203,
-        "text": "You may feel that everyone has failed you, but what matters is that you do not fail yourself and never cease chasing your dreams."
-      },
-      {
-        "block": 3,
-        "id": "204",
-        "number": 204,
-        "text": "We become our own worst enemies when we give up."
-      },
-      {
-        "block": 3,
-        "id": "205",
-        "number": 205,
-        "text": "The only true winner is the one who works to surpass their limits, not to defeat their rivals."
-      },
-      {
-        "block": 3,
-        "id": "206",
-        "number": 206,
-        "text": "We are all apprentices when we fall, and we become masters when we rise."
-      },
-      {
-        "block": 3,
-        "id": "207",
-        "number": 207,
-        "text": "It is never too early to start dreaming, nor too late to begin anew."
-      },
-      {
-        "block": 3,
-        "id": "208",
-        "number": 208,
-        "text": "The first step in learning to fly is beginning to dream."
-      },
-      {
-        "block": 3,
-        "id": "209",
-        "number": 209,
-        "text": "The worst thing that can happen to us is not having dreams. The worst is forgetting to pursue what our heart desires."
-      },
-      {
-        "block": 3,
-        "id": "210",
-        "number": 210,
-        "text": "Fighting for your dreams can be exhausting, but if you give up, you will live knowing that nothing will ever change."
-      },
-      {
-        "block": 3,
-        "id": "211",
-        "number": 211,
-        "text": "We are not all that we dream we will be, because sometimes we settle for who we are, and other times we grow complacent believing everything will come easy."
-      },
-      {
-        "block": 3,
-        "id": "212",
-        "number": 212,
-        "text": "They may force us to live wide awake, but they can never steal our dreams."
-      },
-      {
-        "block": 3,
-        "id": "213",
-        "number": 213,
-        "text": "Those who fight with all their strength prove their courage, but far greater courage belongs to those who do not surrender even when they have none left."
-      },
-      {
-        "block": 3,
-        "id": "214",
-        "number": 214,
-        "text": "If you believe life is giving you no chances, it is not true; seizing them depends on what you decide in every moment."
-      },
-      {
-        "block": 3,
-        "id": "215",
-        "number": 215,
-        "text": "As long as you have a dream to fulfill, you have a reason to live."
-      },
-      {
-        "block": 3,
-        "id": "216",
-        "number": 216,
-        "text": "Our success depends not on the height of the mountain, but on the willpower our soul demonstrates during the climb."
-      },
-      {
-        "block": 3,
-        "id": "217",
-        "number": 217,
-        "text": "We must always remember that we were born free and nothing stops us from chasing our dreams, for we must not turn the fears we feel into barriers."
-      },
-      {
-        "block": 3,
-        "id": "218",
-        "number": 218,
-        "text": "Our success depends not on the possibilities given to us, but on making the most of the opportunities we find."
-      },
-      {
-        "block": 3,
-        "id": "219",
-        "number": 219,
-        "text": "Success is not having won, but having tried, and having pressed on even when feeling we might not reach our goals."
-      },
-      {
-        "block": 3,
-        "id": "220",
-        "number": 220,
-        "text": "I prefer having a list of lived desires than a list of projects that remained only dreams."
-      },
-      {
-        "block": 3,
-        "id": "221",
-        "number": 221,
-        "text": "If you do not fulfill your dreams, it will not be for lack of opportunities, but because you do not know how to seize the ones you have."
-      },
-      {
-        "block": 3,
-        "id": "222",
-        "number": 222,
-        "text": "Never pay mind to the criticisms directed at you, for they only seek to dishearten you so your dreams remain unfulfilled."
-      },
-      {
-        "block": 3,
-        "id": "223",
-        "number": 223,
-        "text": "No one needs wings to fly, only imagination to dream."
-      },
-      {
-        "block": 3,
-        "id": "224",
-        "number": 224,
-        "text": "The difference between dreaming and achieving those dreams lies in the work we do to see them come true."
-      },
-      {
-        "block": 3,
-        "id": "225",
-        "number": 225,
-        "text": "We waste time while dreaming if we do nothing when we wake to make those dreams come true."
-      },
-      {
-        "block": 3,
-        "id": "226",
-        "number": 226,
-        "text": "When we day-dream, we live what we want. When we dream in sleep, we live what we long for."
-      },
-      {
-        "block": 3,
-        "id": "227",
-        "number": 227,
-        "text": "Sometimes we use silence to express our deepest feelings."
-      },
-      {
-        "block": 3,
-        "id": "228",
-        "number": 228,
-        "text": "We soon forget the caresses that happiness gave us when adversity strikes."
-      },
-      {
-        "block": 3,
-        "id": "229",
-        "number": 229,
-        "text": "When sorrows arrive, they hide the sun of our smiles."
-      },
-      {
-        "block": 3,
-        "id": "230",
-        "number": 230,
-        "text": "We all know what we want. What we do not know is where to find the manual that tells us how to make our dreams a reality."
-      },
-      {
-        "block": 3,
-        "id": "231",
-        "number": 231,
-        "text": "Asleep we dream of what we desire, but awake we must labor to make those dreams real."
-      },
-      {
-        "block": 3,
-        "id": "232",
-        "number": 232,
-        "text": "We are always mistaken when we think we cannot reach our dreams, and right when we devote ourselves to finding the path to reach them."
-      },
-      {
-        "block": 3,
-        "id": "233",
-        "number": 233,
-        "text": "Since we all rise when we fall, we should learn that lamenting serves us little."
-      },
-      {
-        "block": 3,
-        "id": "234",
-        "number": 234,
-        "text": "Living in solitude and carrying sorrow is like walking with eyes fixed only on the stones."
-      },
-      {
-        "block": 3,
-        "id": "235",
-        "number": 235,
-        "text": "Rather than getting lost endlessly in our thoughts, it is better to find ourselves enjoying our feelings."
-      },
-     {
-      "block": 3,
-      "id": "236",
-      "number": 236,
-      "text": "Our problems can be massive, great, or small, depending on the weight we choose to give them."
-    }
-  ]
-}
+    "block": 1,
+    "id": "3",
+    "number": 3,
+    "text": "If our dreams remain unlived, it is the fear of life we give."
+  },
+  {
+    "block": 1,
+    "id": "4",
+    "number": 4,
+    "text": "The hardest choice is not among many trails, but finding a new path when every old one fails."
+  },
+  {
+    "block": 1,
+    "id": "5",
+    "number": 5,
+    "text": "Time rolls the dice upon the board; we are the pawns, our end ignored."
+  },
+  {
+    "block": 1,
+    "id": "6",
+    "number": 6,
+    "text": "The earth is round so wherever we roam, our dreams will find a place called home."
+  },
+  {
+    "block": 1,
+    "id": "7",
+    "number": 7,
+    "text": "Never forget the place of birth; all that matters is how we walked this earth."
+  },
+  {
+    "block": 1,
+    "id": "8",
+    "number": 8,
+    "text": "It is fine to feel astray; each dawn is a route we discover each day."
+  },
+  {
+    "block": 1,
+    "id": "9",
+    "number": 9,
+    "text": "So many trains have passed me by, I learned to walk beneath the sky."
+  },
+  {
+    "block": 1,
+    "id": "10",
+    "number": 10,
+    "text": "To live is to pretend we know where we head, unaware of the winding path ahead."
+  },
+  {
+    "block": 1,
+    "id": "11",
+    "number": 11,
+    "text": "Those who felt no fear to start anew, found horizons fresh and true."
+  },
+  {
+    "block": 1,
+    "id": "12",
+    "number": 12,
+    "text": "We are paths that meet and cross, then part ways with gain or loss."
+  },
+  {
+    "block": 1,
+    "id": "13",
+    "number": 13,
+    "text": "Life moves fast and changes course; we hold the wheel and guide its force."
+  },
+  {
+    "block": 1,
+    "id": "14",
+    "number": 14,
+    "text": "If the moon through clouds still shines above, never give up on the dreams you love."
+  },
+  {
+    "block": 1,
+    "id": "15",
+    "number": 15,
+    "text": "The future holds a promised scheme, but the present is reality, not a dream."
+  },
+  {
+    "block": 1,
+    "id": "16",
+    "number": 16,
+    "text": "On any journey, leave heavy bags behind; choose true souls for peace of mind."
+  },
+  {
+    "block": 1,
+    "id": "17",
+    "number": 17,
+    "text": "Your destiny will ever be, the place where you are held in high degree."
+  },
+  {
+    "block": 1,
+    "id": "18",
+    "number": 18,
+    "text": "We choose to let our failures break our heart, or make them lessons where new victories start."
+  },
+  {
+    "block": 1,
+    "id": "19",
+    "number": 19,
+    "text": "You are the journey you design; you are your own destined line."
+  },
+  {
+    "block": 1,
+    "id": "20",
+    "number": 20,
+    "text": "If Friday is where you long to be, set off today across the sea."
+  },
+  {
+    "block": 1,
+    "id": "21",
+    "number": 21,
+    "text": "We worry where our steps will fall, yet life unfolds beyond it all."
+  },
+  {
+    "block": 1,
+    "id": "22",
+    "number": 22,
+    "text": "The worst roads are not those walked in error, but those left unseen through fear and terror."
+  },
+  {
+    "block": 1,
+    "id": "23",
+    "number": 23,
+    "text": "Awaiting tomorrow while living today, steals the sweet moments that slip away."
+  },
+  {
+    "block": 1,
+    "id": "24",
+    "number": 24,
+    "text": "We trace the paths where we will go, whenever we dream of the souls we'll know."
+  },
+  {
+    "block": 1,
+    "id": "25",
+    "number": 25,
+    "text": "We are rivers flowing to the sea, reaching the end of our history."
+  },
+  {
+    "block": 1,
+    "id": "26",
+    "number": 26,
+    "text": "If every fall makes us give up the fight, we'll never see our fate in light."
+  },
+  {
+    "block": 1,
+    "id": "27",
+    "number": 27,
+    "text": "Remember well as time moves on: each step we take is a mark left upon."
+  },
+  {
+    "block": 1,
+    "id": "28",
+    "number": 28,
+    "text": "If death is the ultimate place to arrive, life is the journey while we are alive."
+  },
+  {
+    "block": 1,
+    "id": "29",
+    "number": 29,
+    "text": "Stones lie on roads both far and near; cowards weep, but the brave persevere."
+  },
+  {
+    "block": 1,
+    "id": "30",
+    "number": 30,
+    "text": "Life isn't measured in months or years; a single second shifts our tears."
+  },
+  {
+    "block": 1,
+    "id": "31",
+    "number": 31,
+    "text": "Though heavy storms the present bring, trust the future and the light of spring."
+  },
+  {
+    "block": 1,
+    "id": "32",
+    "number": 32,
+    "text": "If yesterday seems bright and sweet, ask if today makes your life complete."
+  },
+  {
+    "block": 1,
+    "id": "33",
+    "number": 33,
+    "text": "Two paths remain: to stand and fight, or weep in vain throughout the night."
+  },
+  {
+    "block": 1,
+    "id": "34",
+    "number": 34,
+    "text": "We are the sum of heart and mind; in their deep paths we get lost or aligned."
+  },
+  {
+    "block": 1,
+    "id": "35",
+    "number": 35,
+    "text": "We may not choose the cards we hold, but we choose the grace as our lives unfold."
+  },
+  {
+    "block": 1,
+    "id": "36",
+    "number": 36,
+    "text": "To live is to choose, day by day, which open road will guide our way."
+  },
+  {
+    "block": 1,
+    "id": "37",
+    "number": 37,
+    "text": "Though the road seems tough and steep, keep walking forward, the rewards you'll reap."
+  },
+  {
+    "block": 1,
+    "id": "38",
+    "number": 38,
+    "text": "Our destiny is not to hold or know, but to learn to love and let it grow."
+  },
+  {
+    "block": 1,
+    "id": "39",
+    "number": 39,
+    "text": "Though you choose the road you walk upon, destiny decides where you belong."
+  },
+  {
+    "block": 1,
+    "id": "40",
+    "number": 40,
+    "text": "Though I may not be where your journey ends, I dream of walking beside you as friends."
+  },
+  {
+    "block": 1,
+    "id": "41",
+    "number": 41,
+    "text": "Though our final goal remains unseen, we'll reach a place where we've never been."
+  },
+  {
+    "block": 1,
+    "id": "42",
+    "number": 42,
+    "text": "Fight your fate and change the tide; accept it blindly and suffer inside."
+  },
+  {
+    "block": 1,
+    "id": "43",
+    "number": 43,
+    "text": "We can read our fate upon the page, or write our story on the stage."
+  },
+  {
+    "block": 1,
+    "id": "44",
+    "number": 44,
+    "text": "Fear not the rocks along the trail; with courage high, you shall prevail."
+  },
+  {
+    "block": 1,
+    "id": "45",
+    "number": 45,
+    "text": "We may not gain all that we claim, but we can fight to reach our aim."
+  },
+  {
+    "block": 1,
+    "id": "46",
+    "number": 46,
+    "text": "Heroes are not born from winning the prize, but from fighting on beneath the skies."
+  },
+  {
+    "block": 1,
+    "id": "47",
+    "number": 47,
+    "text": "Only those who fight win the night; those who surrender miss the light."
+  },
+  {
+    "block": 1,
+    "id": "48",
+    "number": 48,
+    "text": "The mind finds excuses to delay, yet finds a way when the heart leads the way."
+  },
+  {
+    "block": 1,
+    "id": "49",
+    "number": 49,
+    "text": "We feel like prisoners bound in place, forgetting we locked our own cell space."
+  },
+  {
+    "block": 1,
+    "id": "50",
+    "number": 50,
+    "text": "Save some applause for those unsung, the silent heroes who died young."
+  },
+  {
+    "block": 1,
+    "id": "51",
+    "number": 51,
+    "text": "Let us be destiny, bright and clear; or quiet silence as our paths draw near."
+  },
+  {
+    "block": 1,
+    "id": "52",
+    "number": 52,
+    "text": "If you walk not by my side today, dream not of destiny along the way."
+  },
+  {
+    "block": 1,
+    "id": "53",
+    "number": 53,
+    "text": "We walked together when spark met spark, and kept on going through the dark."
+  },
+  {
+    "block": 1,
+    "id": "54",
+    "number": 54,
+    "text": "We write the present while we live, and read the past in what we give."
+  },
+  {
+    "block": 1,
+    "id": "55",
+    "number": 55,
+    "text": "The end of a road where shadows fall, is a new journey answering its call."
+  },
+  {
+    "block": 1,
+    "id": "56",
+    "number": 56,
+    "text": "Few understand that life is the stream, the journey itself, not the ultimate dream."
+  },
+  {
+    "block": 1,
+    "id": "57",
+    "number": 57,
+    "text": "Nothing is written in fate above; life awaits the words of our love."
+  },
+  {
+    "block": 1,
+    "id": "58",
+    "number": 58,
+    "text": "We know the haven we wish to reach, but planning forever leaves us on the beach."
+  },
+  {
+    "block": 1,
+    "id": "59",
+    "number": 59,
+    "text": "The present moment you now hold, is the future you awaited, bright and bold."
+  },
+  {
+    "block": 1,
+    "id": "60",
+    "number": 60,
+    "text": "Where we have been matters no more; what counts is the future at our door."
+  },
+  {
+    "block": 1,
+    "id": "61",
+    "number": 61,
+    "text": "Your destiny is never set in stone; you write each line as you walk alone."
+  },
+  {
+    "block": 1,
+    "id": "62",
+    "number": 62,
+    "text": "Life is a voyage sweet or grim, defined by companions and choices within."
+  },
+  {
+    "block": 1,
+    "id": "63",
+    "number": 63,
+    "text": "The hours wasted while we wait, are lost forever to our fate."
+  },
+  {
+    "block": 1,
+    "id": "64",
+    "number": 64,
+    "text": "We have one single day to die, but all our days to touch the sky."
+  },
+  {
+    "block": 1,
+    "id": "65",
+    "number": 65,
+    "text": "We cannot foresee the mistakes ahead, but wise choices today clear the path we tread."
+  },
+  {
+    "block": 1,
+    "id": "66",
+    "number": 66,
+    "text": "Ponder what remains when life is past, to know if this living is built to last."
+  },
+  {
+    "block": 1,
+    "id": "67",
+    "number": 67,
+    "text": "The distant future for which you prayed, is now the present you have made."
+  },
+  {
+    "block": 1,
+    "id": "68",
+    "number": 68,
+    "text": "Not luck, but choices shape our story, bringing regret or triumph's glory."
+  },
+  {
+    "block": 1,
+    "id": "69",
+    "number": 69,
+    "text": "Remember life takes a breath to start, and an instant can break it all apart."
+  },
+  {
+    "block": 1,
+    "id": "70",
+    "number": 70,
+    "text": "Why waste our thoughts on where we'll be? Look at the past and set present free."
+  },
+  {
+    "block": 1,
+    "id": "71",
+    "number": 71,
+    "text": "Tomorrow may bring a brighter sun, but never worse than what is done."
+  },
+  {
+    "block": 1,
+    "id": "72",
+    "number": 72,
+    "text": "Coincidences rarely show, and second chances seldom grow."
+  },
+  {
+    "block": 1,
+    "id": "73",
+    "number": 73,
+    "text": "Losers chase chances that fade away; winners build wealth from the dark and gray."
+  },
+  {
+    "block": 1,
+    "id": "74",
+    "number": 74,
+    "text": "Destiny whispers: a smile to share, a dream to live, and a life to dare."
+  },
+  {
+    "block": 1,
+    "id": "75",
+    "number": 75,
+    "text": "We all have dreams beneath the night, but wake we must to face the light."
+  },
+  {
+    "block": 1,
+    "id": "76",
+    "number": 76,
+    "text": "We value time so little now, then mourn its loss with furrowed brow."
+  },
+  {
+    "block": 1,
+    "id": "77",
+    "number": 77,
+    "text": "True joy is found when we understand: lived moments remain, not wealth in hand."
+  },
+  {
+    "block": 1,
+    "id": "78",
+    "number": 78,
+    "text": "If you stand today where you never planned, why worry where tomorrow lands?"
+  },
+  {
+    "block": 1,
+    "id": "79",
+    "number": 79,
+    "text": "From what I lived, I learned to see; in what comes next, I'll set me free."
+  },
+  {
+    "block": 1,
+    "id": "80",
+    "number": 80,
+    "text": "Never regret the path you took; every step was a lesson in life's book."
+  },
+  {
+    "block": 1,
+    "id": "81",
+    "number": 81,
+    "text": "Life will not pause or wait for you; go live it now, or it passes through."
+  },
+  {
+    "block": 1,
+    "id": "82",
+    "number": 82,
+    "text": "Though sad conclusions bring us tears, they open doors to brighter years."
+  },
+  {
+    "block": 1,
+    "id": "83",
+    "number": 83,
+    "text": "It makes no sense to mourn the dead, if while alive no words were said."
+  },
+  {
+    "block": 1,
+    "id": "84",
+    "number": 84,
+    "text": "Empty we came, empty we go; only lived moments remain below."
+  },
+  {
+    "block": 1,
+    "id": "85",
+    "number": 85,
+    "text": "Time is a treasure we hoard in vain, spent the moment we remember pain."
+  },
+  {
+    "block": 1,
+    "id": "86",
+    "number": 86,
+    "text": "We think too much upon the floor, and end up nowhere as before."
+  },
+  {
+    "block": 1,
+    "id": "87",
+    "number": 87,
+    "text": "Joy is no final place to arrive; it is the spirit keeping us alive."
+  },
+  {
+    "block": 1,
+    "id": "88",
+    "number": 88,
+    "text": "Doubt where we stand, doubt where we go; but doubt not the worth of your inner glow."
+  },
+  {
+    "block": 1,
+    "id": "89",
+    "number": 89,
+    "text": "Others may make our days dark or bright, but only we choose to hold the light."
+  },
+  {
+    "block": 1,
+    "id": "90",
+    "number": 90,
+    "text": "All seek joy with restless mind, forgetting in peace is where we find."
+  },
+  {
+    "block": 1,
+    "id": "91",
+    "number": 91,
+    "text": "Living is simple: let coldness go, and learn from mistakes of long ago."
+  },
+  {
+    "block": 1,
+    "id": "92",
+    "number": 92,
+    "text": "We were not born to dream who we'll be, but to live our truth continuously."
+  },
+  {
+    "block": 1,
+    "id": "93",
+    "number": 93,
+    "text": "We all can find joy in what we hold, keeping hopes bright as stories unfold."
+  },
+  {
+    "block": 1,
+    "id": "94",
+    "number": 94,
+    "text": "Searching for joy can lead astray; true happiness lives in this moment today."
+  },
+  {
+    "block": 1,
+    "id": "95",
+    "number": 95,
+    "text": "Cherish what's yours, fight for your aim, and hold no regrets for choices you claim."
+  },
+  {
+    "block": 1,
+    "id": "96",
+    "number": 96,
+    "text": "Enjoy sweet moments while they last, before they fade into the past."
+  },
+  {
+    "block": 1,
+    "id": "97",
+    "number": 97,
+    "text": "Our life has one true goal above: to spend our days in joy and love."
+  },
+  {
+    "block": 1,
+    "id": "98",
+    "number": 98,
+    "text": "Dreams come in sleep when night is deep, but awake we must walk to hold what we keep."
+  },
+  {
+    "block": 1,
+    "id": "99",
+    "number": 99,
+    "text": "If we cannot rise to be our best, let us not sink beneath the rest."
+  },
+  {
+    "block": 1,
+    "id": "100",
+    "number": 100,
+    "text": "Though we seem alike beneath the sun, unique and rare is every one."
+  },
+  {
+    "block": 1,
+    "id": "101",
+    "number": 101,
+    "text": "The value of gifts is not the paper tied, but the warmth of love felt inside."
+  },
+  {
+    "block": 1,
+    "id": "102",
+    "number": 102,
+    "text": "You light my days and guide my way, whenever your eyes look my way."
+  },
+  {
+    "block": 1,
+    "id": "103",
+    "number": 103,
+    "text": "In past lives I searched for your grace; in this life I find your embrace."
+  },
+  {
+    "block": 1,
+    "id": "104",
+    "number": 104,
+    "text": "The footprints left upon the ground, are marks of dreams we sought and found."
+  },
+  {
+    "block": 1,
+    "id": "105",
+    "number": 105,
+    "text": "If tomorrow is unseen and the past is gone, live this moment until the dawn."
+  },
+  {
+    "block": 1,
+    "id": "106",
+    "number": 106,
+    "text": "In endless space we are a tiny dot; in vast time, a fleeting spot."
+  },
+  {
+    "block": 1,
+    "id": "107",
+    "number": 107,
+    "text": "Though you choose the path you tread, destiny seals where you are led."
+  },
+  {
+    "block": 1,
+    "id": "108",
+    "number": 108,
+    "text": "Fools seek the goal at journey's end; the wise love the road around the bend."
+  },
+  {
+    "block": 1,
+    "id": "109",
+    "number": 109,
+    "text": "Few comprehend this life we claim: the road is real, the goal a name."
+  },
+  {
+    "block": 1,
+    "id": "110",
+    "number": 110,
+    "text": "No traveler ever reached a shore, without departing from the door."
+  },
+  {
+    "block": 1,
+    "id": "111",
+    "number": 111,
+    "text": "Never step out just to search in vain; go forth to find and gain."
+  },
+  {
+    "block": 1,
+    "id": "112",
+    "number": 112,
+    "text": "When tired we rest our weary head, but awake we must live instead."
+  }
 ]
