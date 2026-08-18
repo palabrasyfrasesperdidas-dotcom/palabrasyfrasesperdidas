@@ -208,7 +208,11 @@
             "Bloque 11: El latido de la libertad",
             "Bloque 12: La Razón y el Corazón",
             "Bloque 13: El Universo de las Palabras",
-            "Bloque 14: La Soledad que Habla"
+            "Bloque 14: La Soledad que Habla",
+            "Bloque 15: Bloque 15",
+            "Bloque 16: Bloque 16",
+            "Bloque 17: Bloque 17",
+            "Bloque 18: Bloque 18"
         ],
         en: [
             "Block 1: Geometry of Destiny",
@@ -224,7 +228,11 @@
             "Block 11: The Pulse of Freedom",
             "Block 12: Reason and Heart",
             "Block 13: Universe of Words",
-            "Block 14: Solitude That Speaks"
+            "Block 14: Solitude That Speaks",
+            "Block 15: Block 15",
+            "Block 16: Block 16",
+            "Block 17: Block 17",
+            "Block 18: Block 18"
         ]
     };
 
@@ -386,7 +394,6 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-        // Rutas corregidas para coincidir exactamente con los nombres en GitHub
         const primaryImgPath = (currentLang === 'en') ? `plantilla${item.bloque}_en.png` : `plantilla${item.bloque}.png`;
         const primaryVideoPath = (currentLang === 'en') ? `plantilla${item.bloque}_video_en.mp4` : `plantilla${item.bloque}_video.mp4`;
 
