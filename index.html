@@ -347,7 +347,8 @@
 
     function filterByBlock(blockNum, keepIndex = false) {
         sessionStorage.setItem('pyfp_block', blockNum.toString());
-        currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(blockNum));
+        // Se añade compatibilidad para leer tanto "bloque" como "block"
+        currentFilteredFrases = allFrases.filter(f => Number(f.bloque || f.block) === Number(blockNum));
         
         if (!keepIndex) {
             currentIndex = 0;
@@ -387,6 +388,7 @@
 
         const item = currentFilteredFrases[currentIndex];
         const label = translations[currentLang].footprintLabel;
+        const currentBlockNum = Number(item.bloque || item.block);
 
         if (huellaCounter) {
             huellaCounter.textContent = `${label} ${item.id} (${currentIndex + 1} / ${currentFilteredFrases.length})`;
@@ -394,8 +396,8 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-        const primaryImgPath = (currentLang === 'en') ? `plantilla${item.bloque}_en.png` : `plantilla${item.bloque}.png`;
-        const primaryVideoPath = (currentLang === 'en') ? `plantilla${item.bloque}_video_en.mp4` : `plantilla${item.bloque}_video.mp4`;
+        const primaryImgPath = (currentLang === 'en') ? `plantilla${currentBlockNum}_en.png` : `plantilla${currentBlockNum}.png`;
+        const primaryVideoPath = (currentLang === 'en') ? `plantilla${currentBlockNum}_video_en.mp4` : `plantilla${currentBlockNum}_video.mp4`;
 
         const bgImg = new Image();
         bgImg.src = primaryImgPath;
@@ -403,16 +405,16 @@
         bgImg.onload = () => {
             adjustCanvasSize(bgImg.naturalWidth, bgImg.naturalHeight);
             drawCanvasFrame(bgImg, item.texto);
-            tryLoadVideo(primaryVideoPath, item.texto, bgImg);
+            tryLoadVideo(primaryVideoPath, item.texto, bgImg, currentBlockNum);
         };
 
         bgImg.onerror = () => {
             const fallbackImg = new Image();
-            fallbackImg.src = `plantilla${item.bloque}.png`;
+            fallbackImg.src = `plantilla${currentBlockNum}.png`;
             fallbackImg.onload = () => {
                 adjustCanvasSize(fallbackImg.naturalWidth, fallbackImg.naturalHeight);
                 drawCanvasFrame(fallbackImg, item.texto);
-                tryLoadVideo(primaryVideoPath, item.texto, fallbackImg);
+                tryLoadVideo(primaryVideoPath, item.texto, fallbackImg, currentBlockNum);
             };
             fallbackImg.onerror = () => drawTextOnly(item.texto);
         };
@@ -424,7 +426,7 @@
         canvas.height = height || 1350;
     }
 
-    function tryLoadVideo(videoSrc, text, fallbackImg) {
+    function tryLoadVideo(videoSrc, text, fallbackImg, blockNum) {
         const video = document.createElement('video');
         video.src = videoSrc;
         video.muted = true;
@@ -568,9 +570,10 @@
                 if (allFrases.length === 0) return;
                 const randomIndex = Math.floor(Math.random() * allFrases.length);
                 const randomItem = allFrases[randomIndex];
+                const blockValue = Number(randomItem.bloque || randomItem.block);
                 
-                blockSelect.value = randomItem.bloque.toString();
-                currentFilteredFrases = allFrases.filter(f => Number(f.bloque) === Number(randomItem.bloque));
+                blockSelect.value = blockValue.toString();
+                currentFilteredFrases = allFrases.filter(f => Number(f.bloque || f.block) === blockValue);
                 currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
                 if (currentIndex === -1) currentIndex = 0;
                 renderCurrentHuella();
