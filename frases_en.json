@@ -558,5 +558,1280 @@
     "id": 112,
     "bloque": 1,
     "texto": "When tired we rest our weary head, but awake we must live instead."
-  }
-]
+  },
+  {
+  "block": 2,
+  "footprints": [
+    {
+      "block": 2,
+      "id": "113a",
+      "number": 113,
+      "text": "You shine in the sky of my skies. You illuminate the horizon of my lips. You are the light that my desires await every night."
+    },
+    {
+      "block": 2,
+      "id": "114a",
+      "number": 114,
+      "text": "You will be forgotten for the shadow you left behind, or remembered for the light you cast when you gave love."
+    },
+    {
+      "block": 2,
+      "id": "115a",
+      "number": 115,
+      "text": "Never let your thoughts dim your light. Always let your feelings illuminate you."
+    },
+    {
+      "block": 2,
+      "id": "116a",
+      "number": 116,
+      "text": "Don't allow anyone to extinguish the light of your smiles, for those of us who love you need them every day."
+    },
+    {
+      "block": 2,
+      "id": "117a",
+      "number": 117,
+      "text": "If I have anything to pass on to you, let it be the constant joy you feel by my side."
+    },
+    {
+      "block": 2,
+      "id": "118a",
+      "number": 118,
+      "text": "Smiles can be the dress with which we clothe our joys, or the disguise with which we hide our tears."
+    },
+    {
+      "block": 2,
+      "id": "119a",
+      "number": 119,
+      "text": "We shine when we ignite our smiles, and we fade away when we dim with our sorrows."
+    },
+    {
+      "block": 2,
+      "id": "110",
+      "number": 110,
+      "text": "A life without hope is like a book without words."
+    },
+    {
+      "block": 2,
+      "id": "111",
+      "number": 111,
+      "text": "Never forget that even on the darkest nights, stars never stop shining."
+    },
+    {
+      "block": 2,
+      "id": "112",
+      "number": 112,
+      "text": "Never forget that the sun shines on us all, for it does not care who we are, where we are, or where we were born."
+    },
+    {
+      "block": 2,
+      "id": "113b",
+      "number": 113,
+      "text": "When you see clouds in the sky, remember they are not eternal, so trust that the sun will shine again when drawn by your smiles."
+    },
+    {
+      "block": 2,
+      "id": "114b",
+      "number": 114,
+      "text": "Your smiles hold more value than you think, for you give meaning to the lives of those you share them with."
+    },
+    {
+      "block": 2,
+      "id": "115b",
+      "number": 115,
+      "text": "If we do not lack money to live, perhaps we ought to find reasons to smile."
+    },
+    {
+      "block": 2,
+      "id": "116b",
+      "number": 116,
+      "text": "Never forget that the same person who gives you smiles today may have shed many tears before."
+    },
+    {
+      "block": 2,
+      "id": "117b",
+      "number": 117,
+      "text": "There are those who leave the chill of their shadow wherever they pass, and those who amaze wherever they go."
+    },
+    {
+      "block": 2,
+      "id": "118b",
+      "number": 118,
+      "text": "Our mood does not change our lives, but upon it depends whether we dim with our tears or shine with our smiles."
+    },
+    {
+      "block": 2,
+      "id": "119b",
+      "number": 119,
+      "text": "You are mistaken if you believe goodbyes are wounds, for they are the chance to discover that more stars exist in the sky."
+    },
+    {
+      "block": 2,
+      "id": "120",
+      "number": 120,
+      "text": "We may have reasons to cry and show our sorrows, but we need no excuses to live our finest smiles."
+    },
+    {
+      "block": 2,
+      "id": "121",
+      "number": 121,
+      "text": "True happiness will not come from the wealth you possess, but from the smiles you give away."
+    },
+    {
+      "block": 2,
+      "id": "122",
+      "number": 122,
+      "text": "When you feel you are drowning in a sea of tears, remember that we all learned to swim thanks to our smiles."
+    },
+    {
+      "block": 2,
+      "id": "123",
+      "number": 123,
+      "text": "Never rejoice in another's misfortunes, for life hands out sorrows blindly and tomorrow you may be the one to suffer them."
+    },
+    {
+      "block": 2,
+      "id": "124",
+      "number": 124,
+      "text": "Being happy does not depend on your luck. You will be happy when you decide to be."
+    },
+    {
+      "block": 2,
+      "id": "125",
+      "number": 125,
+      "text": "Our happiness does not depend on the actions of others. It depends solely on what we decide."
+    },
+    {
+      "block": 2,
+      "id": "126",
+      "number": 126,
+      "text": "Though we remain the same each day, you change depending on your desire to live and whether you choose to dress in tears or in smiles."
+    },
+    {
+      "block": 2,
+      "id": "127",
+      "number": 127,
+      "text": "Never forget that the sun needs no company to shine in freedom, and generously shares its light and warmth with everyone."
+    },
+    {
+      "block": 2,
+      "id": "128",
+      "number": 128,
+      "text": "Sometimes we let our lives have tears to spare and smiles to spare."
+    },
+    {
+      "block": 2,
+      "id": "129",
+      "number": 129,
+      "text": "Life gives us days to live, and it is up to us to fill them with hope and smiles."
+    },
+    {
+      "block": 2,
+      "id": "130",
+      "number": 130,
+      "text": "Happiness is being grateful for what we have without regretting what we want, even if we think we will never have it."
+    },
+    {
+      "block": 2,
+      "id": "131",
+      "number": 131,
+      "text": "If the storm is inevitable, your smile is the best raincoat."
+    },
+    {
+      "block": 2,
+      "id": "132",
+      "number": 132,
+      "text": "The key lies not in what we do, but in the passion and hope we pour into everything we do."
+    },
+    {
+      "block": 2,
+      "id": "133",
+      "number": 133,
+      "text": "You provide the smiles, and destiny grants you life to share your joys with everyone."
+    },
+    {
+      "block": 2,
+      "id": "134",
+      "number": 134,
+      "text": "The finest sun is not the one that casts shadows on others, but the one that amazes by the light it gives to everyone."
+    },
+    {
+      "block": 2,
+      "id": "135",
+      "number": 135,
+      "text": "Never trust the compliments of strangers, for the words of your friends will always be more sincere."
+    },
+    {
+      "block": 2,
+      "id": "136",
+      "number": 136,
+      "text": "I would rather be the smile that wipes away your tears than the presence that vanishes when you need it most."
+    },
+    {
+      "block": 2,
+      "id": "137",
+      "number": 137,
+      "text": "Anyone can write our tears, but we alone are the authors of our smiles."
+    },
+    {
+      "block": 2,
+      "id": "138",
+      "number": 138,
+      "text": "Life looks more beautiful when your smile shines."
+    },
+    {
+      "block": 2,
+      "id": "139",
+      "number": 139,
+      "text": "Life holds value when days are lived with love."
+    },
+    {
+      "block": 2,
+      "id": "140",
+      "number": 140,
+      "text": "Do not weep for what you lost. Always smile for what you lived."
+    },
+    {
+      "block": 2,
+      "id": "141",
+      "number": 141,
+      "text": "I could spend life dreaming, but I have chosen to spend it flying."
+    },
+    {
+      "block": 2,
+      "id": "142",
+      "number": 142,
+      "text": "Love needs no definition, for whoever feels it in their heart never needs words."
+    },
+    {
+      "block": 2,
+      "id": "143",
+      "number": 143,
+      "text": "My eyes left tears behind in oblivion, and ever since, I am the sea where my smiles shine."
+    },
+    {
+      "block": 2,
+      "id": "144",
+      "number": 144,
+      "text": "Our home will always be wherever they know how to love us."
+    },
+    {
+      "block": 2,
+      "id": "145",
+      "number": 145,
+      "text": "Nothing and no one can defeat you, for a woman never falters."
+    },
+    {
+      "block": 2,
+      "id": "146",
+      "number": 146,
+      "text": "Whoever makes you smile is the one who teaches you the best way to live."
+    },
+    {
+      "block": 2,
+      "id": "147",
+      "number": 147,
+      "text": "Never forget that the smiles we give away and the tears stolen from us are what make us great."
+    },
+    {
+      "block": 2,
+      "id": "148",
+      "number": 148,
+      "text": "If you expect nothing from life, you will feel you find something good every day."
+    },
+    {
+      "block": 2,
+      "id": "149",
+      "number": 149,
+      "text": "Never forget that wishing well with smiles will bring happiness to those you live with."
+    },
+    {
+      "block": 2,
+      "id": "150",
+      "number": 150,
+      "text": "When our tears speak, words become redundant to our feelings."
+    },
+    {
+      "block": 2,
+      "id": "151",
+      "number": 151,
+      "text": "When dark thoughts cloud our minds, all colors disappear from our feelings."
+    },
+    {
+      "block": 2,
+      "id": "152",
+      "number": 152,
+      "text": "When there is disorder in our feelings, we will find no order in our thoughts."
+    },
+    {
+      "block": 2,
+      "id": "153",
+      "number": 153,
+      "text": "No one deserves our bitterest tears, for we all ought to enjoy our sweetest smiles."
+    },
+    {
+      "block": 2,
+      "id": "154",
+      "number": 154,
+      "text": "Our moods do not change our lives, but they can turn them into tears or into smiles."
+    },
+    {
+      "block": 2,
+      "id": "155",
+      "number": 155,
+      "text": "If your tears are ice, smiles are the finest blend to drink away your sorrows."
+    },
+    {
+      "block": 2,
+      "id": "156",
+      "number": 156,
+      "text": "We all possess superpowers when we are polite and kind to others."
+    },
+    {
+      "block": 2,
+      "id": "157",
+      "number": 157,
+      "text": "We tend to want everything thinking it will make us happy, when we are unable to live joyfully with what we already have."
+    },
+    {
+      "block": 2,
+      "id": "158",
+      "number": 158,
+      "text": "We worry about appearing happy, yet we change nothing to stop being unhappy."
+    },
+    {
+      "block": 2,
+      "id": "159",
+      "number": 159,
+      "text": "Our happiness does not come from the hands of others. Our happiness depends on us."
+    },
+    {
+      "block": 2,
+      "id": "160",
+      "number": 160,
+      "text": "Flees from jealous people, and also from those who are greedy."
+    },
+    {
+      "block": 2,
+      "id": "161",
+      "number": 161,
+      "text": "Whoever dresses in lies feels naked."
+    },
+    {
+      "block": 2,
+      "id": "162",
+      "number": 162,
+      "text": "There will always be someone who wants everything you have, but your true worth can never be taken away."
+},
+ {
+  "block": 3,
+  "footprints": [
+    {
+      "block": 3,
+      "id": "163",
+      "number": 163,
+      "text": "Do not speak of what you do not know, and do not explain what you do not understand."
+    },
+    {
+      "block": 3,
+      "id": "164",
+      "number": 164,
+      "text": "Falling serves us no purpose if afterward we show that we learned nothing."
+    },
+    {
+      "block": 3,
+      "id": "165",
+      "number": 165,
+      "text": "No one has ever learned to swim by staying on the shore staring at the sea."
+    },
+    {
+      "block": 3,
+      "id": "166",
+      "number": 166,
+      "text": "Life is a school where sometimes we pass and sometimes we fail, but where we always learn."
+    },
+    {
+      "block": 3,
+      "id": "167",
+      "number": 167,
+      "text": "He who chooses fools as teachers should not expect to learn good or great lessons."
+    },
+    {
+      "block": 3,
+      "id": "168",
+      "number": 168,
+      "text": "Not knowing is not a problem. The true problem is not learning."
+    },
+    {
+      "block": 3,
+      "id": "169",
+      "number": 169,
+      "text": "Life never gives bad lessons. What you may find at times are bad teachers."
+    },
+    {
+      "block": 3,
+      "id": "170",
+      "number": 170,
+      "text": "Having dreams is not enough. You must be brave and wake up to go out and chase them."
+    },
+    {
+      "block": 3,
+      "id": "171",
+      "number": 171,
+      "text": "Do not think that your dreams are far away. Keep dreaming so they do not slip through your fingers."
+    },
+    {
+      "block": 3,
+      "id": "172",
+      "number": 172,
+      "text": "Whoever believes that making their dream a reality is possible feels that nothing is impossible."
+    },
+    {
+      "block": 3,
+      "id": "173",
+      "number": 173,
+      "text": "We can stop dreaming when we make our dreams come true, or simply when we give up."
+    },
+    {
+      "block": 3,
+      "id": "174",
+      "number": 174,
+      "text": "We may feel tired at times, but that only means we are trying to reach our dreams."
+    },
+    {
+      "block": 3,
+      "id": "175",
+      "number": 175,
+      "text": "Success is the destination of all those who did not surrender while walking the path."
+    },
+    {
+      "block": 3,
+      "id": "176",
+      "number": 176,
+      "text": "We must accept that we lost on the day we gave up."
+    },
+    {
+      "block": 3,
+      "id": "177",
+      "number": 177,
+      "text": "Only dreamers know that what seemed impossible is incredible once achieved."
+    },
+    {
+      "block": 3,
+      "id": "178",
+      "number": 178,
+      "text": "Making mistakes is natural; it is the price we pay to see our dreams and hopes fulfilled."
+    },
+    {
+      "block": 3,
+      "id": "179",
+      "number": 179,
+      "text": "Merit is not having and wanting more, but dreaming, fighting, and in the end, proving your worth to others."
+    },
+    {
+      "block": 3,
+      "id": "180",
+      "number": 180,
+      "text": "Do not waste your life fighting everyone. Fight for your dreams to come true."
+    },
+    {
+      "block": 3,
+      "id": "181",
+      "number": 181,
+      "text": "The worst mistakes we can make are lamenting what we left unsaid, regretting what we left undone, and failing to learn from the mistakes we made."
+    },
+    {
+      "block": 3,
+      "id": "182",
+      "number": 182,
+      "text": "You will be remembered for your triumphs, never for what you left undone because you let your fears defeat you."
+    },
+    {
+      "block": 3,
+      "id": "183",
+      "number": 183,
+      "text": "The worst part of believing we know everything is that it makes learning impossible."
+    },
+    {
+      "block": 3,
+      "id": "184",
+      "number": 184,
+      "text": "You may face problems for which you find no answers, yet they remain great opportunities to prove that you never surrender."
+    },
+    {
+      "block": 3,
+      "id": "185",
+      "number": 185,
+      "text": "Stars will not come closer to us no matter how long we gaze at them, nor will we be closer to our dreams if we do not move."
+    },
+    {
+      "block": 3,
+      "id": "186",
+      "number": 186,
+      "text": "Luck will never come searching for you, so if you wait for your fortune to change while doing nothing, you can remain seated waiting."
+    },
+    {
+      "block": 3,
+      "id": "187",
+      "number": 187,
+      "text": "Life does not aid those who give up. Life tends to smile on those who, despite everything, keep going."
+    },
+    {
+      "block": 3,
+      "id": "188",
+      "number": 188,
+      "text": "Reaching any dream may seem impossible, but if you do not give up, you will make it possible."
+    },
+    {
+      "block": 3,
+      "id": "189",
+      "number": 189,
+      "text": "We can never erase dark moments from our lives, but we can always fight to make our dreams come true."
+    },
+    {
+      "block": 3,
+      "id": "190",
+      "number": 190,
+      "text": "If we removed the days spent in regret from our lives, consider whether it makes any sense to waste time on sorrow."
+    },
+    {
+      "block": 3,
+      "id": "191",
+      "number": 191,
+      "text": "Do not fear failure when reaching for your dreams, for far worse are the doubts in which you will drown thinking about what might have been had you not surrendered to your fears."
+    },
+    {
+      "block": 3,
+      "id": "192",
+      "number": 192,
+      "text": "I prefer knowing what happened by trying than spending the future wondering what it would have been like to achieve it."
+    },
+    {
+      "block": 3,
+      "id": "193",
+      "number": 193,
+      "text": "Do not wait for others to acknowledge your worth, for you alone know that your dreams set no limits."
+    },
+    {
+      "block": 3,
+      "id": "194",
+      "number": 194,
+      "text": "We rush to become the best, forgetting that to become masters we must first be apprentices."
+    },
+    {
+      "block": 3,
+      "id": "195",
+      "number": 195,
+      "text": "If you give up, bid farewell to the dreams you hold."
+    },
+    {
+      "block": 3,
+      "id": "196",
+      "number": 196,
+      "text": "It matters not whether we are winners or losers, for what will always set us apart is being great dreamers."
+    },
+    {
+      "block": 3,
+      "id": "197",
+      "number": 197,
+      "text": "There is no dream so wild that it cannot be reached, nor fear so great that it cannot be overcome."
+    },
+    {
+      "block": 3,
+      "id": "198",
+      "number": 198,
+      "text": "Whatever you decide, whatever you live through, never give up."
+    },
+    {
+      "block": 3,
+      "id": "199",
+      "number": 199,
+      "text": "Miracles exist because they are the dreams of those who never surrender."
+    },
+    {
+      "block": 3,
+      "id": "200",
+      "number": 200,
+      "text": "To make your dreams a reality, you only need to work to live them."
+    },
+    {
+      "block": 3,
+      "id": "201",
+      "number": 201,
+      "text": "Winners are those who, instead of thinking themselves losers, thought of how to turn their dreams into reality."
+    },
+    {
+      "block": 3,
+      "id": "202",
+      "number": 202,
+      "text": "We grow frustrated when we fall short of our dreams, forgetting to enjoy what we live while awake."
+    },
+    {
+      "block": 3,
+      "id": "203",
+      "number": 203,
+      "text": "You may feel that everyone has failed you, but what matters is that you do not fail yourself and never cease chasing your dreams."
+    },
+    {
+      "block": 3,
+      "id": "204",
+      "number": 204,
+      "text": "We become our own worst enemies when we give up."
+    },
+    {
+      "block": 3,
+      "id": "205",
+      "number": 205,
+      "text": "The only true winner is the one who works to surpass their limits, not to defeat their rivals."
+    },
+    {
+      "block": 3,
+      "id": "206",
+      "number": 206,
+      "text": "We are all apprentices when we fall, and we become masters when we rise."
+    },
+    {
+      "block": 3,
+      "id": "207",
+      "number": 207,
+      "text": "It is never too early to start dreaming, nor too late to begin anew."
+    },
+    {
+      "block": 3,
+      "id": "208",
+      "number": 208,
+      "text": "The first step in learning to fly is beginning to dream."
+    },
+    {
+      "block": 3,
+      "id": "209",
+      "number": 209,
+      "text": "The worst thing that can happen to us is not having dreams. The worst is forgetting to pursue what our heart desires."
+    },
+    {
+      "block": 3,
+      "id": "210",
+      "number": 210,
+      "text": "Fighting for your dreams can be exhausting, but if you give up, you will live knowing that nothing will ever change."
+    },
+    {
+      "block": 3,
+      "id": "211",
+      "number": 211,
+      "text": "We are not all that we dream we will be, because sometimes we settle for who we are, and other times we grow complacent believing everything will come easy."
+    },
+    {
+      "block": 3,
+      "id": "212",
+      "number": 212,
+      "text": "They may force us to live wide awake, but they can never steal our dreams."
+    },
+    {
+      "block": 3,
+      "id": "213",
+      "number": 213,
+      "text": "Those who fight with all their strength prove their courage, but far greater courage belongs to those who do not surrender even when they have none left."
+    },
+    {
+      "block": 3,
+      "id": "214",
+      "number": 214,
+      "text": "If you believe life is giving you no chances, it is not true; seizing them depends on what you decide in every moment."
+    },
+    {
+      "block": 3,
+      "id": "215",
+      "number": 215,
+      "text": "As long as you have a dream to fulfill, you have a reason to live."
+    },
+    {
+      "block": 3,
+      "id": "216",
+      "number": 216,
+      "text": "Our success depends not on the height of the mountain, but on the willpower our soul demonstrates during the climb."
+    },
+    {
+      "block": 3,
+      "id": "217",
+      "number": 217,
+      "text": "We must always remember that we were born free and nothing stops us from chasing our dreams, for we must not turn the fears we feel into barriers."
+    },
+    {
+      "block": 3,
+      "id": "218",
+      "number": 218,
+      "text": "Our success depends not on the possibilities given to us, but on making the most of the opportunities we find."
+    },
+    {
+      "block": 3,
+      "id": "219",
+      "number": 219,
+      "text": "Success is not having won, but having tried, and having pressed on even when feeling we might not reach our goals."
+    },
+    {
+      "block": 3,
+      "id": "220",
+      "number": 220,
+      "text": "I prefer having a list of lived desires than a list of projects that remained only dreams."
+    },
+    {
+      "block": 3,
+      "id": "221",
+      "number": 221,
+      "text": "If you do not fulfill your dreams, it will not be for lack of opportunities, but because you do not know how to seize the ones you have."
+    },
+    {
+      "block": 3,
+      "id": "222",
+      "number": 222,
+      "text": "Never pay mind to the criticisms directed at you, for they only seek to dishearten you so your dreams remain unfulfilled."
+    },
+    {
+      "block": 3,
+      "id": "223",
+      "number": 223,
+      "text": "No one needs wings to fly, only imagination to dream."
+    },
+    {
+      "block": 3,
+      "id": "224",
+      "number": 224,
+      "text": "The difference between dreaming and achieving those dreams lies in the work we do to see them come true."
+    },
+    {
+      "block": 3,
+      "id": "225",
+      "number": 225,
+      "text": "We waste time while dreaming if we do nothing when we wake to make those dreams come true."
+    },
+    {
+      "block": 3,
+      "id": "226",
+      "number": 226,
+      "text": "When we day-dream, we live what we want. When we dream in sleep, we live what we long for."
+    },
+    {
+      "block": 3,
+      "id": "227",
+      "number": 227,
+      "text": "Sometimes we use silence to express our deepest feelings."
+    },
+    {
+      "block": 3,
+      "id": "228",
+      "number": 228,
+      "text": "We soon forget the caresses that happiness gave us when adversity strikes."
+    },
+    {
+      "block": 3,
+      "id": "229",
+      "number": 229,
+      "text": "When sorrows arrive, they hide the sun of our smiles."
+    },
+    {
+      "block": 3,
+      "id": "230",
+      "number": 230,
+      "text": "We all know what we want. What we do not know is where to find the manual that tells us how to make our dreams a reality."
+    },
+    {
+      "block": 3,
+      "id": "231",
+      "number": 231,
+      "text": "Asleep we dream of what we desire, but awake we must labor to make those dreams real."
+    },
+    {
+      "block": 3,
+      "id": "232",
+      "number": 232,
+      "text": "We are always mistaken when we think we cannot reach our dreams, and right when we devote ourselves to finding the path to reach them."
+    },
+    {
+      "block": 3,
+      "id": "233",
+      "number": 233,
+      "text": "Since we all rise when we fall, we should learn that lamenting serves us little."
+    },
+    {
+      "block": 3,
+      "id": "234",
+      "number": 234,
+      "text": "Living in solitude and carrying sorrow is like walking with eyes fixed only on the stones."
+    },
+    {
+      "block": 3,
+      "id": "235",
+      "number": 235,
+      "text": "Rather than getting lost endlessly in our thoughts, it is better to find ourselves enjoying our feelings."
+    },
+    {
+      "block": 3,
+      "id": "236",
+      "number": 236,
+      "text": "Our problems can be massive, great, or small, depending on the weight we choose to give them."
+    },
+{
+  "block": 4,
+  "footprints": [
+    {
+      "block": 4,
+      "id": "237",
+      "number": 237,
+      "text": "We may not always dare to live our dreams, because whether we admit it or not, we are afraid to live them."
+    },
+    {
+      "block": 4,
+      "id": "238",
+      "number": 238,
+      "text": "If you let yourself be carried away by your fears, you will never know how it feels to reach your dreams."
+    },
+    {
+      "block": 4,
+      "id": "239",
+      "number": 239,
+      "text": "There are no endless falls. There are only people who forget that you remain on the ground when you choose not to rise."
+    },
+    {
+      "block": 4,
+      "id": "240",
+      "number": 240,
+      "text": "Only those who never give up are truly brave, for they refuse to be conquered by the fear that paralyzes the coward."
+    },
+    {
+      "block": 4,
+      "id": "241",
+      "number": 241,
+      "text": "Reaching your dreams depends not on the strength you possess, but on never surrendering despite the exhaustion you feel."
+    },
+    {
+      "block": 4,
+      "id": "242",
+      "number": 242,
+      "text": "Never think about the fall when you leap. Think instead that when you fly, you will finally fulfill your dreams."
+    },
+    {
+      "block": 4,
+      "id": "243",
+      "number": 243,
+      "text": "To the one waiting to see you drown, show them you learned to swim, knowing it is better to live swimming than to perish beneath the waves."
+    },
+    {
+      "block": 4,
+      "id": "244",
+      "number": 244,
+      "text": "If sadness comes knocking at your door, leaving it closed is the finest answer."
+    },
+    {
+      "block": 4,
+      "id": "245",
+      "number": 245,
+      "text": "Only those who fell and stood back up learned that life is a lesson meant for those who never gave up."
+    },
+    {
+      "block": 4,
+      "id": "246",
+      "number": 246,
+      "text": "Each new day is a chance to prove all the courage we carry within."
+    },
+    {
+      "block": 4,
+      "id": "247",
+      "number": 247,
+      "text": "We all have the right to feel fear, but we all share the duty to overcome it."
+    },
+    {
+      "block": 4,
+      "id": "248",
+      "number": 248,
+      "text": "Fears are merely the excuses we make when we believe we can never fulfill our dreams."
+    },
+    {
+      "block": 4,
+      "id": "249",
+      "number": 249,
+      "text": "We all feel pain when we fall, but while some choose to lament, others choose to rise."
+    },
+    {
+      "block": 4,
+      "id": "250",
+      "number": 250,
+      "text": "It is far better to live making mistakes than to pass through life motionless out of fear of falling."
+    },
+    {
+      "block": 4,
+      "id": "251",
+      "number": 251,
+      "text": "The brave prefer to die fighting, while cowards choose to live in silence."
+    },
+    {
+      "block": 4,
+      "id": "252",
+      "number": 252,
+      "text": "What matters is not the pain we feel, but that we never surrender."
+    },
+    {
+      "block": 4,
+      "id": "253",
+      "number": 253,
+      "text": "We as human beings are wounds. They always heal, even if the scars remain forever visible upon our souls."
+    },
+    {
+      "block": 4,
+      "id": "254",
+      "number": 254,
+      "text": "We lost the day we gave up."
+    },
+    {
+      "block": 4,
+      "id": "255",
+      "number": 255,
+      "text": "If we remain on the ground lamenting when we fall, it will only take us longer to reach the sky."
+    },
+    {
+      "block": 4,
+      "id": "256",
+      "number": 256,
+      "text": "Neither free, nor imprisoned, nor dead: I will never stop fighting for what I feel."
+    },
+    {
+      "block": 4,
+      "id": "257",
+      "number": 257,
+      "text": "Only those who have fallen truly know what it means to suffer."
+    },
+    {
+      "block": 4,
+      "id": "258",
+      "number": 258,
+      "text": "Quitting belongs to cowards. Fighting belongs to the brave. And rising after a fall to press onward belongs to heroes."
+    },
+    {
+      "block": 4,
+      "id": "259",
+      "number": 259,
+      "text": "If we grow weary, we can always rest; but if we surrender, no success will ever be ours to claim."
+    },
+    {
+      "block": 4,
+      "id": "260",
+      "number": 260,
+      "text": "They will tell you many times that you cannot, so that you never try nor realize the immense worth you hold."
+    },
+    {
+      "block": 4,
+      "id": "261",
+      "number": 261,
+      "text": "There are people who deserve to be remembered for the love they gave us, and others whom it is wise to forget for the harm they caused us."
+    },
+    {
+      "block": 4,
+      "id": "262",
+      "number": 262,
+      "text": "Even if you never manage to reach your dreams, no one can say you failed; for failure belongs only to those who never move forward because they left their destiny in the hands of their fears."
+    },
+    {
+      "block": 4,
+      "id": "263",
+      "number": 263,
+      "text": "Do not trust those who urge you to jump, for some are merely eager to applaud when they see you fall."
+    },
+    {
+      "block": 4,
+      "id": "264",
+      "number": 264,
+      "text": "Once you have fallen, lamenting that you were not more cautious will serve you little."
+    },
+    {
+      "block": 4,
+      "id": "265",
+      "number": 265,
+      "text": "The greatest problem we can face is not being afraid to die, but being afraid to live."
+    },
+    {
+      "block": 4,
+      "id": "266",
+      "number": 266,
+      "text": "If someone tries to sink you, show them you know how to swim and will always rise to the surface."
+    },
+    {
+      "block": 4,
+      "id": "267",
+      "number": 267,
+      "text": "We suffer enough falls from our own mistakes without others coming along to push us down."
+    },
+    {
+      "block": 4,
+      "id": "268",
+      "number": 268,
+      "text": "Do not focus on having failed every time you fall. Focus on what you learned and how you stood back up."
+    },
+    {
+      "block": 4,
+      "id": "269",
+      "number": 269,
+      "text": "Never look upon the unfortunate with disdain, for at any moment life can cast you to the ground, and only then will you know what cold feels like."
+    },
+    {
+      "block": 4,
+      "id": "270",
+      "number": 270,
+      "text": "We will never again be who we were, nor live what we lived; so never let your fears make your decisions for you."
+    },
+    {
+      "block": 4,
+      "id": "271",
+      "number": 271,
+      "text": "Those who only know how to weep over their wounds and scars will never be capable of finding happiness."
+    },
+    {
+      "block": 4,
+      "id": "272",
+      "number": 272,
+      "text": "It is not that we lack strength at times; it is simply that we waste it paying attention to fools."
+    },
+    {
+      "block": 4,
+      "id": "273",
+      "number": 273,
+      "text": "We become our own worst enemies when we let our fears decide instead of setting our thoughts free."
+    },
+    {
+      "block": 4,
+      "id": "274",
+      "number": 274,
+      "text": "The coward goes into battle expecting to win without fighting; the brave goes into battle ready to fight without knowing if they will win."
+    },
+    {
+      "block": 4,
+      "id": "275",
+      "number": 275,
+      "text": "Only those who understood they had wings and wished to learn to fly can truly dream."
+    },
+    {
+      "block": 4,
+      "id": "276",
+      "number": 276,
+      "text": "If you become the master of your dreams, you will never be a slave to your fears."
+    },
+    {
+      "block": 4,
+      "id": "277",
+      "number": 277,
+      "text": "It is a bitter life for whoever fears living, only to end up fearing death."
+    },
+    {
+      "block": 4,
+      "id": "278",
+      "number": 278,
+      "text": "Do not listen to those who tell you that you cannot. Pay attention to those who tell you that if you want to, you can."
+    },
+    {
+      "block": 4,
+      "id": "279",
+      "number": 279,
+      "text": "It may hurt when we fall, but we learn a valuable lesson when we rise."
+    },
+    {
+      "block": 4,
+      "id": "280",
+      "number": 280,
+      "text": "Whoever seeks to extinguish your light with lies only longs for the day you live in darkness."
+    },
+    {
+      "block": 4,
+      "id": "281",
+      "number": 281,
+      "text": "Deserving of all our admiration is the person who feels tears falling from their eyes and dries them, turning them into bright smiles."
+    },
+    {
+      "block": 4,
+      "id": "282",
+      "number": 282,
+      "text": "There will always be someone telling us we will not fulfill our dreams, but only to discourage us so we stop pursuing them."
+    },
+    {
+      "block": 4,
+      "id": "283",
+      "number": 283,
+      "text": "Whoever knows how to listen learns more than whoever never lets others speak."
+    },
+    {
+      "block": 4,
+      "id": "284",
+      "number": 284,
+      "text": "From the earth we enjoy the shine of the stars, but were we in heaven, we would see how brightly fools shine down on earth."
+    },
+    {
+      "block": 4,
+      "id": "285",
+      "number": 285,
+      "text": "Your smile is a weapon that inflicts no death, yet every fool detests it."
+    },
+    {
+      "block": 4,
+      "id": "286",
+      "number": 286,
+      "text": "The clothes you wear do not make you beautiful; you look beautiful whenever you smile."
+    },
+    {
+      "block": 4,
+      "id": "287",
+      "number": 287,
+      "text": "Whoever clothes themselves in smiles writes all their days with joy."
+    },
+    {
+      "block": 4,
+      "id": "288",
+      "number": 288,
+      "text": "Never dress in sadness, for those colors do not suit you. Remember that you look most beautiful when you put on a smile."
+    },
+    {
+      "block": 4,
+      "id": "289",
+      "number": 289,
+      "text": "A smile is what distinguishes wisdom from ignorance."
+    },
+    {
+      "block": 4,
+      "id": "290",
+      "number": 290,
+      "text": "When you see someone offering you smiles, remember they learned to smile after swallowing many tears."
+    },
+    {
+      "block": 4,
+      "id": "291",
+      "number": 291,
+      "text": "A smile is not only meant to be shown; it is also meant to be shared as a gift."
+    },
+    {
+      "block": 4,
+      "id": "292",
+      "number": 292,
+      "text": "A book is a sky where words shine like stars in your gaze."
+    },
+    {
+      "block": 4,
+      "id": "293",
+      "number": 293,
+      "text": "If by day you read words, by night you will count stars in your dreams."
+    },
+    {
+      "block": 4,
+      "id": "294",
+      "number": 294,
+      "text": "Words are the stars that guide travelers as they navigate the ocean of books."
+    },
+    {
+      "block": 4,
+      "id": "295",
+      "number": 295,
+      "text": "There are gazes in which souls can be read, and others that are merely sad, empty pages."
+    },
+    {
+      "block": 4,
+      "id": "296",
+      "number": 296,
+      "text": "Fear and sadness are the clouds that sometimes overcast our minds."
+    },
+    {
+      "block": 4,
+      "id": "297",
+      "number": 297,
+      "text": "Never let your thoughts extinguish you. Let your feelings illuminate you."
+    },
+    {
+      "block": 4,
+      "id": "298",
+      "number": 298,
+      "text": "Life is a box of colored pencils, and we paint our days according to our emotions."
+    },
+    {
+      "block": 4,
+      "id": "299",
+      "number": 299,
+      "text": "Life does not supply the colors. You end up painting your life with the shades you choose."
+    },
+    {
+      "block": 4,
+      "id": "300",
+      "number": 300,
+      "text": "The skin over which your tears flow will eventually turn into wrinkles."
+    },
+    {
+      "block": 4,
+      "id": "301",
+      "number": 301,
+      "text": "When you see clouds gathering in your thoughts, expect that rain will eventually fall upon your feelings."
+    },
+    {
+      "block": 4,
+      "id": "302",
+      "number": 302,
+      "text": "The sea had daughters who played in the waves as children, and as they grew, turned into salt. They traveled to our eyes, these daughters of the sea, and ever seek to escape, wanting to return and play with their father once more."
+    },
+    {
+      "block": 4,
+      "id": "303",
+      "number": 303,
+      "text": "Tears are the highways upon which sorrows travel."
+    },
+    {
+      "block": 4,
+      "id": "304",
+      "number": 304,
+      "text": "We should never stop being children—playing with joy, living in dreams, and writing with smiles the days life gifts us."
+    },
+    {
+      "block": 4,
+      "id": "305",
+      "number": 305,
+      "text": "No darkness exists in my dreams when in sleep I see your smiles, nor is there a gray day when I have the light of your gaze."
+    },
+    {
+      "block": 4,
+      "id": "306",
+      "number": 306,
+      "text": "What matters is not the shadow you cast by believing yourself grand, but the light you project through the love with which you treat others."
+    },
+    {
+      "block": 4,
+      "id": "307",
+      "number": 307,
+      "text": "Fear will never let you follow any path, which is why if you heed it, you will reach no destination."
+    },
+    {
+      "block": 4,
+      "id": "308",
+      "number": 308,
+      "text": "If you weep because you lose, you will lack the strength to achieve what you do not yet possess."
+    },
+    {
+      "block": 4,
+      "id": "309",
+      "number": 309,
+      "text": "In a world of lies, truths cut as deeply as open wounds."
+    },
+    {
+      "block": 4,
+      "id": "310",
+      "number": 310,
+      "text": "If every day we make hundreds of decisions, we must accept that we may make a few mistakes."
+    },
+    {
+      "block": 4,
+      "id": "311",
+      "number": 311,
+      "text": "The brave look forward; the coward looks elsewhere."
+    },
+    {
+      "block": 4,
+      "id": "312",
+      "number": 312,
+      "text": "Do not think you always have bad luck. It is likely you are simply living among bad people."
+    },
+    {
+      "block": 4,
+      "id": "313",
+      "number": 313,
+      "text": "Always guard your words, for sometimes they become sharp knives, and other times the ammunition with which you inflict wounds."
+    }
+  ]
