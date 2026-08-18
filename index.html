@@ -347,7 +347,6 @@
 
     function filterByBlock(blockNum, keepIndex = false) {
         sessionStorage.setItem('pyfp_block', blockNum.toString());
-        // Se añade compatibilidad para leer tanto "bloque" como "block"
         currentFilteredFrases = allFrases.filter(f => Number(f.bloque || f.block) === Number(blockNum));
         
         if (!keepIndex) {
@@ -454,6 +453,14 @@
         };
 
         video.onerror = () => {
+            // Si falla el vídeo en inglés (_en.mp4), intentamos recurrir al vídeo general por seguridad
+            if (videoSrc.includes('_en.mp4')) {
+                const fallbackVideoPath = `plantilla${blockNum}_video.mp4`;
+                if (videoSrc !== fallbackVideoPath) {
+                    tryLoadVideo(fallbackVideoPath, text, fallbackImg, blockNum);
+                    return;
+                }
+            }
             drawCanvasFrame(fallbackImg, text);
         };
     }
@@ -473,7 +480,7 @@
     }
 
     function drawTextOverlay(text) {
-        if (!ctx || !canvas) return;
+        if (!ctx || !canvas || !text) return;
         ctx.fillStyle = "#ffffff";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -541,6 +548,16 @@
         if (blockSelect) {
             blockSelect.addEventListener('change', (e) => {
                 filterByBlock(parseInt(e.target.value, 10), false);
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.append || prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    renderCurrentHuella();
+                }
             });
         }
 
