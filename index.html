@@ -20,30 +20,30 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px 20px;
             text-align: center;
         }
         h1 {
-            font-size: 2.4rem;
-            margin-bottom: 5px;
+            font-size: 2.1rem;
+            margin-bottom: 3px;
             color: #e0e0e0;
         }
         p.subtitle {
-            font-size: 1.15rem;
+            font-size: 1rem;
             color: #888888;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         .intro-container {
             width: 100%;
-            max-width: 760px;
-            margin-bottom: 25px;
+            max-width: 620px;
+            margin-bottom: 15px;
         }
         .intro-video-wrapper {
             width: 100%;
             aspect-ratio: 16 / 9;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.85);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.85);
             background: #000;
         }
         .intro-video-wrapper video {
@@ -52,26 +52,64 @@
             display: block;
             object-fit: cover;
         }
-        .lang-select-container {
+        .nav-container {
+            width: 100%;
+            max-width: 620px;
             display: flex;
-            gap: 15px;
-            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
         }
-        .lang-select-container a {
-            padding: 12px 30px;
-            font-size: 1.1rem;
+        /* Botón destacado del libro en venta */
+        .book-btn {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background-color: #5a1818;
+            border: 1px solid #8b2626;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .book-btn:hover {
+            background-color: #721d1d;
+            border-color: #a53232;
+            transform: translateY(-2px);
+        }
+        /* Cuadrícula de idiomas (Grid) */
+        .lang-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .lang-grid a {
+            padding: 10px 15px;
+            font-size: 0.95rem;
             font-weight: 600;
             background-color: #1f1f1f;
             border: 1px solid #444;
             color: #fff;
-            border-radius: 8px;
+            border-radius: 6px;
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        .lang-select-container a:hover {
+        .lang-grid a:hover {
             background-color: #333;
             border-color: #777;
             transform: translateY(-2px);
+        }
+        /* Adaptación automática para pantallas móviles pequeñas (WAP/Móvil) */
+        @media (max-width: 580px) {
+            h1 { font-size: 1.7rem; }
+            p.subtitle { font-size: 0.9rem; margin-bottom: 10px; }
+            .intro-container { max-width: 100%; margin-bottom: 10px; }
+            .lang-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .lang-grid a, .book-btn {
+                padding: 9px 10px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -89,9 +127,19 @@
         </div>
     </div>
 
-    <div class="lang-select-container">
-        <a href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-es/">🇪🇸 Español</a>
-        <a href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-en/">🇬🇧 English</a>
+    <div class="nav-container">
+        <!-- Botón superior exclusivo para el libro en venta -->
+        <a href="URL_DEL_LIBRO_AQUI" class="book-btn">📖 Libro en venta</a>
+
+        <!-- Cuadrícula ordenada de 6 idiomas -->
+        <div class="lang-grid">
+            <a href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-es/">🇪🇸 Español</a>
+            <a href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-en/">🇬🇧 English</a>
+            <a href="URL_DEL_SITIO_JAPONES_AQUI">🇯🇵 日本語</a>
+            <a href="#" style="opacity: 0.4; pointer-events: none;">🇫🇷 Français</a>
+            <a href="#" style="opacity: 0.4; pointer-events: none;">🇩🇪 Deutsch</a>
+            <a href="#" style="opacity: 0.4; pointer-events: none;">🇮🇹 Italiano</a>
+        </div>
     </div>
 
 </body>
