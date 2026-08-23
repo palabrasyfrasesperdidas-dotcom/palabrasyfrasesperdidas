@@ -59,23 +59,6 @@
             flex-direction: column;
             gap: 10px;
         }
-        /* Botón destacado del libro en venta */
-        .book-btn {
-            padding: 10px 20px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            background-color: #5a1818;
-            border: 1px solid #8b2626;
-            color: #fff;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .book-btn:hover {
-            background-color: #721d1d;
-            border-color: #a53232;
-            transform: translateY(-2px);
-        }
         /* Cuadrícula de idiomas (Grid) */
         .lang-grid {
             display: grid;
@@ -106,7 +89,7 @@
             .lang-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .lang-grid a, .book-btn {
+            .lang-grid a {
                 padding: 9px 10px;
                 font-size: 0.85rem;
             }
@@ -128,14 +111,11 @@
     </div>
 
     <div class="nav-container">
-        <!-- Botón superior exclusivo para el libro en venta -->
-        <a href="URL_DEL_LIBRO_AQUI" class="book-btn">📖 Libro en venta</a>
-
-        <!-- Cuadrícula ordenada de 6 idiomas -->
+        <!-- Cuadrícula ordenada de idiomas -->
         <div class="lang-grid">
             <a href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-es/">🇪🇸 Español</a>
             <a href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-en/">🇬🇧 English</a>
-           <a href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-jp/">🇯🇵 日本語</a>
+            <a href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-jp/">🇯🇵 日本語</a>
             <a href="#" style="opacity: 0.4; pointer-events: none;">🇫🇷 Français</a>
             <a href="#" style="opacity: 0.4; pointer-events: none;">🇩🇪 Deutsch</a>
             <a href="#" style="opacity: 0.4; pointer-events: none;">🇮🇹 Italiano</a>
