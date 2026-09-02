@@ -49,33 +49,33 @@
             font-family: 'Montserrat', sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center; /* Centrado vertical perfecto en escritorio */
             align-items: center;
             min-height: 100vh;
-            padding: 30px 20px 40px 20px; /* Margen superior ampliado para que el título no quede pegado al borde */
+            padding: 15px 20px;
             text-align: center;
         }
         h1 {
-            font-size: 2.6rem;
-            margin-bottom: 8px; /* Mayor separación inferior para un respiro elegante */
+            font-size: 2.2rem;
+            margin-bottom: 4px;
             color: #e0e0e0;
         }
         p.subtitle {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             color: #888888;
-            margin-bottom: 25px; /* Espacio equilibrado antes del vídeo */
+            margin-bottom: 15px;
         }
         .intro-container {
             width: 100%;
-            max-width: 850px; /* Unificado con el ancho del contenedor de botones */
-            margin-bottom: 25px;
+            max-width: 650px; /* Reducido ligeramente para ganar altura vertical y evitar scroll */
+            margin-bottom: 15px;
         }
         .intro-video-wrapper {
             width: 100%;
             aspect-ratio: 16 / 9;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.85);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.85);
             background: #000;
         }
         .intro-video-wrapper video {
@@ -86,20 +86,20 @@
         }
         .nav-container {
             width: 100%;
-            max-width: 850px; /* Simetría perfecta con el bloque superior */
+            max-width: 780px; /* Alineado de forma compacta con el contenido */
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
         /* Cuadrícula de idiomas para escritorio (Grid de 4 columnas) */
         .lang-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            gap: 10px;
         }
         .lang-grid a, .lang-grid .lang-disabled {
-            padding: 11px 15px;
-            font-size: 0.95rem;
+            padding: 9px 12px;
+            font-size: 0.9rem;
             font-weight: 600;
             background-color: #1f1f1f;
             border: 1px solid #444;
@@ -124,21 +124,20 @@
             cursor: default;
         }
 
-        /* Adaptación automática para pantallas móviles pequeñas (WAP/Móvil - Mantiene filas de 2) */
+        /* Adaptación automática para pantallas móviles pequeñas (WAP/Móvil) */
         @media (max-width: 580px) {
-            body { padding: 15px 15px 30px 15px; }
-            h1 { font-size: 1.7rem; margin-bottom: 5px; }
-            p.subtitle { font-size: 0.95rem; margin-bottom: 15px; }
-            .intro-container { max-width: 100%; margin-bottom: 15px; }
+            body { padding: 15px; justify-content: flex-start; }
+            h1 { font-size: 1.6rem; }
+            p.subtitle { font-size: 0.9rem; margin-bottom: 12px; }
+            .intro-container { max-width: 100%; margin-bottom: 12px; }
             .lang-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+                gap: 8px;
             }
             .lang-grid a, .lang-grid .lang-disabled {
                 padding: 9px 10px;
                 font-size: 0.85rem;
             }
-            /* Elemento impar final ocupa dos columnas en móvil si fuera necesario */
             .lang-grid > *:last-child:nth-child(odd) {
                 grid-column: span 2;
             }
