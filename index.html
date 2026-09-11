@@ -57,7 +57,6 @@
             text-align: center;
         }
         
-        /* Cabecera con título e icono integrado */
         .header-container {
             display: flex;
             align-items: center;
@@ -72,7 +71,6 @@
             margin: 0;
         }
 
-        /* Estilo del icono con degradado de Instagram y Tooltip */
         .instagram-icon-btn {
             position: relative;
             display: inline-flex;
@@ -98,7 +96,7 @@
             box-shadow: 0 6px 15px rgba(214,36,159,0.4);
         }
 
-        /* Tooltip emergente al pasar el ratón */
+        /* Tooltip posicionado hacia abajo para evitar solapamiento superior */
         .instagram-icon-btn .tooltip {
             visibility: hidden;
             background-color: #1f1f1f;
@@ -110,7 +108,7 @@
             font-weight: 600;
             white-space: nowrap;
             position: absolute;
-            bottom: 125%;
+            top: 125%;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
